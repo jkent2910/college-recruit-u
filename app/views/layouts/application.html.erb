@@ -8,7 +8,14 @@
 </head>
 <body>
 
+<% flash.each do |name, msg| %>
+  <% if msg.is_a?(String) %>
+    <%= content_tag :div, msg, :class => "flash_#{name}" %>
+  <% end %>
+<% end %>
+
 <% if user_signed_in? %>
+  <li>Signed in as <%= current_user.email %>.</li>
   <li><%= link_to 'Edit account', edit_user_registration_path %></li>
   <li><%= link_to 'Sign out', destroy_user_session_path, :method=>'delete' %></li>
 <% else %>
