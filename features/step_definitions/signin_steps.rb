@@ -18,6 +18,12 @@ When /^I sign in using "([^"]*)"$/ do |password|
   step "I press \"Sign in\""
 end
 
+When(/^I sign in for the first time$/) do
+  @user.sign_in_count = 0
+  @user.save!
+  step "I sign in"
+end
+
 When /^I sign out$/ do
   visit destroy_user_session_path
 end

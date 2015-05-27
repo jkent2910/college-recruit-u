@@ -1,4 +1,5 @@
 class StudentProfilesController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_student_profile, only: [:show, :edit, :update, :destroy]
 
   # GET /student_profiles
@@ -25,10 +26,11 @@ class StudentProfilesController < ApplicationController
   # POST /student_profiles.json
   def create
     @student_profile = StudentProfile.new(student_profile_params)
+    @student_profile.student = current_user
 
     respond_to do |format|
       if @student_profile.save
-        format.html { redirect_to @student_profile, notice: 'Student profile was successfully created.' }
+        format.html { redirect_to @student_profile, notice: 'Great! Your profile is created.' }
         format.json { render :show, status: :created, location: @student_profile }
       else
         format.html { render :new }

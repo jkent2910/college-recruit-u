@@ -14,6 +14,9 @@ module NavigationHelpers
     when /sign in page/
       new_user_session_path
 
+    when /my student profile page/
+      student_profile_path(@user.student_profile)
+
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
     #

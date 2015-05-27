@@ -19,6 +19,12 @@ require 'rails_helper'
 # that an instance is receiving a specific message.
 
 RSpec.describe StudentProfilesController, type: :controller do
+  include Devise::TestHelpers
+
+  before do
+    sarah = FactoryGirl.create(:sarah)
+    sign_in sarah
+  end
 
   # This should return the minimal set of attributes required to create a valid
   # StudentProfile. As you add validations to StudentProfile, be sure to
