@@ -12,5 +12,6 @@ FactoryGirl.define do
 
   factory :sarah, :parent => :user do |s|
     s.email 'sarah@school.k12.ia.us'
+    s.sign_in_count 2
   end
 end

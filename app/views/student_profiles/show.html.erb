@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>First name:</strong>
+  <%= @student_profile.first_name %>
+</p>
+
+<p>
+  <strong>Last name:</strong>
+  <%= @student_profile.last_name %>
+</p>
+
+<p>
+  <strong>Gender:</strong>
+  <%= @student_profile.gender %>
+</p>
+
+<p>
+  <strong>High school:</strong>
+  <%= @student_profile.high_school %>
+</p>
+
+<p>
+  <strong>Graduation year:</strong>
+  <%= @student_profile.graduation_year %>
+</p>
+
+<%= link_to 'Edit', edit_student_profile_path(@student_profile) %> |
+<%= link_to 'Back', student_profiles_path %>
