@@ -40,6 +40,22 @@ When /^(?:|I )fill in "([^"]*)" for "([^"]*)"$/ do |value, field|
   fill_in(field, :with => value)
 end
 
+When /^(?:|I )select "([^"]*)" from "([^"]*)"$/ do |value, field|
+  select(value, :from => field)
+end
+
+When /^(?:|I )check "([^"]*)"$/ do |field|
+  check(field)
+end
+
+When /^(?:|I )uncheck "([^"]*)"$/ do |field|
+  uncheck(field)
+end
+
+When /^(?:|I )choose "([^"]*)"$/ do |field|
+  choose(field)
+end
+
 Then /^(?:|I )should be on (.+)$/ do |page_name|
   current_path = URI.parse(current_url).path
   expect(current_path).to be == path_to(page_name)
