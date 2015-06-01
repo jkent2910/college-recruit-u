@@ -9,6 +9,8 @@ gem 'devise',         '~> 3.4.1'
 gem 'font-awesome-sass'
 gem 'jbuilder',       '~> 2.0'
 gem 'jquery-rails'
+gem 'omniauth'
+gem 'omniauth-twitter'
 gem 'sass-rails',     '~> 5.0'
 gem 'sdoc',           '~> 0.4.0', group: :doc
 gem 'turbolinks'
