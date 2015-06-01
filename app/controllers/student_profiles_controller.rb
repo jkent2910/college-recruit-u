@@ -1,6 +1,7 @@
 class StudentProfilesController < ApplicationController
   before_action :authenticate_user!
   before_action :set_student_profile, only: [:show, :edit, :update, :destroy]
+  before_action :check_for_existing_profile, only: [:new, :create]
 
   # GET /student_profiles
   # GET /student_profiles.json
@@ -67,6 +68,12 @@ class StudentProfilesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_student_profile
       @student_profile = StudentProfile.find(params[:id])
+    end
+
+    def check_for_existing_profile
+      if current_user.student_profile
+        redirect_to current_user.student_profile, notice: "You have already created a profile."
+      end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
