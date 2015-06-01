@@ -23,7 +23,7 @@ Scenario: student bypasses creating a profile
   And I follow "Skip"
   Then I should be on the student profiles page
 
-@wip
+
 Scenario: student tries to create two profiles
   Given I am Sarah
   And I am signed in
