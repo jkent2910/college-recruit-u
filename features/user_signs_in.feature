@@ -22,3 +22,11 @@ Feature: User signs in
     And I am not signed in
     When I sign in with the wrong password
     Then I should see "Invalid email or password."
+
+@omniauth_test
+  Scenario: student signs up with Twitter
+    Given I am anybody
+    And I visit the sign up page
+    And I click the Sign up with Twitter link
+    Then I should be on the new student profile page
+    And I should see "Signed in"

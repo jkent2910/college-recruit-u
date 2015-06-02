@@ -24,6 +24,10 @@ When(/^I sign in for the first time$/) do
   step "I sign in"
 end
 
+Given(/^I click the Sign up with Twitter link$/) do
+  visit user_omniauth_authorize_path(:twitter)
+end
+
 When /^I sign out$/ do
   visit destroy_user_session_path
 end
@@ -39,3 +43,4 @@ end
 When /^I sign in with the wrong password$/ do
   step "I sign in using \"bogus\""
 end
+

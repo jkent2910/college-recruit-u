@@ -14,6 +14,9 @@ module NavigationHelpers
     when /sign in page/
       new_user_session_path
 
+    when /sign up page/
+      new_user_registration_path
+
     when /my student profile page/
       student_profile_path(@user.student_profile)
 
