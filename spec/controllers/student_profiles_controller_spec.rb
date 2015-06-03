@@ -22,8 +22,8 @@ RSpec.describe StudentProfilesController, type: :controller do
   include Devise::TestHelpers
 
   before do
-    sarah = FactoryGirl.create(:sarah)
-    sign_in sarah
+    @sarah = FactoryGirl.create(:sarah)
+    sign_in @sarah
   end
 
   # This should return the minimal set of attributes required to create a valid
@@ -71,9 +71,26 @@ RSpec.describe StudentProfilesController, type: :controller do
   end
 
   describe "GET #new" do
-    it "assigns a new student_profile as @student_profile" do
-      get :new, {}, valid_session
-      expect(assigns(:student_profile)).to be_a_new(StudentProfile)
+    context "when user has no StudentProfile" do
+      it "assigns a new student_profile as @student_profile" do
+        get :new, {}, valid_session
+        expect(assigns(:student_profile)).to be_a_new(StudentProfile)
+      end
+    end
+
+    context "when user already has a StudentProfile" do
+      before do
+        @student_profile = FactoryGirl.create(:student_profile, student: @sarah)
+        get :new, {}, valid_session
+      end
+
+      it "redirects to the StudentProfile show page" do
+        expect(response).to redirect_to(@student_profile)
+      end
+
+      it "displays an appropriate message" do
+        expect(flash[:notice]).to match("already created")
+      end
     end
   end
 

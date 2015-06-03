@@ -22,3 +22,11 @@ Scenario: student bypasses creating a profile
   Then I should be on the new student profile page
   And I follow "Skip"
   Then I should be on the student profiles page
+
+Scenario: student tries to create two profiles
+  Given I am Sarah
+  And I am signed in
+  And I have already created a profile
+  When I visit the new student profile page
+  Then I should be on my student profile page
+  And I should see "You have already created a profile."
