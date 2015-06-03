@@ -14,6 +14,11 @@ gem 'sdoc',           '~> 0.4.0', group: :doc
 gem 'turbolinks'
 gem 'uglifier',       '>= 1.3.0'
 
+group :development do
+  gem 'guard'
+  gem 'guard-rspec'
+end
+
 group :development, :test do
   gem 'byebug'
   gem 'cucumber-rails',     '~> 1.4.2', :require => false
