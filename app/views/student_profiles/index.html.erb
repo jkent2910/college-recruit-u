@@ -10,7 +10,7 @@
       <th>Gender</th>
       <th>High school</th>
       <th>Graduation year</th>
-      <th colspan="3"></th>
+      <th colspan="4"></th>
     </tr>
   </thead>
 
@@ -25,6 +25,14 @@
         <td><%= link_to 'Show', student_profile %></td>
         <td><%= link_to 'Edit', edit_student_profile_path(student_profile) %></td>
         <td><%= link_to 'Destroy', student_profile, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td>
+          <% if current_user.try(:student_profile).try(:fan_of?, student_profile) %>
+          <%= link_to 'Stop being a Fan', stop_being_a_fan_student_profile_path(current_user.student_profile, other_profile_id: student_profile.to_param), method: :post %>
+          <% elsif current_user.try(:student_profile).try(:id) != student_profile.id %>
+          <%= link_to 'Become a Fan', become_a_fan_student_profile_path(current_user.student_profile, other_profile_id: student_profile.to_param), method: :post %>
+          <% else %>
+          <% end %>
+        </td>
       </tr>
     <% end %>
   </tbody>

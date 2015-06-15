@@ -1,6 +1,6 @@
 class StudentProfilesController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_student_profile, only: [:show, :edit, :update, :destroy]
+  before_action :set_student_profile, only: [:show, :edit, :update, :destroy, :become_a_fan, :stop_being_a_fan]
   before_action :check_for_existing_profile, only: [:new, :create]
 
   # GET /student_profiles
@@ -62,6 +62,18 @@ class StudentProfilesController < ApplicationController
       format.html { redirect_to student_profiles_url, notice: 'Student profile was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def become_a_fan
+    other_profile = StudentProfile.find params.require(:other_profile_id)
+    @student_profile.become_fan_of(other_profile)
+    redirect_to :student_profiles
+  end
+
+  def stop_being_a_fan
+    other_profile = StudentProfile.find params.require(:other_profile_id)
+    @student_profile.stop_being_a_fan_of(other_profile)
+    redirect_to :student_profiles
   end
 
   private

@@ -1,7 +1,13 @@
 require 'rails_helper'
 
 RSpec.describe "student_profiles/index", type: :view do
+  include Devise::TestHelpers
+
   before(:each) do
+    @student_user = FactoryGirl.create(:user)
+    FactoryGirl.create(:student_profile, student: @student_user)
+    sign_in @student_user
+
     assign(:student_profiles, [
       StudentProfile.create!(
         :first_name => "First Name",
