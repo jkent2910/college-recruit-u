@@ -7,4 +7,16 @@ class StudentProfile < ActiveRecord::Base
 
   has_many :fans, through: :fan_relationships
   has_many :fan_of, through: :fan_of_relationships
+
+  def fan_of?(other)
+    self.fan_of.include? other
+  end
+
+  def become_fan_of(other)
+    self.fan_of_relationships.create!(fan: self, fan_of: other) unless fan_of? other
+  end
+
+  def stop_being_a_fan_of(other)
+    self.fan_of.delete(other)
+  end
 end
