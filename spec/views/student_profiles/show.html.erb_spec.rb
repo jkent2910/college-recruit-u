@@ -19,4 +19,14 @@ RSpec.describe "student_profiles/show", type: :view do
     expect(rendered).to match(/High School/)
     expect(rendered).to match(/Graduation Year/)
   end
+
+  it "contains a list of my fans" do
+    render
+    assert_select "h2", text: "My Fans"
+  end
+
+  it "contains a list of students of whom I am a fan" do
+    render
+    assert_select "h2", text: "I am a Fan of"
+  end
 end
