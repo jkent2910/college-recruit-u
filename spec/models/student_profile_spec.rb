@@ -31,6 +31,12 @@ RSpec.describe StudentProfile, type: :model do
     end
   end
 
+  it "returns a full name based on first name and last name" do
+    subject.first_name = "John"
+    subject.last_name = "Jones"
+    expect(subject.full_name).to eql "John Jones"
+  end
+
   context "fandom" do
     before do
       @student_profile = FactoryGirl.create(:student_profile)

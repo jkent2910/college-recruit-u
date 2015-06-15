@@ -8,6 +8,10 @@ class StudentProfile < ActiveRecord::Base
   has_many :fans, through: :fan_relationships
   has_many :fan_of, through: :fan_of_relationships
 
+  def full_name
+    "#{first_name} #{last_name}".strip
+  end
+
   def fan_of?(other)
     self.fan_of.include? other
   end
