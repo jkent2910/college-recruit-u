@@ -4,5 +4,5 @@
 <%= render 'form' %>
 
 <%= link_to 'Show', @student_profile %> |
-<%= link_to 'Delete', student_profile_path, method: :delete, data: {confirm: "Are you sure?"} %>
+<%= link_to 'Delete', @student_profile, method: :delete, data: {confirm: "Are you sure?"} %> |
 <%= link_to 'Back', student_profiles_path %>
