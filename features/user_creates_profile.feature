@@ -30,3 +30,22 @@ Scenario: student tries to create two profiles
   When I visit the new student profile page
   Then I should be on my student profile page
   And I should see "You have already created a profile."
+
+Scenario: student edits profile
+  Given I am Sarah
+  And I am signed in
+  And I have already created a profile 
+  When I visit the edit student profile page 
+  And I fill in "High school" with "Ankeny Centennial High School"
+  When I press "Update"
+  Then I should be on my student profile page
+  And I should see "Ankeny Centennial High School"
+
+Scenario: student deletes profile 
+  Given I am Sarah 
+  And I am signed in
+  And I have already created a profile 
+  When I visit the edit student profile page 
+  And I follow "Delete"
+  Then I should be on the student profiles index page
+  And I should see "Student profile was successfully destroyed"
