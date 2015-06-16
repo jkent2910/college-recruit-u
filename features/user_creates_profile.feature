@@ -35,7 +35,7 @@ Scenario: student edits profile
   Given I am Sarah
   And I am signed in
   And I have already created a profile 
-  When I visit the edit student profile page 
+  When I visit my edit student profile page 
   And I fill in "High school" with "Ankeny Centennial High School"
   When I press "Update"
   Then I should be on my student profile page
@@ -45,7 +45,7 @@ Scenario: student deletes profile
   Given I am Sarah 
   And I am signed in
   And I have already created a profile 
-  When I visit the edit student profile page 
+  When I visit my edit student profile page 
   And I follow "Delete"
-  Then I should be on the student profiles index page
+  Then I should be on the student profiles page
   And I should see "Student profile was successfully destroyed"
