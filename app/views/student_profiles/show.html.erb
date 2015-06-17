@@ -27,3 +27,23 @@
 
 <%= link_to 'Edit', edit_student_profile_path(@student_profile) %> |
 <%= link_to 'Back', student_profiles_path %>
+
+<div id="fan_of">
+  <h2>I am a Fan of</h2>
+
+  <ul>
+    <% @student_profile.fan_of.each do |fan_of| %>
+    <li><%= link_to fan_of.full_name, student_profile_path(fan_of) %></li>
+    <% end %>
+  </ul>
+</div>
+
+<div id="my_fans">
+  <h2>My Fans</h2>
+
+  <ul>
+    <% @student_profile.fans.each do |fan| %>
+    <li><%= link_to fan.full_name, student_profile_path(fan) %></li>
+    <% end %>
+  </ul>
+</div>

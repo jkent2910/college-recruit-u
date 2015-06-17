@@ -5,6 +5,7 @@ FactoryGirl.define do
     gender "Female"
     high_school "Valley High School"
     graduation_year "2016"
-  end
 
+    association :student, factory: :user
+  end
 end
