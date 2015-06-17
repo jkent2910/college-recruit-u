@@ -17,6 +17,9 @@ module NavigationHelpers
     when /my student profile page/
       student_profile_path(@user.student_profile)
 
+    when /my edit student profile page/
+      edit_student_profile_path(@user.student_profile)
+
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
     #
