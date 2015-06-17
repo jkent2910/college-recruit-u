@@ -55,146 +55,211 @@ RSpec.describe StudentProfilesController, type: :controller do
   # StudentProfilesController. Be sure to keep this updated too.
   let(:valid_session) { {} }
 
-  describe "GET #index" do
-    it "assigns all student_profiles as @student_profiles" do
-      student_profile = StudentProfile.create! valid_attributes
-      get :index, {}, valid_session
-      expect(assigns(:student_profiles)).to eq([student_profile])
-    end
-  end
-
-  describe "GET #show" do
-    it "assigns the requested student_profile as @student_profile" do
-      student_profile = StudentProfile.create! valid_attributes
-      get :show, {:id => student_profile.to_param}, valid_session
-      expect(assigns(:student_profile)).to eq(student_profile)
-    end
-  end
-
-  describe "GET #new" do
-    context "when user has no StudentProfile" do
-      it "assigns a new student_profile as @student_profile" do
-        get :new, {}, valid_session
-        expect(assigns(:student_profile)).to be_a_new(StudentProfile)
+  context "student's own profile" do
+    describe "GET #index" do
+      it "assigns all student_profiles as @student_profiles" do
+        student_profile = StudentProfile.create! valid_attributes
+        get :index, {}, valid_session
+        expect(assigns(:student_profiles)).to eq([student_profile])
       end
     end
 
-    context "when user already has a StudentProfile" do
-      before do
-        @student_profile = FactoryGirl.create(:student_profile, student: @sarah)
-        get :new, {}, valid_session
+    describe "GET #show" do
+      it "assigns the requested student_profile as @student_profile" do
+        student_profile = StudentProfile.create! valid_attributes
+        get :show, {:id => student_profile.to_param}, valid_session
+        expect(assigns(:student_profile)).to eq(student_profile)
+      end
+    end
+
+    describe "GET #new" do
+      context "when user has no StudentProfile" do
+        it "assigns a new student_profile as @student_profile" do
+          get :new, {}, valid_session
+          expect(assigns(:student_profile)).to be_a_new(StudentProfile)
+        end
       end
 
-      it "redirects to the StudentProfile show page" do
-        expect(response).to redirect_to(@student_profile)
+      context "when user already has a StudentProfile" do
+        before do
+          @student_profile = FactoryGirl.create(:student_profile, student: @sarah)
+          get :new, {}, valid_session
+        end
+
+        it "redirects to the StudentProfile show page" do
+          expect(response).to redirect_to(@student_profile)
+        end
+
+        it "displays an appropriate message" do
+          expect(flash[:notice]).to match("already created")
+        end
+      end
+    end
+
+    describe "GET #edit" do
+      it "assigns the requested student_profile as @student_profile" do
+        student_profile = StudentProfile.create! valid_attributes
+        get :edit, {:id => student_profile.to_param}, valid_session
+        expect(assigns(:student_profile)).to eq(student_profile)
+      end
+    end
+
+    describe "POST #create" do
+      context "with valid params" do
+        it "creates a new StudentProfile" do
+          expect {
+            post :create, {:student_profile => valid_attributes}, valid_session
+          }.to change(StudentProfile, :count).by(1)
+        end
+
+        it "assigns a newly created student_profile as @student_profile" do
+          post :create, {:student_profile => valid_attributes}, valid_session
+          expect(assigns(:student_profile)).to be_a(StudentProfile)
+          expect(assigns(:student_profile)).to be_persisted
+        end
+
+        it "redirects to the created student_profile" do
+          post :create, {:student_profile => valid_attributes}, valid_session
+          expect(response).to redirect_to(StudentProfile.last)
+        end
+      end
+
+      context "with invalid params" do
+        it "assigns a newly created but unsaved student_profile as @student_profile" do
+          post :create, {:student_profile => invalid_attributes}, valid_session
+          expect(assigns(:student_profile)).to be_a_new(StudentProfile)
+        end
+
+        it "re-renders the 'new' template" do
+          post :create, {:student_profile => invalid_attributes}, valid_session
+          expect(response).to render_template("new")
+        end
+      end
+    end
+
+    describe "PUT #update" do
+      context "with valid params" do
+        let(:new_attributes) {
+          {
+            first_name: "Sarah",
+            last_name: "Smith",
+            gender: "Female",
+            high_school: "Ankeny Centennial High School",
+            graduation_year: "2016"
+          }
+        }
+
+        it "updates the requested student_profile" do
+          student_profile = StudentProfile.create! valid_attributes
+          put :update, {:id => student_profile.to_param, :student_profile => new_attributes}, valid_session
+          student_profile.reload
+          expect(student_profile.high_school).to eq("Ankeny Centennial High School")
+        end
+
+        it "assigns the requested student_profile as @student_profile" do
+          student_profile = StudentProfile.create! valid_attributes
+          put :update, {:id => student_profile.to_param, :student_profile => valid_attributes}, valid_session
+          expect(assigns(:student_profile)).to eq(student_profile)
+        end
+
+        it "redirects to the student_profile" do
+          student_profile = StudentProfile.create! valid_attributes
+          put :update, {:id => student_profile.to_param, :student_profile => valid_attributes}, valid_session
+          expect(response).to redirect_to(student_profile)
+        end
+      end
+
+      context "with invalid params" do
+        it "assigns the student_profile as @student_profile" do
+          student_profile = StudentProfile.create! valid_attributes
+          put :update, {:id => student_profile.to_param, :student_profile => invalid_attributes}, valid_session
+          expect(assigns(:student_profile)).to eq(student_profile)
+        end
+
+        it "re-renders the 'edit' template" do
+          student_profile = StudentProfile.create! valid_attributes
+          put :update, {:id => student_profile.to_param, :student_profile => invalid_attributes}, valid_session
+          expect(response).to render_template("edit")
+        end
+      end
+    end
+
+    describe "DELETE #destroy" do
+      it "destroys the requested student_profile" do
+        student_profile = StudentProfile.create! valid_attributes
+        expect {
+          delete :destroy, {:id => student_profile.to_param}, valid_session
+        }.to change(StudentProfile, :count).by(-1)
+      end
+
+      it "redirects to the student_profiles list" do
+        student_profile = StudentProfile.create! valid_attributes
+        delete :destroy, {:id => student_profile.to_param}, valid_session
+        expect(response).to redirect_to(student_profiles_url)
+      end
+    end
+  end
+
+  context "another student's profile" do
+    before do
+      @other_student = FactoryGirl.create(:user)
+    end
+
+    describe "GET #show" do
+      it "assigns the requested student_profile as @student_profile" do
+        student_profile = StudentProfile.create! valid_attributes.merge(user_id: @other_student.to_param)
+        get :show, {:id => student_profile.to_param}, valid_session
+        expect(assigns(:student_profile)).to eq(student_profile)
+      end
+    end
+
+    describe "GET #edit" do
+      it "redirects to the student profiles list" do
+        student_profile = StudentProfile.create! valid_attributes.merge(user_id: @other_student.to_param)
+        get :edit, {:id => student_profile.to_param}, valid_session
+        expect(response).to redirect_to(student_profiles_url)
       end
 
       it "displays an appropriate message" do
-        expect(flash[:notice]).to match("already created")
+        student_profile = StudentProfile.create! valid_attributes.merge(user_id: @other_student.to_param)
+        get :edit, {:id => student_profile.to_param}, valid_session
+        expect(flash[:notice]).to match("not allowed")
       end
     end
-  end
 
-  describe "GET #edit" do
-    it "assigns the requested student_profile as @student_profile" do
-      student_profile = StudentProfile.create! valid_attributes
-      get :edit, {:id => student_profile.to_param}, valid_session
-      expect(assigns(:student_profile)).to eq(student_profile)
+    describe "PUT #update" do
+      it "redirects to the student profiles list" do
+        student_profile = StudentProfile.create! valid_attributes.merge(user_id: @other_student.to_param)
+        put :update, {:id => student_profile.to_param, :student_profile => {first_name: "David"}}, valid_session
+        expect(response).to redirect_to(student_profiles_url)
+      end
+
+      it "displays an appropriate message" do
+        student_profile = StudentProfile.create! valid_attributes.merge(user_id: @other_student.to_param)
+        put :update, {:id => student_profile.to_param, :student_profile => {first_name: "David"}}, valid_session
+        expect(flash[:notice]).to match("not allowed")
+      end
     end
-  end
 
-  describe "POST #create" do
-    context "with valid params" do
-      it "creates a new StudentProfile" do
+    describe "DELETE #destroy" do
+      it "does not delete the student profile" do
+        student_profile = StudentProfile.create! valid_attributes.merge(user_id: @other_student.to_param)
         expect {
-          post :create, {:student_profile => valid_attributes}, valid_session
-        }.to change(StudentProfile, :count).by(1)
+          delete :destroy, {:id => student_profile.to_param}, valid_session
+        }.not_to change(StudentProfile, :count)
       end
 
-      it "assigns a newly created student_profile as @student_profile" do
-        post :create, {:student_profile => valid_attributes}, valid_session
-        expect(assigns(:student_profile)).to be_a(StudentProfile)
-        expect(assigns(:student_profile)).to be_persisted
-      end
-
-      it "redirects to the created student_profile" do
-        post :create, {:student_profile => valid_attributes}, valid_session
-        expect(response).to redirect_to(StudentProfile.last)
-      end
-    end
-
-    context "with invalid params" do
-      it "assigns a newly created but unsaved student_profile as @student_profile" do
-        post :create, {:student_profile => invalid_attributes}, valid_session
-        expect(assigns(:student_profile)).to be_a_new(StudentProfile)
-      end
-
-      it "re-renders the 'new' template" do
-        post :create, {:student_profile => invalid_attributes}, valid_session
-        expect(response).to render_template("new")
-      end
-    end
-  end
-
-  describe "PUT #update" do
-    context "with valid params" do
-      let(:new_attributes) {
-        {
-          first_name: "Sarah",
-          last_name: "Smith",
-          gender: "Female",
-          high_school: "Ankeny Centennial High School",
-          graduation_year: "2016"
-        }
-      }
-
-      it "updates the requested student_profile" do
-        student_profile = StudentProfile.create! valid_attributes
-        put :update, {:id => student_profile.to_param, :student_profile => new_attributes}, valid_session
-        student_profile.reload
-        expect(student_profile.high_school).to eq("Ankeny Centennial High School")
-      end
-
-      it "assigns the requested student_profile as @student_profile" do
-        student_profile = StudentProfile.create! valid_attributes
-        put :update, {:id => student_profile.to_param, :student_profile => valid_attributes}, valid_session
-        expect(assigns(:student_profile)).to eq(student_profile)
-      end
-
-      it "redirects to the student_profile" do
-        student_profile = StudentProfile.create! valid_attributes
-        put :update, {:id => student_profile.to_param, :student_profile => valid_attributes}, valid_session
-        expect(response).to redirect_to(student_profile)
-      end
-    end
-
-    context "with invalid params" do
-      it "assigns the student_profile as @student_profile" do
-        student_profile = StudentProfile.create! valid_attributes
-        put :update, {:id => student_profile.to_param, :student_profile => invalid_attributes}, valid_session
-        expect(assigns(:student_profile)).to eq(student_profile)
-      end
-
-      it "re-renders the 'edit' template" do
-        student_profile = StudentProfile.create! valid_attributes
-        put :update, {:id => student_profile.to_param, :student_profile => invalid_attributes}, valid_session
-        expect(response).to render_template("edit")
-      end
-    end
-  end
-
-  describe "DELETE #destroy" do
-    it "destroys the requested student_profile" do
-      student_profile = StudentProfile.create! valid_attributes
-      expect {
+      it "redirects to the student profiles list" do
+        student_profile = StudentProfile.create! valid_attributes.merge(user_id: @other_student.to_param)
         delete :destroy, {:id => student_profile.to_param}, valid_session
-      }.to change(StudentProfile, :count).by(-1)
-    end
+        expect(response).to redirect_to(student_profiles_url)
+      end
 
-    it "redirects to the student_profiles list" do
-      student_profile = StudentProfile.create! valid_attributes
-      delete :destroy, {:id => student_profile.to_param}, valid_session
-      expect(response).to redirect_to(student_profiles_url)
+      it "displays an appropriate message" do
+        student_profile = StudentProfile.create! valid_attributes.merge(user_id: @other_student.to_param)
+        delete :destroy, {:id => student_profile.to_param}, valid_session
+        expect(flash[:notice]).to match("not allowed")
+      end
     end
   end
 
