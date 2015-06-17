@@ -202,62 +202,55 @@ RSpec.describe StudentProfilesController, type: :controller do
 
   context "another student's profile" do
     before do
-      @other_student = FactoryGirl.create(:user)
+      other_student = FactoryGirl.create(:user)
+      @student_profile = FactoryGirl.create(:student_profile, student: other_student)
     end
 
     describe "GET #show" do
       it "assigns the requested student_profile as @student_profile" do
-        student_profile = StudentProfile.create! valid_attributes.merge(user_id: @other_student.to_param)
-        get :show, {:id => student_profile.to_param}, valid_session
-        expect(assigns(:student_profile)).to eq(student_profile)
+        get :show, {:id => @student_profile.to_param}, valid_session
+        expect(assigns(:student_profile)).to eq(@student_profile)
       end
     end
 
     describe "GET #edit" do
       it "redirects to the student profiles list" do
-        student_profile = StudentProfile.create! valid_attributes.merge(user_id: @other_student.to_param)
-        get :edit, {:id => student_profile.to_param}, valid_session
+        get :edit, {:id => @student_profile.to_param}, valid_session
         expect(response).to redirect_to(student_profiles_url)
       end
 
       it "displays an appropriate message" do
-        student_profile = StudentProfile.create! valid_attributes.merge(user_id: @other_student.to_param)
-        get :edit, {:id => student_profile.to_param}, valid_session
+        get :edit, {:id => @student_profile.to_param}, valid_session
         expect(flash[:notice]).to match("not allowed")
       end
     end
 
     describe "PUT #update" do
       it "redirects to the student profiles list" do
-        student_profile = StudentProfile.create! valid_attributes.merge(user_id: @other_student.to_param)
-        put :update, {:id => student_profile.to_param, :student_profile => {first_name: "David"}}, valid_session
+        put :update, {:id => @student_profile.to_param, :student_profile => {first_name: "David"}}, valid_session
         expect(response).to redirect_to(student_profiles_url)
       end
 
       it "displays an appropriate message" do
-        student_profile = StudentProfile.create! valid_attributes.merge(user_id: @other_student.to_param)
-        put :update, {:id => student_profile.to_param, :student_profile => {first_name: "David"}}, valid_session
+        put :update, {:id => @student_profile.to_param, :student_profile => {first_name: "David"}}, valid_session
         expect(flash[:notice]).to match("not allowed")
       end
     end
 
     describe "DELETE #destroy" do
       it "does not delete the student profile" do
-        student_profile = StudentProfile.create! valid_attributes.merge(user_id: @other_student.to_param)
         expect {
-          delete :destroy, {:id => student_profile.to_param}, valid_session
+          delete :destroy, {:id => @student_profile.to_param}, valid_session
         }.not_to change(StudentProfile, :count)
       end
 
       it "redirects to the student profiles list" do
-        student_profile = StudentProfile.create! valid_attributes.merge(user_id: @other_student.to_param)
-        delete :destroy, {:id => student_profile.to_param}, valid_session
+        delete :destroy, {:id => @student_profile.to_param}, valid_session
         expect(response).to redirect_to(student_profiles_url)
       end
 
       it "displays an appropriate message" do
-        student_profile = StudentProfile.create! valid_attributes.merge(user_id: @other_student.to_param)
-        delete :destroy, {:id => student_profile.to_param}, valid_session
+        delete :destroy, {:id => @student_profile.to_param}, valid_session
         expect(flash[:notice]).to match("not allowed")
       end
     end
