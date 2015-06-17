@@ -2,6 +2,7 @@ class StudentProfilesController < ApplicationController
   before_action :authenticate_user!
   before_action :set_student_profile, only: [:show, :edit, :update, :destroy]
   before_action :check_for_existing_profile, only: [:new, :create]
+  before_action :ensure_student_ownership, only: [:edit, :update, :destroy]
 
   # GET /student_profiles
   # GET /student_profiles.json
@@ -75,6 +76,13 @@ class StudentProfilesController < ApplicationController
         redirect_to current_user.student_profile, notice: "You have already created a profile."
       end
     end
+
+    def ensure_student_ownership
+      if current_user != StudentProfile.find(params[:id]).user
+        redirect_to student_profiles_path, "You do not have access to perform that action"
+      end
+    end
+
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def student_profile_params
