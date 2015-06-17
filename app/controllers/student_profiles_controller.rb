@@ -66,26 +66,25 @@ class StudentProfilesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_student_profile
-      @student_profile = StudentProfile.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_student_profile
+    @student_profile = StudentProfile.find(params[:id])
+  end
 
-    def check_for_existing_profile
-      if current_user.student_profile
-        redirect_to current_user.student_profile, notice: "You have already created a profile."
-      end
+  def check_for_existing_profile
+    if current_user.student_profile
+      redirect_to current_user.student_profile, notice: "You have already created a profile."
     end
+  end
 
-    def ensure_student_ownership
-      if current_user != StudentProfile.find(params[:id]).student
-        redirect_to student_profiles_path, notice: "You are not allowed to perform that action."
-      end
+  def ensure_student_ownership
+    if current_user != StudentProfile.find(params[:id]).student
+      redirect_to student_profiles_path, notice: "You are not allowed to perform that action."
     end
+  end
 
-
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def student_profile_params
-      params.require(:student_profile).permit(:first_name, :last_name, :gender, :high_school, :graduation_year)
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def student_profile_params
+    params.require(:student_profile).permit(:first_name, :last_name, :gender, :high_school, :graduation_year)
+  end
 end
