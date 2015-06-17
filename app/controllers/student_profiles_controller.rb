@@ -78,8 +78,8 @@ class StudentProfilesController < ApplicationController
     end
 
     def ensure_student_ownership
-      if current_user != StudentProfile.find(params[:id]).user
-        redirect_to student_profiles_path, "You do not have access to perform that action"
+      if current_user != StudentProfile.find(params[:id]).student
+        redirect_to student_profiles_path, notice: "You are not allowed to perform that action."
       end
     end
 

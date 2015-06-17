@@ -35,7 +35,8 @@ RSpec.describe StudentProfilesController, type: :controller do
       last_name: "Smith",
       gender: "Female",
       high_school: "Valley High School",
-      graduation_year: "2016"
+      graduation_year: "2016",
+      user_id: @sarah.to_param
     }
   }
 
