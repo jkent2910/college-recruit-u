@@ -8,6 +8,9 @@ class StudentProfile < ActiveRecord::Base
   has_many :fans, through: :fan_relationships
   has_many :fan_of, through: :fan_of_relationships
 
+  has_attached_file :student_picture, :styles => { :medium => "300x300>", :thumb => "100x100>"}
+  validates_attachment_content_type :student_picture, :content_type => /\Aimage\/.*\Z/
+
   def full_name
     "#{first_name} #{last_name}".strip
   end
