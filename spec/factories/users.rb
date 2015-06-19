@@ -7,7 +7,7 @@ FactoryGirl.define do
     u.email
     u.password 'password'
     u.password_confirmation 'password'
-    after(:create) { |user| user.confirm! }
+    after(:create) { |user| user.confirm }
   end
 
   factory :sarah, :parent => :user do |s|
