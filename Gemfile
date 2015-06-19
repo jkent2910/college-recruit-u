@@ -1,11 +1,11 @@
 source 'https://rubygems.org'
 
-gem 'rails', '4.2.1'
+gem 'rails', '4.2.2'
 gem 'pg'
 
-gem 'bootstrap-sass', '~> 3.3.4'
+gem 'bootstrap-sass', '~> 3.3.5'
 gem 'coffee-rails',   '~> 4.1.0'
-gem 'devise',         '~> 3.4.1'
+gem 'devise',         '~> 3.5.1'
 gem 'font-awesome-sass'
 gem 'jbuilder',       '~> 2.0'
 gem 'jquery-rails'
@@ -26,7 +26,7 @@ group :development, :test do
   gem 'database_cleaner',   '~> 1.4.1'
   gem 'factory_girl_rails', '~> 4.5.0'
   gem 'launchy',            '~> 2.4.3'
-  gem 'rspec-rails',        '~> 3.2.1'
+  gem 'rspec-rails',        '~> 3.3.2'
   gem 'spring'
   gem 'web-console',        '~> 2.0'
 end
