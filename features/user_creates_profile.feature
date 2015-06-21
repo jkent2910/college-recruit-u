@@ -36,10 +36,10 @@ Feature: User creates profile for first time
     And I am signed in
     And I have already created a profile
     When I visit my edit student profile page
-    When I select "Ankeny Centennial High School" from "High school"
+    When I fill in "Graduation year" with "2018"
     When I press "Update"
     Then I should be on my student profile page
-    And I should see "Ankeny Centennial High School"
+    And I should see "2018"
 
   Scenario: student deletes profile
     Given I am Sarah
