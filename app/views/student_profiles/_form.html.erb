@@ -25,7 +25,7 @@
   </div>
   <div class="field">
     <%= f.label :high_school %><br>
-    <%= f.text_field :high_school %>
+    <%= f.select :high_school, options_for_select(high_schools.keys) %>
   </div>
   <div class="field">
     <%= f.label :graduation_year %><br>

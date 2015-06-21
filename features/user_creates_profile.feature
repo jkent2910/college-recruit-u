@@ -10,7 +10,7 @@ Feature: User creates profile for first time
     When I fill in "First name" with "Sarah"
     And I fill in "Last name" with "Smith"
     And I fill in "Gender" with "Female"
-    And I fill in "High school" with "Valley High School"
+    And I select "Valley High School" from "High school"
     And I fill in "Graduation year" with "2016"
     When I press "Create"
     Then I should be on my student profile page
@@ -36,7 +36,7 @@ Feature: User creates profile for first time
     And I am signed in
     And I have already created a profile
     When I visit my edit student profile page
-    And I fill in "High school" with "Ankeny Centennial High School"
+    When I select "Ankeny Centennial High School" from "High school"
     When I press "Update"
     Then I should be on my student profile page
     And I should see "Ankeny Centennial High School"
