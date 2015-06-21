@@ -29,7 +29,7 @@
   </div>
   <div class="field">
     <%= f.label :graduation_year %><br>
-    <%= f.text_field :graduation_year %>
+    <%= f.select :graduation_year, options_for_select(StudentProfile::VALID_GRADUATION_YEAR) %>
   </div>
   <div class="actions">
     <%= f.submit %>

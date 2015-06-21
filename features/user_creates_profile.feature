@@ -11,7 +11,7 @@ Feature: User creates profile for first time
     And I fill in "Last name" with "Smith"
     And I fill in "Gender" with "Female"
     And I fill in "High school" with "Valley High School"
-    And I fill in "Graduation year" with "2016"
+    And I select "2017" from "Graduation year"
     When I press "Create"
     Then I should be on my student profile page
     And I should see "Great! Your profile is created."
