@@ -27,4 +27,26 @@ module StudentProfilesHelper
       "Norwalk Senior High School" => {logo: "norwalk.png"},
     }
   end
+
+  
+  def student_interests
+    {
+      "Band" => {logo: ""},
+      "Choir" => {logo: ""},
+      "Basketball" => {logo: ""},
+      "Baseball" => {logo: ""},
+      "Tennis" => {logo: ""},
+      "Football" => {logo: ""},
+      "Cheerleading" => {logo: ""},
+      "Golf" => {logo: ""},
+      "Drama" => {logo: ""},
+      "Cross Country" => {logo: ""},
+      "Track" => {logo: ""},
+      "Soccer" => {logo: ""},
+      "Bowling" => {logo: ""},
+      "Robotics" => {logo: ""},
+      "Writing" => {logo: ""},
+      "Speech/Debate" => {logo: ""},
+    }
+end
 end

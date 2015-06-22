@@ -33,6 +33,10 @@
     <%= f.label :photo %><br>
     <%= f.file_field :photo %>
   </div>
+  <div class="field">
+    <%= f.label :student_interests %><br>
+    <%= f.select :student_interests, options_for_select(student_interests.keys) %>
+  </div>
   <div class="actions">
     <%= f.submit %>
   </div>
