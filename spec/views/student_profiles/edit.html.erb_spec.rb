@@ -3,11 +3,11 @@ require 'rails_helper'
 RSpec.describe "student_profiles/edit", type: :view do
   before(:each) do
     @student_profile = assign(:student_profile, StudentProfile.create!(
-      :first_name => "MyString",
-      :last_name => "MyString",
-      :gender => "MyString",
-      :high_school => "MyString",
-      :graduation_year => "MyString"
+      first_name: "Sarah",
+      last_name: "Student",
+      gender: "Female",
+      high_school: "Valley High School",
+      graduation_year: "2016"
     ))
   end
 
@@ -24,7 +24,7 @@ RSpec.describe "student_profiles/edit", type: :view do
 
       assert_select "input#student_profile_high_school[name=?]", "student_profile[high_school]"
 
-      assert_select "input#student_profile_graduation_year[name=?]", "student_profile[graduation_year]"
+      assert_select "select#student_profile_graduation_year[name=?]", "student_profile[graduation_year]"
     end
   end
 end

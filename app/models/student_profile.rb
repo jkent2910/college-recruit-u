@@ -8,6 +8,8 @@ class StudentProfile < ActiveRecord::Base
   has_many :fans, through: :fan_relationships
   has_many :fan_of, through: :fan_of_relationships
 
+  VALID_GRADUATION_YEAR = ['2016', '2017', '2018', '2019']
+
   def full_name
     "#{first_name} #{last_name}".strip
   end
