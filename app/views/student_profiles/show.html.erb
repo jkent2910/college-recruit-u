@@ -17,8 +17,7 @@
 
 <p>
   <strong>High school:</strong>
-  <%= @student_profile.high_school %>
-</p>
+  <%= image_tag "high-school-logos/#{high_schools[@student_profile.high_school][:logo]}" %>
 
 <p>
   <strong>Graduation year:</strong>

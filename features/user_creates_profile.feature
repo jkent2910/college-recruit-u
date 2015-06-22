@@ -10,7 +10,7 @@ Feature: User creates profile for first time
     When I fill in "First name" with "Sarah"
     And I fill in "Last name" with "Smith"
     And I fill in "Gender" with "Female"
-    And I fill in "High school" with "Valley High School"
+    And I select "Valley High School" from "High school"
     And I select "2017" from "Graduation year"
     When I press "Create"
     Then I should be on my student profile page
@@ -36,10 +36,10 @@ Feature: User creates profile for first time
     And I am signed in
     And I have already created a profile
     When I visit my edit student profile page
-    And I fill in "High school" with "Ankeny Centennial High School"
+    When I fill in "Graduation year" with "2018"
     When I press "Update"
     Then I should be on my student profile page
-    And I should see "Ankeny Centennial High School"
+    And I should see "2018"
 
   Scenario: student deletes profile
     Given I am Sarah
