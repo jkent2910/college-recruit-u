@@ -36,7 +36,7 @@ Feature: User creates profile for first time
     And I am signed in
     And I have already created a profile
     When I visit my edit student profile page
-    When I fill in "Graduation year" with "2018"
+    When I select "2018" from "Graduation year"
     When I press "Update"
     Then I should be on my student profile page
     And I should see "2018"
