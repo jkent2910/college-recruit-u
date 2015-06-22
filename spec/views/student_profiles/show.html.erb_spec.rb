@@ -3,21 +3,21 @@ require 'rails_helper'
 RSpec.describe "student_profiles/show", type: :view do
   before(:each) do
     @student_profile = assign(:student_profile, StudentProfile.create!(
-      :first_name => "First Name",
-      :last_name => "Last Name",
-      :gender => "Gender",
-      :high_school => "High School",
-      :graduation_year => "Graduation Year"
+      first_name: "Sarah",
+      last_name: "Student",
+      gender: "Female",
+      high_school: "Valley High School",
+      graduation_year: "2016"
     ))
   end
 
   it "renders attributes in <p>" do
     render
-    expect(rendered).to match(/First Name/)
-    expect(rendered).to match(/Last Name/)
-    expect(rendered).to match(/Gender/)
-    expect(rendered).to match(/High School/)
-    expect(rendered).to match(/Graduation Year/)
+    expect(rendered).to match(/Sarah/)
+    expect(rendered).to match(/Student/)
+    expect(rendered).to match(/Female/)
+    expect(rendered).to match(/valley.png/)
+    expect(rendered).to match(/2016/)
   end
 
   it "contains a list of my fans" do
