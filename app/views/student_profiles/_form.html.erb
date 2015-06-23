@@ -31,6 +31,10 @@
     <%= f.label :graduation_year %><br>
     <%= f.select :graduation_year, options_for_select(StudentProfile::VALID_GRADUATION_YEAR) %>
   </div>
+  <div class="field">
+    <%= f.label :photo %><br>
+    <%= f.file_field :photo %>
+  </div>
   <div class="actions">
     <%= f.submit %>
   </div>

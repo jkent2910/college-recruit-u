@@ -13,6 +13,7 @@ RSpec.describe "student_profiles/show", type: :view do
 
   it "renders attributes in <p>" do
     render
+    expect(rendered).to match(/missing.png/)
     expect(rendered).to match(/Sarah/)
     expect(rendered).to match(/Student/)
     expect(rendered).to match(/Female/)

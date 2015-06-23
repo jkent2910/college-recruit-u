@@ -9,6 +9,19 @@ RSpec.describe StudentProfile, type: :model do
     end
   end
 
+  describe "photo" do
+    it "can be an image" do
+      student_profile = FactoryGirl.build(:student_profile, photo_content_type: "image/png")
+      expect(student_profile).to be_valid
+    end
+
+    it "can't be something else" do
+      student_profile = FactoryGirl.build(:student_profile, photo_content_type: "text/html")
+      expect(student_profile).to_not be_valid
+      expect(student_profile.errors[:photo]).to_not be_empty
+    end
+  end
+
   context "relationships" do
     it "belongs to student" do
       expect(subject).to belong_to :student

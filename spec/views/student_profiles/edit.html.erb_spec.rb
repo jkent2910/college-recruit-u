@@ -25,6 +25,8 @@ RSpec.describe "student_profiles/edit", type: :view do
       assert_select "select#student_profile_high_school[name=?]", "student_profile[high_school]"
 
       assert_select "select#student_profile_graduation_year[name=?]", "student_profile[graduation_year]"
+
+      assert_select "input[type=file]#student_profile_photo[name=?]", "student_profile[photo]"
     end
   end
 end
