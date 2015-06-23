@@ -41,6 +41,11 @@ GEM
     autoprefixer-rails (5.2.0.1)
       execjs
       json
+    aws-sdk (1.64.0)
+      aws-sdk-v1 (= 1.64.0)
+    aws-sdk-v1 (1.64.0)
+      json (~> 1.4)
+      nokogiri (>= 1.4.4)
     bcrypt (3.1.10)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
@@ -273,6 +278,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  aws-sdk (~> 1.6)
   bootstrap-sass (~> 3.3.5)
   byebug
   coffee-rails (~> 4.1.0)
@@ -286,7 +292,7 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jquery-rails
   launchy (~> 2.4.3)
-  paperclip (~> 4.2)
+  paperclip (~> 4.3)
   pg
   pry-byebug
   rails (= 4.2.2)

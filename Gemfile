@@ -3,13 +3,14 @@ source 'https://rubygems.org'
 gem 'rails', '4.2.2'
 gem 'pg'
 
+gem 'aws-sdk',        '~> 1.6'  # http://www.rubydoc.info/gems/paperclip/Paperclip/Storage/S3
 gem 'bootstrap-sass', '~> 3.3.5'
 gem 'coffee-rails',   '~> 4.1.0'
 gem 'devise',         '~> 3.5.1'
 gem 'font-awesome-sass'
 gem 'jbuilder',       '~> 2.0'
 gem 'jquery-rails'
-gem "paperclip",      '~> 4.2'
+gem "paperclip",      '~> 4.3'
 gem 'sass-rails',     '~> 5.0'
 gem 'sdoc',           '~> 0.4.0', group: :doc
 gem 'turbolinks'
