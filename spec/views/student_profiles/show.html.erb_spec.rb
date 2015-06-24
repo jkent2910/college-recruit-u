@@ -9,7 +9,8 @@ RSpec.describe "student_profiles/show", type: :view do
       last_name: "Student",
       gender: "Female",
       high_school: "Valley High School",
-      graduation_year: "2016"
+      graduation_year: "2016",
+      student_interests: ["Band", "Choir"]
     ))
 
     @student_user = FactoryGirl.create(:user)
@@ -24,6 +25,8 @@ RSpec.describe "student_profiles/show", type: :view do
     expect(rendered).to match(/Student/)
     expect(rendered).to match(/valley.png/)
     expect(rendered).to match(/2016/)
+    expect(rendered).to match(/Band/)
+    expect(rendered).to match(/Choir/)
   end
 
   it "contains a number of the students I am a fan of" do
