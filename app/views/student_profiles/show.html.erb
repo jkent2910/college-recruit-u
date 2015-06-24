@@ -1,33 +1,40 @@
-<p>
-  <%= image_tag @student_profile.photo.expiring_url(:thumb) %>
-</p>
+<div class="container">
+  <p id="notice"><%= notice %></p>
+</div>
 
-<p>
-  <strong>First name:</strong>
-  <%= @student_profile.first_name %>
-</p>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <h3 class="profile-header"><%= @student_profile.first_name %> <%= @student_profile.last_name %></h3><h5 class="profile-header">Class of <%=@student_profile.graduation_year %></h5>
+      </div>
+    </div>
+    <div class="row text-center">
+      <div class="col-xs-12 col-md-8 col-md-offset-2">
+        <%= image_tag @student_profile.photo.expiring_url(:thumb) %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12 hs-logo">
+        <%= image_tag "high-school-logos/#{high_schools[@student_profile.high_school][:logo]}" %>
+      </div>
+    </div>
+    <div class="col-xs-12 profile-header">
+      <% if current_user.student_profile %>
+      <%= link_to "Edit Profile", edit_student_profile_path(@student_profile), :class => "btn btn-info btn-sm white-txt" %>
+      <% elsif @student_profile.fan_of (:other_profile_id) %>
+      <%= link_to "Become a Fan", become_a_fan_student_profile_path(:other_profile_id), :method => :post, :class => "btn btn-success btn-sm"%>
+      <% else %>
+      <%= link_to "Stop being a Fan", stop_being_a_fan_student_profile_path(:other_profile_id), :method => :delete, :class => "btn btn-danger btn-sm" %>
+      <% end %>
+    </div>
+    <div class="col-xs-6">
+      <h4 class="sub-text">Fan of <%= @student_profile.fan_of.count %></h4>
+    </div>
+    <div class="col-xs-6">
+      <h4 class="sub-text"><%= @student_profile.fans.count %> Fans</h4>
+    </div>
 
-<p>
-  <strong>Last name:</strong>
-  <%= @student_profile.last_name %>
-</p>
-
-<p>
-  <strong>Gender:</strong>
-  <%= @student_profile.gender %>
-</p>
-
-<p>
-  <strong>High school:</strong>
-  <%= image_tag "high-school-logos/#{high_schools[@student_profile.high_school][:logo]}" %>
-
-<p>
-  <strong>Graduation year:</strong>
-  <%= @student_profile.graduation_year %>
-</p>
-
-<%= link_to 'Edit', edit_student_profile_path(@student_profile) %> |
-<%= link_to 'Back', student_profiles_path %>
+  </div>
 
 <div id="fan_of">
   <h2>I am a Fan of</h2>
@@ -48,3 +55,5 @@
     <% end %>
   </ul>
 </div>
+
+<%= link_to 'Browse Students', student_profiles_path, class: "btn btn-info btn-sm"%>

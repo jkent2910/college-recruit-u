@@ -12,13 +12,10 @@
  *
  *= require_tree .
  *= require_self
+ *= require my_styles
  */
 
 @import "bootstrap-sprockets";
 @import "bootstrap";
 @import "font-awesome-sprockets";
 @import "font-awesome";
-
-body {
-  margin: 20px;
-}
