@@ -1,4 +1,26 @@
-<h1>Listing Student Profiles</h1>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <h3>Students</h3>
+    </div>
+  </div>
+</div>
+
+<% @student_profiles.each_slice(4) do |student_profiles| %>
+<div class="row">
+  <% @student_profiles.each do |student_profile| %>
+  <div class="col-md-4">
+    <%= link_to student_profile do  %>
+      <%= image_tag student_profile.photo.expiring_url(:thumb)%>
+    </div>
+  </div>
+      <%= link_to student_profile.full_name, student_profile %> <br />
+      <%= student_profile.high_school %>
+      <% end %>
+    <% end %>
+  <% end %>
+
+
 
 <table>
   <thead>
