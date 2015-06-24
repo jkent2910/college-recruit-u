@@ -13,6 +13,8 @@ class StudentProfile < ActiveRecord::Base
                        content_type: { content_type: ["image/jpeg", "image/gif", "image/png"] },
                        size: { less_than: 2.megabytes }
 
+  serialize :student_interests, Array
+
   VALID_GRADUATION_YEAR = ['2016', '2017', '2018', '2019']
 
   def full_name

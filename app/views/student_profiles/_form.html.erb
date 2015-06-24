@@ -35,7 +35,7 @@
   </div>
   <div class="field">
     <% student_interests.each_key do |key| %>
-      <%= check_box_tag :student_interests, "#{key}" %>
+      <%= check_box_tag 'student_profile[student_interests][]', "#{key}", @student_profile.student_interests.include?(key) %>
       <%="#{key}" %> <br />
     <% end %>
   </div>
