@@ -34,8 +34,10 @@
     <%= f.file_field :photo %>
   </div>
   <div class="field">
-    <%= f.label :student_interests %><br>
-    <%= f.select :student_interests, options_for_select(student_interests.keys) %>
+    <% student_interests.each_key do |key| %>
+    <%= check_box_tag :student_interests, "#{key}" %>
+    <%="#{key}" %> <br />
+    <% end %>
   </div>
   <div class="actions">
     <%= f.submit %>
