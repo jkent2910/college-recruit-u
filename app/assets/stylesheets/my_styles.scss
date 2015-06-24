@@ -1,0 +1,39 @@
+body {
+  padding: 100px;
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+
+input.form-control.search-small {
+  margin-top: 4px !important;
+}
+
+#notice {
+  padding-top: 12px;
+}
+
+.search-small {
+  margin-top: 4px !important;
+  margin-right: 5px !important;
+  margin-left: 15px !important;
+}
+
+.profile-header {
+  text-align: center;
+}
+
+.sub-text {
+  text-align: center;
+}
+
+.hs-logo {
+  text-align: center;
+}
+
+@media only screen and (max-width: 750px) {
+  body {
+    padding-right: 5px;
+    padding-left: 5px;
+    padding-top: 40px;
+  }
+}
