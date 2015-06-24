@@ -38,4 +38,9 @@ RSpec.describe "student_profiles/show", type: :view do
     render
     assert_select "h4", text: "0 Fans"
   end
+
+  it "still renders without a high school logo" do
+    @student_profile.high_school = "bogus"
+    expect { render }.not_to raise_exception
+  end
 end

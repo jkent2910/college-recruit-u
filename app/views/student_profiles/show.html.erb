@@ -11,7 +11,7 @@
     </div>
     <div class="row">
       <div class="col-xs-12 hs-logo">
-        <%= image_tag "high-school-logos/#{high_schools[@student_profile.high_school][:logo]}" %>
+        <%= image_tag "high-school-logos/#{high_schools[@student_profile.high_school].try(:[], :logo)}" %>
       </div>
     </div>
     <div class="col-xs-12 profile-header">
