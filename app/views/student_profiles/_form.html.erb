@@ -1,20 +1,14 @@
 <div class="container">
-<%= form_for(@student_profile) do |f| %>
+  <%= form_for(@student_profile) do |f| %>
   <% if @student_profile.errors.any? %>
-  <div class="row">
-      <div class="col-xs-8">
-        <h5><%= pluralize(@student_profile.errors.count, "error") %> prohibited this student_profile from being saved:</h5>
-        <ul>
-          <% @student_profile.errors.full_messages.each do |message| %>
-            <li><%= message %></li>
-          <% end %>
-        </ul> 
-      </div>
-  <% end %>
-  </div>
-</div>
+      <h5><%= pluralize(@student_profile.errors.count, "error") %> prohibited this student_profile from being saved:</h5>
+      <ul>
+        <% @student_profile.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+        <% end %>
+      </ul> 
+    <% end %>
 
-<div class="container">
   <div class="field">
     <%= f.label :first_name %><br>
     <%= f.text_field :first_name %>
@@ -39,8 +33,8 @@
     <%= f.label :photo %><br>
     <%= f.file_field :photo %>
   </div>
-  <div class="field">
+  <div class="actions">
     <%= f.submit %>
   </div>
-<% end %>
+  <% end %>
 </div>

@@ -9,7 +9,6 @@ Feature: User signs in
     When I sign in
     Then I should be on the home page
     And I should see "Signed in successfully."
-    And I should see "Signed in as sarah@school.k12.ia.us."
 
   Scenario: unauthenticated student visits URL for student profile
     Given I am Sarah
