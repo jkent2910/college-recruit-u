@@ -1,5 +1,17 @@
 class StudentProfile < ActiveRecord::Base
+  extend StudentProfilesHelper
+
+  VALID_GRADUATION_YEARS = ['2016', '2017', '2018', '2019']
+
   validates_presence_of :first_name, :last_name, :gender, :high_school, :graduation_year
+  validates_inclusion_of :graduation_year, in: VALID_GRADUATION_YEARS
+
+  validates_each :student_interests do |record, attr, value|
+    value.each do |interest|
+      record.errors.add(attr, "contains an invalid interest") unless student_interests.include?(interest)
+    end
+  end
+
   belongs_to :student, class_name: "User", foreign_key: "user_id"
 
   has_many :fan_relationships, class_name: "Relationship", foreign_key: "fan_of_id"
@@ -14,8 +26,6 @@ class StudentProfile < ActiveRecord::Base
                        size: { less_than: 2.megabytes }
 
   serialize :student_interests, Array
-
-  VALID_GRADUATION_YEAR = ['2016', '2017', '2018', '2019']
 
   def full_name
     "#{first_name} #{last_name}".strip

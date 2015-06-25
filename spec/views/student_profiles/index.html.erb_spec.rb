@@ -14,24 +14,25 @@ RSpec.describe "student_profiles/index", type: :view do
         last_name: "Last Name",
         gender: "Gender",
         high_school: "High School",
-        graduation_year: "Graduation Year"
+        graduation_year: "2016"
       ),
       StudentProfile.create!(
         first_name: "First Name",
         last_name: "Last Name",
         gender: "Gender",
         high_school: "High School",
-        graduation_year: "Graduation Year"
+        graduation_year: "2017"
       )
     ])
   end
 
   it "renders a list of student_profiles" do
     render
-    assert_select "tr>td", text: "First Name".to_s, count: 2
-    assert_select "tr>td", text: "Last Name".to_s, count: 2
-    assert_select "tr>td", text: "Gender".to_s, count: 2
-    assert_select "tr>td", text: "High School".to_s, count: 2
-    assert_select "tr>td", text: "Graduation Year".to_s, count: 2
+    assert_select "tr>td", text: "First Name", count: 2
+    assert_select "tr>td", text: "Last Name", count: 2
+    assert_select "tr>td", text: "Gender", count: 2
+    assert_select "tr>td", text: "High School", count: 2
+    assert_select "tr>td", text: "2016", count: 1
+    assert_select "tr>td", text: "2017", count: 1
   end
 end
