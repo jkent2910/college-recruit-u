@@ -6,7 +6,7 @@
         <% @student_profile.errors.full_messages.each do |message| %>
         <li><%= message %></li>
         <% end %>
-      </ul> 
+      </ul>
     <% end %>
 
   <div class="field">
@@ -23,11 +23,11 @@
   </div>
   <div class="field">
     <%= f.label :high_school %><br>
-    <%= f.select :high_school, options_for_select(high_schools.keys) %>
+    <%= f.select :high_school, options_for_select(high_schools.keys, @student_profile.high_school) %>
   </div>
   <div class="field">
     <%= f.label :graduation_year %><br>
-    <%= f.select :graduation_year, options_for_select(StudentProfile::VALID_GRADUATION_YEAR) %>
+    <%= f.select :graduation_year, options_for_select(StudentProfile::VALID_GRADUATION_YEAR, @student_profile.graduation_year) %>
   </div>
   <div class="field">
     <%= f.label :photo %><br>
