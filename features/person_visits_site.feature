@@ -7,8 +7,8 @@ Feature: Person visits site
     Given I am anybody
     And I visit the home page
     Then I should be on the home page
-    And I should see "Sign in"
-    And I should see "Sign up"
+    And I should see "Sign In"
+    And I should see "Sign Up"
 
   Scenario: Person tries to create new student profile
     Given I am anybody

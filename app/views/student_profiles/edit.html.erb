@@ -1,8 +1,20 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <h3>Edit Your Profile</h3>
+    </div>
+  </div>
+</div>
 
-<h1>Editing Student Profile</h1>
+  <%= render 'form' %>
 
-<%= render 'form' %>
-
-<%= link_to 'Show', @student_profile %> |
-<%= link_to 'Delete', @student_profile, method: :delete, data: {confirm: "Are you sure?"} %> |
-<%= link_to 'Back', student_profiles_path %>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-1">
+      <%= link_to 'Delete', @student_profile, method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-danger btn-sm" %> 
+    </div>
+    <div class="col-xs-1 col-xs-offset-1">
+      <%= link_to 'Back', student_profiles_path, class: "btn btn-primary btn-sm" %>
+    </div>
+  </div>
+</div>
