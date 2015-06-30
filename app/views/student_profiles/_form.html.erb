@@ -39,6 +39,17 @@
       <%="#{key}" %> <br />
     <% end %>
   </div>
+
+  <% Factor.all.each do |factor| %>
+  <% factor_rating = @student_profile.factor_ratings.where(factor_id: factor.id).take %>
+  <div class="field">
+    <%= label_tag "student_profile[factor_ratings_attributes][]", factor.name %>
+    <%= hidden_field_tag "student_profile[factor_ratings_attributes][]id", factor_rating.try(:id) %>
+    <%= hidden_field_tag "student_profile[factor_ratings_attributes][]factor_id", factor.id %>
+    <%= text_field_tag "student_profile[factor_ratings_attributes][]importance", factor_rating.try(:importance) %>
+  </div>
+  <% end %>
+
   <div class="actions">
     <%= f.submit %>
   </div>
