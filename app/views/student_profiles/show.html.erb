@@ -26,6 +26,20 @@
   </div>
 
   <div class="row">
+    <div class="col-xs-3"></div>
+    <div class="col-xs-6 text-center">
+      <h4>Student Factors</h4>
+      <table>
+        <tr><th>Factor</th><th>Importance</th></tr>
+        <% @student_profile.factor_ratings.each do |fr| %>
+        <tr><td><%= fr.factor.name %></td><td><%= fr.importance %></td></tr>
+        <% end %>
+      </table>
+    </div>
+    <div class="col-xs-3"></div>
+  </div>
+
+  <div class="row">
     <div class="col-xs-6">
       <h4 class="sub-text">Fan of <%= @student_profile.fan_of.count %></h4>
     </div>
