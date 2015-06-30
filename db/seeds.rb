@@ -5,3 +5,14 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+factors = [
+  "The size of the student body",
+  "How close (or far away) the college is from your home",
+  "The overall cost of a college",
+  "How prestigious the college is",
+  "What type of area the college is located in (rural, town, city, etc.)",
+  "The type of college (community college, public, private, etc.)"
+]
+
+factors.each { |factor| Factor.create name: factor }

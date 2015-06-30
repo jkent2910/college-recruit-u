@@ -60,6 +60,14 @@ RSpec.describe StudentProfile, type: :model do
     it "is a fan of many" do
       expect(subject).to have_many :fan_of
     end
+
+    it "has many factor ratings" do
+      expect(subject).to have_many :factor_ratings
+    end
+
+    it "has many factors" do
+      expect(subject).to have_many :factors
+    end
   end
 
   it "returns a full name based on first name and last name" do
