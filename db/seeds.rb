@@ -15,4 +15,5 @@ factors = [
   "The type of college (community college, public, private, etc.)"
 ]
 
+Factor.destroy_all
 factors.each { |factor| Factor.create name: factor }
