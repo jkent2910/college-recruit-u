@@ -1,13 +1,13 @@
 <div class="container">
   <%= form_for(@student_profile) do |f| %>
   <% if @student_profile.errors.any? %>
-      <h5><%= pluralize(@student_profile.errors.count, "error") %> prohibited this student_profile from being saved:</h5>
-      <ul>
-        <% @student_profile.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-        <% end %>
-      </ul>
+  <h5><%= pluralize(@student_profile.errors.count, "error") %> prohibited this student_profile from being saved:</h5>
+  <ul>
+    <% @student_profile.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
     <% end %>
+  </ul>
+  <% end %>
 
   <div class="field">
     <%= f.label :first_name %><br>
