@@ -68,6 +68,36 @@ RSpec.describe StudentProfile, type: :model do
     it "has many factors" do
       expect(subject).to have_many :factors
     end
+
+    context "when student profile is deleted" do
+      before do
+        @student_profile = FactoryGirl.create(:student_profile)
+        other_profile = FactoryGirl.create(:student_profile)
+        factor = FactoryGirl.create(:factor)
+        @student_profile.become_fan_of(other_profile)
+        other_profile.become_fan_of(@student_profile)
+        @student_profile.factor_ratings << FactoryGirl.create(:factor_rating, factor: factor)
+      end
+
+      specify "setup is correct" do
+        expect(StudentProfile.count).to eq 2
+        expect(Factor.count).to eq 1
+        expect(FactorRating.count).to eq 1
+        expect(Relationship.count).to eq 2
+      end
+
+      specify "student profile is deleted" do
+        expect { @student_profile.destroy }.to change { StudentProfile.count }.by(-1)
+      end
+
+      specify "fan relationships are deleted" do
+        expect { @student_profile.destroy }.to change { Relationship.count }.by(-2)
+      end
+
+      specify "factor ratings are deleted" do
+        expect { @student_profile.destroy }.to change { FactorRating.count }.by(-1)
+      end
+    end
   end
 
   it "returns a full name based on first name and last name" do

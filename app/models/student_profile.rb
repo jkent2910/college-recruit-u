@@ -17,8 +17,8 @@ class StudentProfile < ActiveRecord::Base
   has_many :fan_relationships, class_name: "Relationship", foreign_key: "fan_of_id"
   has_many :fan_of_relationships, class_name: "Relationship", foreign_key: "fan_id"
 
-  has_many :fans, through: :fan_relationships
-  has_many :fan_of, through: :fan_of_relationships
+  has_many :fans, through: :fan_relationships, dependent: :destroy
+  has_many :fan_of, through: :fan_of_relationships, dependent: :destroy
 
   has_many :factor_ratings, dependent: :delete_all
   has_many :factors, through: :factor_ratings
