@@ -46,7 +46,8 @@
     <%= label_tag "student_profile[factor_ratings_attributes][]", factor.name %>
     <%= hidden_field_tag "student_profile[factor_ratings_attributes][]id", factor_rating.try(:id) %>
     <%= hidden_field_tag "student_profile[factor_ratings_attributes][]factor_id", factor.id %>
-    <%= text_field_tag "student_profile[factor_ratings_attributes][]importance", factor_rating.try(:importance) %>
+    <%= text_field_tag "student_profile[factor_ratings_attributes][]importance", factor_rating.try(:importance), id: "factor_#{factor.id}_importance", readonly: true %>
+    <%= content_tag :div, "", id: "factor_#{factor.id}_importance_slider", class: "factor_importance_slider" %>
   </div>
   <% end %>
 
@@ -55,3 +56,19 @@
   </div>
   <% end %>
 </div>
+
+<script>
+  $(function() {
+    $(".factor_importance_slider").slider({
+      min: 1,
+      max: 5,
+      step: 1,
+      slide: function(event, ui) {
+        $(event.target).prev().val(ui.value);
+      },
+      create: function(event, ui) {
+        $(this).slider('value', $(this).prev().val());
+      }
+    });
+  });
+</script>

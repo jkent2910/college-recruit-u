@@ -13,6 +13,7 @@
  *= require_tree .
  *= require_self
  *= require my_styles
+ *= require jquery-ui/slider
  */
 
 @import "bootstrap-sprockets";
