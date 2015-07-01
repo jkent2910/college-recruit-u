@@ -1,5 +1,5 @@
 FactoryGirl.define do
-  factory :student_factor do
+  factory :factor_rating do
     student_profile nil
     factor nil
     importance 1
