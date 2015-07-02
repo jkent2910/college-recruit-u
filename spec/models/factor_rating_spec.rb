@@ -19,7 +19,7 @@ RSpec.describe FactorRating, type: :model do
     it "requires importance to be an integer between 1 and 5" do
       expect(subject).to validate_numericality_of(:importance).
                           only_integer.
-                          is_greater_than_or_equal_to(0).
+                          is_greater_than_or_equal_to(1).
                           is_less_than_or_equal_to(5)
     end
   end
