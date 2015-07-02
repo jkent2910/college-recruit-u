@@ -8,8 +8,10 @@ class StudentProfile < ActiveRecord::Base
   has_many :fans, through: :fan_relationships
   has_many :fan_of, through: :fan_of_relationships
 
-  has_attached_file :photo, :styles => { :medium => "300x300>", :thumb => "100x100>" }, :default_url => "/images/:style/missing.png"
-  validates_attachment_content_type :photo, :content_type => /\Aimage\/.*\Z/
+  has_attached_file :photo, styles: { medium: "300x300>", thumb: "100x100>" }, default_url: "missing.png"
+  validates_attachment :photo,
+                       content_type: { content_type: ["image/jpeg", "image/gif", "image/png"] },
+                       size: { less_than: 2.megabytes }
 
   VALID_GRADUATION_YEAR = ['2016', '2017', '2018', '2019']
 
