@@ -35,11 +35,9 @@
 <div class="row">
   <div class="col-xs-12">
     <strong>Interests:</strong>
-    <ul>
       <% @student_profile.interests.each do |interest| %>
-      <li><%= interest %></li>
+        <%= image_tag "interests/#{student_interests[interest].try(:[], :logo)}" %>
       <% end %>
-    </ul>
   </div>
 </div>
 
