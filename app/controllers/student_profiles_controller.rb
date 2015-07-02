@@ -80,7 +80,7 @@ class StudentProfilesController < ApplicationController
   private
   # Use callbacks to share common setup or constraints between actions.
   def set_student_profile
-    @student_profile = StudentProfile.find(params[:id])
+    @student_profile = StudentProfile.includes(:factor_ratings, :factors).find(params[:id])
   end
 
   def check_for_existing_profile

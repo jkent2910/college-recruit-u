@@ -20,7 +20,7 @@ class StudentProfile < ActiveRecord::Base
   has_many :fans, through: :fan_relationships, dependent: :destroy
   has_many :fan_of, through: :fan_of_relationships, dependent: :destroy
 
-  has_many :factor_ratings, dependent: :delete_all
+  has_many :factor_ratings, -> { joins(:factor) }, dependent: :delete_all
   has_many :factors, through: :factor_ratings
 
   has_attached_file :photo, styles: { medium: "300x300>", thumb: "100x100>" }, default_url: "missing.png"
