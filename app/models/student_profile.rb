@@ -6,7 +6,7 @@ class StudentProfile < ActiveRecord::Base
   validates_presence_of :first_name, :last_name, :gender, :high_school, :graduation_year
   validates_inclusion_of :graduation_year, in: VALID_GRADUATION_YEARS
 
-  validates_each :student_interests do |record, attr, value|
+  validates_each :interests do |record, attr, value|
     value.each do |interest|
       record.errors.add(attr, "contains an invalid interest") unless student_interests.include?(interest)
     end
@@ -25,7 +25,7 @@ class StudentProfile < ActiveRecord::Base
                        content_type: { content_type: ["image/jpeg", "image/gif", "image/png"] },
                        size: { less_than: 2.megabytes }
 
-  serialize :student_interests, Array
+  serialize :interests, Array
 
   def full_name
     "#{first_name} #{last_name}".strip

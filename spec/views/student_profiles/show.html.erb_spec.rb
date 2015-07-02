@@ -10,7 +10,7 @@ RSpec.describe "student_profiles/show", type: :view do
       gender: "Female",
       high_school: "Valley High School",
       graduation_year: "2016",
-      student_interests: ["Band", "Choir"]
+      interests: ["Band", "Choir"]
     ))
 
     @student_user = FactoryGirl.create(:user)

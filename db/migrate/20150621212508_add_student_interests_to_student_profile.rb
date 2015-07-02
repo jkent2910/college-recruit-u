@@ -1,5 +1,5 @@
 class AddStudentInterestsToStudentProfile < ActiveRecord::Migration
   def change
-    add_column :student_profiles, :student_interests, :text
+    add_column :student_profiles, :interests, :text
   end
 end

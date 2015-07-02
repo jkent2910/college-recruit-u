@@ -13,14 +13,14 @@ RSpec.describe StudentProfile, type: :model do
     end
 
     it "allows valid student interests" do
-      student_profile = FactoryGirl.build(:student_profile, student_interests: ['Band', 'Choir'])
+      student_profile = FactoryGirl.build(:student_profile, interests: ['Band', 'Choir'])
       expect(student_profile).to be_valid
     end
 
     it "doesn't allow invalid student interests" do
-      student_profile = FactoryGirl.build(:student_profile, student_interests: ['bogus'])
+      student_profile = FactoryGirl.build(:student_profile, interests: ['bogus'])
       expect(student_profile).to be_invalid
-      expect(student_profile.errors[:student_interests]).to include(a_string_matching /invalid interest/ )
+      expect(student_profile.errors[:interests]).to include(a_string_matching /invalid interest/ )
     end
   end
 
