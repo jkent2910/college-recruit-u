@@ -61,6 +61,9 @@ GEM
       rack (>= 1.0.0)
       rack-test (>= 0.5.4)
       xpath (~> 2.0)
+    capybara-webkit (1.6.0)
+      capybara (>= 2.3.0, < 2.5.0)
+      json
     celluloid (0.16.0)
       timers (~> 4.0.0)
     climate_control (0.0.3)
@@ -283,6 +286,7 @@ DEPENDENCIES
   aws-sdk (~> 1.6)
   bootstrap-sass (~> 3.3.5)
   byebug
+  capybara-webkit (~> 1.6.0)
   coffee-rails (~> 4.1.0)
   cucumber-rails (~> 1.4.2)
   database_cleaner (~> 1.4.1)
