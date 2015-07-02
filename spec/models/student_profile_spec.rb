@@ -10,15 +10,18 @@ RSpec.describe StudentProfile, type: :model do
   end
 
   describe "photo" do
-    it "can be an image" do
-      student_profile = FactoryGirl.build(:student_profile, photo_content_type: "image/png")
-      expect(student_profile).to be_valid
+    it "is an attachment" do
+      expect(subject).to have_attached_file(:photo)
     end
 
-    it "can't be something else" do
-      student_profile = FactoryGirl.build(:student_profile, photo_content_type: "text/html")
-      expect(student_profile).to_not be_valid
-      expect(student_profile.errors[:photo]).to_not be_empty
+    it "validates the file type" do
+      expect(subject).to validate_attachment_content_type(:photo).
+                          allowing("image/png", "image/gif", "image/jpeg").
+                          rejecting("text/html", "bogus/whatever")
+    end
+
+    it "validates the file size" do
+      expect(subject).to validate_attachment_size(:photo).less_than(2.megabytes)
     end
   end
 
