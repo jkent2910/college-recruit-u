@@ -40,16 +40,20 @@
     <% end %>
   </div>
 
-  <% Factor.all.each do |factor| %>
-  <% factor_rating = @student_profile.factor_ratings.where(factor_id: factor.id).take %>
-  <div class="field">
-    <%= label_tag "student_profile[factor_ratings_attributes][]", factor.name %>
-    <%= hidden_field_tag "student_profile[factor_ratings_attributes][]id", factor_rating.try(:id) %>
-    <%= hidden_field_tag "student_profile[factor_ratings_attributes][]factor_id", factor.id %>
-    <%= text_field_tag "student_profile[factor_ratings_attributes][]importance", factor_rating.try(:importance), id: "factor_#{factor.id}_importance", readonly: true %>
-    <%= content_tag :div, "", id: "factor_#{factor.id}_importance_slider", class: "factor_importance_slider" %>
+  <div class="row">
+    <div class="col-lg-6">
+      <% Factor.all.each do |factor| %>
+      <% factor_rating = @student_profile.factor_ratings.where(factor_id: factor.id).take %>
+      <div class="field">
+        <%= label_tag "student_profile[factor_ratings_attributes][]", factor.name %>
+        <%= hidden_field_tag "student_profile[factor_ratings_attributes][]id", factor_rating.try(:id) %>
+        <%= hidden_field_tag "student_profile[factor_ratings_attributes][]factor_id", factor.id %>
+        <%= hidden_field_tag "student_profile[factor_ratings_attributes][]importance", factor_rating.try(:importance) %>
+        <%= content_tag :div, "", class: "factor_importance_slider" %>
+      </div>
+      <% end %>
+    </div>
   </div>
-  <% end %>
 
   <div class="actions">
     <%= f.submit %>
