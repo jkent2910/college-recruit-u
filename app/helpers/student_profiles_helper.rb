@@ -31,22 +31,23 @@ module StudentProfilesHelper
   
   def student_interests
     {
-      "Band" => {logo: ""},
-      "Choir" => {logo: ""},
-      "Basketball" => {logo: ""},
-      "Baseball" => {logo: ""},
-      "Tennis" => {logo: ""},
-      "Football" => {logo: ""},
-      "Cheerleading" => {logo: ""},
-      "Golf" => {logo: ""},
-      "Drama" => {logo: ""},
-      "Cross Country" => {logo: ""},
-      "Track" => {logo: ""},
-      "Soccer" => {logo: ""},
-      "Bowling" => {logo: ""},
-      "Robotics" => {logo: ""},
-      "Writing" => {logo: ""},
-      "Speech/Debate" => {logo: ""},
+      "Marching Band" => {logo: "marchingband.png"},
+      "Choir" => {logo: "choir.png"},
+      "Basketball" => {logo: "bball.png"},
+      "Baseball" => {logo: "baseball.png"},
+      "Tennis" => {logo: "tennis.png"},
+      "Football" => {logo: "football.png"},
+      "Cheerleading" => {logo: "cheer.png"},
+      "Golf" => {logo: "golf.png"},
+      "Drama" => {logo: "drama.png"},
+      "Cross Country" => {logo: "running.png"},
+      "Track" => {logo: "track.png"},
+      "Soccer" => {logo: "soccer.png"},
+      "Bowling" => {logo: "bowling.png"},
+      "Robotics" => {logo: "robotics.png"},
+      "Writing" => {logo: "writing.png"},
+      "Swimming" => {logo: "swiming.png"},
+      "Speech/Debate" => {logo: "debate.png"}
     }
 end
 end

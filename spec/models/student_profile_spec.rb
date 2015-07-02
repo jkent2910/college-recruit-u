@@ -13,7 +13,7 @@ RSpec.describe StudentProfile, type: :model do
     end
 
     it "allows valid student interests" do
-      student_profile = FactoryGirl.build(:student_profile, interests: ['Band', 'Choir'])
+      student_profile = FactoryGirl.build(:student_profile, interests: ['Basketball', 'Choir'])
       expect(student_profile).to be_valid
     end
 
