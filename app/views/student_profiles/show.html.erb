@@ -47,10 +47,10 @@
   </div>
 
   <div class="row my_fans">
-    <div class="col-xs-6">
+    <div class="col-xs-6 col-xs-offset-6">
       <% @student_profile.fans.each do |fan| %>
         <%= link_to student_profile_path(fan) do %>
-          <%= image_tag fan.photo.url(:thumb), height: 50, width: 50 %>
+          <%= image_tag fan.photo.url(:thumb), height: 50, width: 50 %><br />
           <%= fan.first_name %>
           <% end %>
       <% end%>
