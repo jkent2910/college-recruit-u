@@ -80,7 +80,7 @@ class StudentProfilesController < ApplicationController
   private
   # Use callbacks to share common setup or constraints between actions.
   def set_student_profile
-    @student_profile = StudentProfile.find(params[:id])
+    @student_profile = StudentProfile.includes(:factor_ratings, :factors).find(params[:id])
   end
 
   def check_for_existing_profile
@@ -97,6 +97,6 @@ class StudentProfilesController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def student_profile_params
-    params.require(:student_profile).permit(:first_name, :last_name, :gender, :high_school, :graduation_year, :photo, interests: [])
+    params.require(:student_profile).permit(:first_name, :last_name, :gender, :high_school, :graduation_year, :photo, interests: [], factor_ratings_attributes: [:id, :factor_id, :importance])
   end
 end

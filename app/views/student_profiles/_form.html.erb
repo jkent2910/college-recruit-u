@@ -1,13 +1,13 @@
 <div class="container">
   <%= form_for(@student_profile) do |f| %>
   <% if @student_profile.errors.any? %>
-      <h5><%= pluralize(@student_profile.errors.count, "error") %> prohibited this student_profile from being saved:</h5>
-      <ul>
-        <% @student_profile.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-        <% end %>
-      </ul>
+  <h5><%= pluralize(@student_profile.errors.count, "error") %> prohibited this student_profile from being saved:</h5>
+  <ul>
+    <% @student_profile.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
     <% end %>
+  </ul>
+  <% end %>
 
   <div class="field">
     <%= f.label :first_name %><br>
@@ -39,8 +39,40 @@
       <%="#{key}" %> <br />
     <% end %>
   </div>
+
+  <div class="row">
+    <div class="col-lg-6">
+      <% Factor.all.each do |factor| %>
+      <% factor_rating = @student_profile.factor_ratings.where(factor_id: factor.id).take %>
+      <div class="field">
+        <%= label_tag "student_profile[factor_ratings_attributes][]", factor.name %>
+        <%= hidden_field_tag "student_profile[factor_ratings_attributes][]id", factor_rating.try(:id) %>
+        <%= hidden_field_tag "student_profile[factor_ratings_attributes][]factor_id", factor.id %>
+        <%= hidden_field_tag "student_profile[factor_ratings_attributes][]importance", factor_rating.try(:importance) %>
+        <%= content_tag :div, "", class: "factor_importance_slider" %>
+      </div>
+      <% end %>
+    </div>
+  </div>
+
   <div class="actions">
     <%= f.submit %>
   </div>
   <% end %>
 </div>
+
+<script>
+  $(function() {
+    $(".factor_importance_slider").slider({
+      min: 1,
+      max: 5,
+      step: 1,
+      change: function(event, ui) {
+        $(event.target).prev().val(ui.value);
+      },
+      create: function(event, ui) {
+        $(this).slider('value', $(this).prev().val());
+      }
+    });
+  });
+</script>

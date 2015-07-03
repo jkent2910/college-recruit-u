@@ -11,10 +11,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150623145043) do
+ActiveRecord::Schema.define(version: 20150625154131) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "factor_ratings", force: :cascade do |t|
+    t.integer  "student_profile_id"
+    t.integer  "factor_id"
+    t.integer  "importance"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+  end
+
+  add_index "factor_ratings", ["factor_id"], name: "index_factor_ratings_on_factor_id", using: :btree
+  add_index "factor_ratings", ["student_profile_id"], name: "index_factor_ratings_on_student_profile_id", using: :btree
+
+  create_table "factors", force: :cascade do |t|
+    t.string "name"
+  end
 
   create_table "relationships", force: :cascade do |t|
     t.integer  "fan_id"
@@ -68,4 +83,6 @@ ActiveRecord::Schema.define(version: 20150623145043) do
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   add_index "users", ["unlock_token"], name: "index_users_on_unlock_token", unique: true, using: :btree
 
+  add_foreign_key "factor_ratings", "factors"
+  add_foreign_key "factor_ratings", "student_profiles"
 end
