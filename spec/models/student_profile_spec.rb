@@ -7,6 +7,21 @@ RSpec.describe StudentProfile, type: :model do
         expect(subject).to validate_presence_of(attr)
       end
     end
+
+    it "allows only valid graduation years" do
+      expect(subject).to validate_inclusion_of(:graduation_year).in_array(StudentProfile::VALID_GRADUATION_YEARS)
+    end
+
+    it "allows valid student interests" do
+      student_profile = FactoryGirl.build(:student_profile, interests: ['Basketball', 'Choir'])
+      expect(student_profile).to be_valid
+    end
+
+    it "doesn't allow invalid student interests" do
+      student_profile = FactoryGirl.build(:student_profile, interests: ['bogus'])
+      expect(student_profile).to be_invalid
+      expect(student_profile.errors[:interests]).to include(a_string_matching /invalid interest/ )
+    end
   end
 
   describe "photo" do

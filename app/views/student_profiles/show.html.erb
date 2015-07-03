@@ -11,7 +11,7 @@
     </div>
     <div class="row">
       <div class="col-xs-12 hs-logo">
-        <%= image_tag "high-school-logos/#{high_schools[@student_profile.high_school][:logo]}" %>
+        <%= image_tag "high-school-logos/#{high_schools[@student_profile.high_school].try(:[], :logo)}" %>
       </div>
     </div>
     <div class="col-xs-12 profile-header">
@@ -31,6 +31,15 @@
     </div>
 
   </div>
+
+<div class="row">
+  <div class="col-xs-12">
+    <strong>Interests:</strong>
+      <% @student_profile.interests.each do |interest| %>
+        <%= image_tag "interests/#{student_interests[interest].try(:[], :logo)}", title: interest %>
+      <% end %>
+  </div>
+</div>
 
 <div id="fan_of">
   <h2>I am a Fan of</h2>
