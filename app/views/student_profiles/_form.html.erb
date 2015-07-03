@@ -41,7 +41,7 @@
   </div>
 
   <div class="row">
-    <div class="col-lg-6">
+    <div class="col-md-6">
       <% Factor.all.each do |factor| %>
       <% factor_rating = @student_profile.factor_ratings.where(factor_id: factor.id).take %>
       <div class="field">
