@@ -11,53 +11,66 @@
   <% @student_profiles.each do |student_profile| %>
   <div class="col-md-4">
     <%= link_to student_profile do  %>
-      <%= image_tag student_profile.photo.expiring_url(:thumb)%>
-    </div>
+    <%= image_tag student_profile.photo.url(:thumb), height: 100, width: 100 %>
+    <%= link_to student_profile.full_name, student_profile %> <br />
+    <%= student_profile.high_school %>
+    <% end %>
   </div>
-      <%= link_to student_profile.full_name, student_profile %> <br />
-      <%= student_profile.high_school %>
-      <% end %>
-    <% end %>
   <% end %>
+</div>
+<% end %>
 
 
+<div class="row student-index-table">
+  <div class="col-md-12">
+    <table>
+      <thead>
+        <tr>
+          <th>First name</th>
+          <th>Last name</th>
+          <th>Gender</th>
+          <th>High school</th>
+          <th>Graduation year</th>
+          <th colspan="4"></th>
+        </tr>
+      </thead>
 
-<table>
-  <thead>
-    <tr>
-      <th>First name</th>
-      <th>Last name</th>
-      <th>Gender</th>
-      <th>High school</th>
-      <th>Graduation year</th>
-      <th colspan="4"></th>
-    </tr>
-  </thead>
+      <tbody>
+        <% @student_profiles.each do |student_profile| %>
+        <tr>
+          <td><%= student_profile.first_name %></td>
+          <td><%= student_profile.last_name %></td>
+          <td><%= student_profile.gender %></td>
+          <td><%= student_profile.high_school %></td>
+          <td><%= student_profile.graduation_year %></td>
+          <td><%= link_to 'Show', student_profile %></td>
+          <td><%= link_to 'Edit', edit_student_profile_path(student_profile) %></td>
+          <td><%= link_to 'Destroy', student_profile, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <td>
+            <% if current_user.try(:student_profile).try(:fan_of?, student_profile) %>
+            <%= link_to 'Stop being a Fan', stop_being_a_fan_student_profile_path(current_user.student_profile, other_profile_id: student_profile.to_param), method: :post %>
+            <% elsif current_user.try(:student_profile).try(:id) != student_profile.id %>
+            <%= link_to 'Become a Fan', become_a_fan_student_profile_path(current_user.student_profile, other_profile_id: student_profile.to_param), method: :post %>
+            <% else %>
+            <% end %>
+          </td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
 
-  <tbody>
-    <% @student_profiles.each do |student_profile| %>
-      <tr>
-        <td><%= student_profile.first_name %></td>
-        <td><%= student_profile.last_name %></td>
-        <td><%= student_profile.gender %></td>
-        <td><%= student_profile.high_school %></td>
-        <td><%= student_profile.graduation_year %></td>
-        <td><%= link_to 'Show', student_profile %></td>
-        <td><%= link_to 'Edit', edit_student_profile_path(student_profile) %></td>
-        <td><%= link_to 'Destroy', student_profile, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        <td>
-          <% if current_user.try(:student_profile).try(:fan_of?, student_profile) %>
-          <%= link_to 'Stop being a Fan', stop_being_a_fan_student_profile_path(current_user.student_profile, other_profile_id: student_profile.to_param), method: :post %>
-          <% elsif current_user.try(:student_profile).try(:id) != student_profile.id %>
-          <%= link_to 'Become a Fan', become_a_fan_student_profile_path(current_user.student_profile, other_profile_id: student_profile.to_param), method: :post %>
-          <% else %>
-          <% end %>
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+    <br>
 
-<br>
+    <%= link_to 'New Student profile', new_student_profile_path %>
+  </div>
+</div>
 
-<%= link_to 'New Student profile', new_student_profile_path %>
+<style type="text/css">
+  div.student-index-table {
+    padding-top: 50px;
+  }
+  div.student-index-table th, td {
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+</style>
