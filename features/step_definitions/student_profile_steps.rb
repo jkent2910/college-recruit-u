@@ -18,13 +18,9 @@ Given(/^"(.*?)" is a fan of mine$/) do |name|
 end
 
 Given(/^I should see "(.*?)" listed in my fans$/) do |name|
-  within "#my_fans" do
-    expect(page).to have_content name
-  end
+  expect(page).to have_content name
 end
 
 Given(/^I should see that I am a fan of "(.*?)"$/) do |name|
-  within "#fan_of" do
-    expect(page).to have_content name
-  end
+  expect(page).to have_content name
 end
