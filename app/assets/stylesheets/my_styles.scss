@@ -6,6 +6,8 @@ body {
 
 .flash_alert, .flash_error, .flash_notice {
   padding-top: 25px !important;
+  font-family: 'Graduate', cursive;
+  color: red;
 }
 
 .navbar-default .navbar-nav > li > a {
@@ -33,6 +35,15 @@ body {
   margin-top: -20px;  
 }
 
+a:visited {
+  color: #2F6189 !important;
+}
+
+.btn-info {
+  background-color: #FFDE17 !important;
+  font-family: 'Graduate', cursive;
+}
+
 input.form-control.search-small {
   margin-top: 4px !important;
 }
@@ -49,10 +60,13 @@ input.form-control.search-small {
 
 .profile-header {
   text-align: center;
+  font-family: 'Graduate', cursive;
+  color: #2F6189;
 }
 
 .sub-text {
   text-align: center;
+  font-family: 'Graduate', cursive;
 }
 
 .hs-logo {
