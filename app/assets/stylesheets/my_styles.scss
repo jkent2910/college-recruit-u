@@ -1,11 +1,31 @@
 body {
   padding: 100px;
-  padding-top: 40px;
+  padding-top: 80px;
   padding-bottom: 40px;
 }
 
 .flash_alert, .flash_error, .flash_notice {
   padding-top: 25px !important;
+}
+
+.navbar-default .navbar-nav > li > a {
+  color: #2F6189 !important;
+  font-family: 'Graduate', cursive;
+}
+
+.navbar-default .navbar-collapse, .navbar-default .navbar-form {
+  padding-top: 20px;
+}
+
+.navbar-header {
+  padding-bottom: 40px;
+  text-align: center;
+}
+
+.small-logo {
+  max-width: 100px;
+  max-height: 100px;
+  margin-top: -20px;  
 }
 
 input.form-control.search-small {

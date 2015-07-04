@@ -4,6 +4,7 @@
   <title>CollegeRecruitU</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <link href='http://fonts.googleapis.com/css?family=Graduate' rel='stylesheet' type='text/css'>
   <%= csrf_meta_tags %>
 </head>
 <body>
@@ -18,7 +19,8 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand hidden-xs hidden-sm" href="#">College Recruit U</a>
+          <a class="navbar-brand hidden-xs hidden-sm" href="#" title="College Recruit U">
+            <%= image_tag("CRU_small.png", :class=> "small-logo") %> </a>
             <div class="input-group search-small hidden-md hidden-lg">
                <input type="text" class="form-control search-small" placeholder="Search">
                <span class="input-group-btn">
