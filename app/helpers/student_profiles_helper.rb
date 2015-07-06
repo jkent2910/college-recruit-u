@@ -7,7 +7,7 @@ module StudentProfilesHelper
       "Dowling Catholic High School" => {logo: "dowling.png"},
       "Waukee High School" => {logo: "waukee.png"},
       "Johnston High School" => {logo: "johnston.png"},
-      "Des Moines Christian High School" => {logo: "dsm-christian"},
+      "Des Moines Christian High School" => {logo: "dsm-christian.png"},
       "Roosevelt High School" => {logo: "roosevelt.png"},
       "Lincoln High School" => {logo: "lincoln.png"},
       "East High School" => {logo: "east.png"},

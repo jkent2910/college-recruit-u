@@ -34,14 +34,16 @@
     <%= f.file_field :photo %>
   </div>
   <div class="field">
+    <p>What activities are you currently involved in?</p>
     <% student_interests.each_key do |key| %>
       <%= check_box_tag 'student_profile[interests][]', "#{key}", @student_profile.interests.include?(key) %>
       <%="#{key}" %> <br />
     <% end %>
-  </div>
+  </div><br />
 
   <div class="row">
-    <div class="col-lg-6">
+    <p>How important are the following factors to you?  Please rate from 1 - 5 with 1 being "not important at all" and 5 being "extremely important"</p>
+    <div class="col-md-6">
       <% Factor.all.each do |factor| %>
       <% factor_rating = @student_profile.factor_ratings.where(factor_id: factor.id).take %>
       <div class="field">

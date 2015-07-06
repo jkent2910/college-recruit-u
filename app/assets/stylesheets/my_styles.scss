@@ -1,11 +1,47 @@
 body {
   padding: 100px;
-  padding-top: 40px;
+  padding-top: 80px;
   padding-bottom: 40px;
 }
 
 .flash_alert, .flash_error, .flash_notice {
   padding-top: 25px !important;
+  font-family: 'Graduate', cursive;
+  color: red;
+}
+
+.navbar-default .navbar-nav > li > a {
+  color: #2F6189 !important;
+  font-family: 'Graduate', cursive;
+}
+
+.navbar-default .navbar-collapse, .navbar-default .navbar-form {
+  padding-top: 20px;
+}
+
+.navbar-header {
+  padding-bottom: 40px;
+  text-align: center;
+}
+
+.small-screen-logo-text {
+  color: #2F6189 !important;
+  font-family: 'Graduate', cursive;
+}
+
+.small-logo {
+  max-width: 100px;
+  max-height: 100px;
+  margin-top: -20px;  
+}
+
+a:visited {
+  color: #2F6189 !important;
+}
+
+.btn-info {
+  background-color: #FFDE17 !important;
+  font-family: 'Graduate', cursive;
 }
 
 input.form-control.search-small {
@@ -24,10 +60,13 @@ input.form-control.search-small {
 
 .profile-header {
   text-align: center;
+  font-family: 'Graduate', cursive;
+  color: #2F6189;
 }
 
 .sub-text {
   text-align: center;
+  font-family: 'Graduate', cursive;
 }
 
 .hs-logo {
@@ -38,6 +77,11 @@ input.form-control.search-small {
   body {
     padding-right: 5px;
     padding-left: 5px;
-    padding-top: 40px;
+    padding-top: 80px;
   }
+
+  .navbar-header {
+    padding-bottom: 15px;
+  }
+
 }

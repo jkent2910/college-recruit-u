@@ -1,42 +1,29 @@
 <div class="container">
   <div class="row">
-    <div class="col-xs-12">
-      <h3 class="profile-header"><%= @student_profile.first_name %> <%= @student_profile.last_name %></h3><h5 class="profile-header">Class of <%=@student_profile.graduation_year %></h5>
+    <div class="col-xs-12 profile-name">
+      <h3 class="profile-header"><%= @student_profile.first_name %> <%= @student_profile.last_name %></h3>
+      <div class="row text-center">
+        <%= image_tag "high-school-logos/#{high_schools[@student_profile.high_school].try(:[], :logo)}" %>
+      </div>
+      <h5 class="profile-header">Class of <%=@student_profile.graduation_year %></h5>
     </div>
+  </div>
   <div class="row text-center">
     <div class="col-xs-12 col-md-8 col-md-offset-2">
       <%= image_tag @student_profile.photo.url(:medium) %>
     </div>
   </div>
-  <div class="row">
-    <div class="col-xs-12 hs-logo">
-      <%= image_tag "high-school-logos/#{high_schools[@student_profile.high_school].try(:[], :logo)}" %>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-xs-12 profile-header">
-      <% if current_user.student_profile %>
-      <%= link_to "Edit Profile", edit_student_profile_path(@student_profile), :class => "btn btn-info btn-sm white-txt" %>
-      <% elsif @student_profile.fan_of (:other_profile_id) %>
-      <%= link_to "Become a Fan", become_a_fan_student_profile_path(:other_profile_id), :method => :post, :class => "btn btn-success btn-sm"%>
-      <% else %>
-      <%= link_to "Stop being a Fan", stop_being_a_fan_student_profile_path(:other_profile_id), :method => :delete, :class => "btn btn-danger btn-sm" %>
-      <% end %>
-    </div>
-  </div>
 
-  <div class="row">
-    <div class="col-xs-3"></div>
-    <div class="col-xs-6 text-center">
-      <h4>Student Factors</h4>
-      <table>
-        <tr><th>Factor</th><th>Importance</th></tr>
-        <% @student_profile.factor_ratings.each do |fr| %>
-        <tr><td><%= fr.factor.name %></td><td><%= fr.importance %></td></tr>
+  <div class="row"><br />
+    <div class="col-xs-12 profile-header">
+        <% if current_user == @student_profile.student %>
+          <%= link_to "Edit Profile", edit_student_profile_path(@student_profile), :class => "btn btn-info btn-sm" %>
+        <% elsif current_user.student_profile.try(:fan_of?, @student_profile) %>
+        <%= link_to "Stop being a Fan", stop_being_a_fan_student_profile_path(current_user.student_profile, other_profile_id: @student_profile.to_param), :method => :post, :class=> "btn btn-danger btn-sm" %> 
+        <% else %>
+          <%= link_to "Become a Fan", become_a_fan_student_profile_path(current_user.student_profile, other_profile_id: @student_profile.to_param), :method => :post, :class => "btn btn-success btn-sm" %>
         <% end %>
-      </table>
     </div>
-    <div class="col-xs-3"></div>
   </div>
 
   <div class="row">
@@ -47,35 +34,48 @@
       <h4 class="sub-text"><%= @student_profile.fans.count %> Fans</h4>
     </div>
   </div>
-</div>
 
-<div class="row">
-  <div class="col-xs-12">
-    <strong>Interests:</strong>
+  <div class="row fan_of">
+    <div class="col-xs-6">
+      <% @student_profile.fan_of.each do |fan_of| %>
+        <%= link_to student_profile_path(fan_of) do %>
+          <%= image_tag fan_of.photo.url(:thumb), height: 50, width: 50 %><br />
+          <%= fan_of.first_name %>
+          <% end %>
+      <%end %>
+    </div>
+  </div>
+
+  <div class="row my_fans">
+    <div class="col-xs-6 col-xs-offset-6">
+      <% @student_profile.fans.each do |fan| %>
+        <%= link_to student_profile_path(fan) do %>
+          <%= image_tag fan.photo.url(:thumb), height: 50, width: 50 %><br />
+          <%= fan.first_name %>
+          <% end %>
+      <% end%>
+    </div>
+  </div> <br />
+
+  <div class="row">
+    <div class="col-xs-12 col-md-6 col-md-offset-3">
       <% @student_profile.interests.each do |interest| %>
         <%= image_tag "interests/#{student_interests[interest].try(:[], :logo)}", title: interest %>
       <% end %>
+    </div>
   </div>
-</div>
 
-<div id="fan_of">
-  <h2>I am a Fan of</h2>
-
-  <ul>
-    <% @student_profile.fan_of.each do |fan_of| %>
-    <li><%= link_to fan_of.full_name, student_profile_path(fan_of) %></li>
-    <% end %>
-  </ul>
-</div>
-
-<div id="my_fans">
-  <h2>My Fans</h2>
-
-  <ul>
-    <% @student_profile.fans.each do |fan| %>
-    <li><%= link_to fan.full_name, student_profile_path(fan) %></li>
-    <% end %>
-  </ul>
-</div>
+  <div class="row">
+    <div class="col-xs-12 col-md-6 col-md-offset-3 text-center">
+      <h4 class="sub-text">What's important to me</h4>
+      <table>
+        <% @student_profile.factor_ratings.order("importance DESC").each do |fr| %>
+        <tr><td><%= fr.factor.name %></td><td><%= fr.importance %></td></tr>
+        <% end %>
+      </table>
+    </div>
+    <div class="col-xs-3"></div>
+  </div>
+</div><br />
 
 <%= link_to 'Browse Students', student_profiles_path, class: "btn btn-info btn-sm"%>

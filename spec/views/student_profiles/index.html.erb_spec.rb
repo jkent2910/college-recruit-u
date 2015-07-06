@@ -28,11 +28,8 @@ RSpec.describe "student_profiles/index", type: :view do
 
   it "renders a list of student_profiles" do
     render
-    assert_select "tr>td", text: "First Name", count: 2
-    assert_select "tr>td", text: "Last Name", count: 2
-    assert_select "tr>td", text: "Gender", count: 2
-    assert_select "tr>td", text: "High School", count: 2
-    assert_select "tr>td", text: "2016", count: 1
-    assert_select "tr>td", text: "2017", count: 1
+    expect(rendered).to match(/First Name/)
+    expect(rendered).to match(/Last Name/)
+    expect(rendered).to match(/High School/)
   end
 end
