@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :college do
-    name "University of Iowa"
+name "University of Iowa"
 type "Public"
 city "Iowa City"
 state "Iowa"
