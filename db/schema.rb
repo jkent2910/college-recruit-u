@@ -11,10 +11,44 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150625154131) do
+ActiveRecord::Schema.define(version: 20150708151649) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "colleges", force: :cascade do |t|
+    t.string   "name"
+    t.string   "type"
+    t.string   "city"
+    t.string   "state"
+    t.string   "region"
+    t.string   "student_body_size"
+    t.string   "twitter"
+    t.string   "facebook"
+    t.string   "instagram"
+    t.string   "admissions_rep_page"
+    t.string   "college_visit_page"
+    t.string   "avg_gpa"
+    t.string   "avg_act"
+    t.string   "avg_sat"
+    t.string   "percent_male"
+    t.string   "percent_female"
+    t.string   "percent_minority"
+    t.string   "percent_international"
+    t.text     "popular_majors"
+    t.string   "number_of_essays"
+    t.string   "number_of_recommendations"
+    t.string   "spring_deadine"
+    t.string   "summer_deadline"
+    t.string   "fall_deadline"
+    t.string   "early_admissions_deadline"
+    t.string   "in_state_tuition"
+    t.string   "out_of_state_tuition"
+    t.string   "percent_receive_financial_aid"
+    t.text     "notable_alumni"
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
+  end
 
   create_table "factor_ratings", force: :cascade do |t|
     t.integer  "student_profile_id"
