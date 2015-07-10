@@ -11,10 +11,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150708151649) do
+ActiveRecord::Schema.define(version: 20150710174329) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "college_student_statuses", force: :cascade do |t|
+    t.integer  "college_id"
+    t.integer  "student_profile_id"
+    t.string   "status_name"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+  end
+
+  add_index "college_student_statuses", ["college_id"], name: "index_college_student_statuses_on_college_id", using: :btree
+  add_index "college_student_statuses", ["student_profile_id"], name: "index_college_student_statuses_on_student_profile_id", using: :btree
 
   create_table "colleges", force: :cascade do |t|
     t.string   "name"

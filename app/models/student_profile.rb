@@ -14,6 +14,8 @@ class StudentProfile < ActiveRecord::Base
 
   belongs_to :student, class_name: "User", foreign_key: "user_id"
 
+  has_many :colleges, through: :college_student_statuses
+
   has_many :fan_relationships, class_name: "Relationship", foreign_key: "fan_of_id"
   has_many :fan_of_relationships, class_name: "Relationship", foreign_key: "fan_id"
 
