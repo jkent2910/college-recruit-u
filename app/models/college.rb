@@ -5,5 +5,5 @@ class College < ActiveRecord::Base
   has_many :college_student_statuses
 
   has_many :student_profiles, through: :college_student_statuses
-  
+
 end

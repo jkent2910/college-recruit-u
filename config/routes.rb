@@ -6,6 +6,8 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :colleges
+
   devise_for :users
 
   root 'welcome#index'
