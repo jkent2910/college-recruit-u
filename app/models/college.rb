@@ -1,6 +1,6 @@
 class College < ActiveRecord::Base
-  
-  validates_presence_of :name, :type, :city, :state, :region
+
+  validates_presence_of :name, :college_type, :city, :state, :region
 
   has_many :college_student_statuses
 
