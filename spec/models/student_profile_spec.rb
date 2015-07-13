@@ -69,6 +69,14 @@ RSpec.describe StudentProfile, type: :model do
       expect(subject).to have_many :factors
     end
 
+    it "has many colleges" do
+      expect(subject).to have_many :colleges
+    end
+
+    it "has many college student statuses" do
+      expect(subject).to have_many :college_student_statuses
+    end
+
     context "when student profile is deleted" do
       before do
         @student_profile = FactoryGirl.create(:student_profile)
