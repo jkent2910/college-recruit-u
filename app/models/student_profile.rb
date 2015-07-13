@@ -52,8 +52,13 @@ class StudentProfile < ActiveRecord::Base
   end
 
   def add_or_update_college_status(college, status)
-    college_status = self.college_student_statuses.find_or_create_by(college: college)
-    college_status.status_name = status
-    college_status.save!
+    college_student_status = self.college_student_statuses.find_or_create_by(college: college)
+    college_student_status.status_name = status
+    college_student_status.save!
+    college_student_status
+  end
+
+  def college_status(college)
+    self.college_student_statuses.where(college: college).take
   end
 end

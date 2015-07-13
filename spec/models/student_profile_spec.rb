@@ -167,5 +167,10 @@ RSpec.describe StudentProfile, type: :model do
         @student_profile.add_or_update_college_status(@college, 'something else')
       end.to raise_exception ActiveRecord::RecordInvalid
     end
+
+    it "returns the college student status when adding or updating" do
+      status = @student_profile.add_or_update_college_status(@college, 'Just a Fan')
+      expect(status).to be_a(CollegeStudentStatus)
+    end
   end
 end
