@@ -50,4 +50,10 @@ class StudentProfile < ActiveRecord::Base
   def stop_being_a_fan_of(other)
     self.fan_of.delete(other)
   end
+
+  def add_or_update_college_status(college, status)
+    college_status = self.college_student_statuses.find_or_create_by(college: college)
+    college_status.status_name = status
+    college_status.save!
+  end
 end
