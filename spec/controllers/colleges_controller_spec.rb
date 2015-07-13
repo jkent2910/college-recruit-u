@@ -5,6 +5,7 @@ RSpec.describe CollegesController, type: :controller do
 
   before do
     @sarah = FactoryGirl.create(:sarah)
+    @student_profile = FactoryGirl.create(:student_profile, student: @sarah)
     sign_in @sarah
   end
 
@@ -17,10 +18,19 @@ RSpec.describe CollegesController, type: :controller do
   end
 
   describe "GET #show" do
+    before do
+      @college = FactoryGirl.create(:college)
+    end
+
     it "assigns the requested college as @college" do
-        college = FactoryGirl.create(:college)
-        get :show, {:id => college.to_param}
-        expect(assigns(:college)).to eq(college)
+      get :show, {id: @college.to_param}
+      expect(assigns(:college)).to eq(@college)
+    end
+
+    it "assigns college status as @college_status" do
+      status = @student_profile.add_or_update_college_status(@college, 'Just a Fan')
+      get :show, {id: @college.to_param}
+      expect(assigns(:college_status)).to eq(status)
     end
   end
 end
