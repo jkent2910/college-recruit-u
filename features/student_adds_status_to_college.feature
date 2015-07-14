@@ -11,10 +11,10 @@ Feature: Student adds status to a college
     | University of Iowa | Public       | Iowa City | Iowa  | Town   |
     And I am signed in
 
-@wip
+  @javascript
   Scenario: Student adds status to a specific college
     Given I am on the "University of Iowa" college show page
-    And I select "Just a fan" from "College Student Status"
-    And I follow "Add College"
-    Then I should be on the University of Iowa college page
-    And I should see "You added University of Iowa to your profile"
+    And I select "Considering" from "College student status"
+    And I press "Add College"
+    Then I should be on the "University of Iowa" college show page
+    And I should see "You are now Considering University of Iowa"
