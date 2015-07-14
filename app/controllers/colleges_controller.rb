@@ -26,9 +26,15 @@ class CollegesController < ApplicationController
       flash[:notice] = "You removed #{college.name} from your profile"
     else
       student_profile.add_or_update_college_status(college, status)
-      flash[:notice] = "You are now #{status} #{college.name}"
+      flash[:notice] = "You are now #{status_message(status)} #{college.name}"
     end
 
     redirect_to college_path(college)
+  end
+
+  private
+
+  def status_message(status)
+    status + CollegeStudentStatus::STATUS_MESSAGE_SUFFIX[status]
   end
 end
