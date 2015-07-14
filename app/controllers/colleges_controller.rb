@@ -7,7 +7,7 @@ class CollegesController < ApplicationController
 
   def show
     @college = College.find(params[:id])
-    student_profile = current_user.student_profile
-    @college_status = student_profile.try(:college_status, @college)
+    @student_profile = current_user.student_profile
+    @college_status = @student_profile.try(:college_status, @college)
   end
 end

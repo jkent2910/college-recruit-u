@@ -27,6 +27,11 @@ RSpec.describe CollegesController, type: :controller do
       expect(assigns(:college)).to eq(@college)
     end
 
+    it "assigns the current user's student profile as @student_profile" do
+      get :show, {id: @college.to_param}
+      expect(assigns(:student_profile)).to eq(@student_profile)
+    end
+
     it "assigns college status as @college_status" do
       status = @student_profile.add_or_update_college_status(@college, 'Just a Fan')
       get :show, {id: @college.to_param}
