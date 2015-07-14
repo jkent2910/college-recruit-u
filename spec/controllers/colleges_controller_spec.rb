@@ -54,6 +54,26 @@ RSpec.describe CollegesController, type: :controller do
       end
     end
 
+    context "remove college" do
+      before do
+        @student_profile.add_or_update_college_status(@college, 'Considering')
+      end
+
+      it "confirm test is set up correctly" do
+        expect(@student_profile.college_status(@college).status_name).to eq('Considering')
+      end
+
+      it "college is removed if status is blank" do
+        post :student_status, {id: @college.to_param, student_profile_id: @student_profile.to_param, college_student_status: ''}
+        expect(@student_profile.college_status(@college)).to be_nil
+      end
+
+      it "displays an appropriate message" do
+        post :student_status, {id: @college.to_param, student_profile_id: @student_profile.to_param, college_student_status: ''}
+        expect(flash[:notice]).to match /you removed/i
+      end
+    end
+
     context "when the specified student profile does not belong to the current user" do
       before do
         other_profile = FactoryGirl.create(:student_profile)

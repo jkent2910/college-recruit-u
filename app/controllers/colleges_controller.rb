@@ -21,9 +21,13 @@ class CollegesController < ApplicationController
       return
     end
 
-    student_profile.add_or_update_college_status(college, status)
-
-    flash[:notice] = "You are now #{status} #{college.name}"
+    if status.blank?
+      student_profile.college_status(college).destroy
+      flash[:notice] = "You removed #{college.name} from your profile"
+    else
+      student_profile.add_or_update_college_status(college, status)
+      flash[:notice] = "You are now #{status} #{college.name}"
+    end
 
     redirect_to college_path(college)
   end

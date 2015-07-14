@@ -12,10 +12,25 @@
 </div>
 
 <script>
-  $(function() {
-      $("select#college_student_status").change(function(event) {
-          var newStatus = $(event.target).val();
-          $("input#college_student_status_submit").prop('disabled', newStatus == '');
-      });
-  });
+ $(function() {
+     var statusSelect = $("select#college_student_status");
+     var originalStatus = statusSelect.val();
+
+     if (originalStatus != '') {
+         $("input#college_student_status_submit").val("Update College");
+     }
+
+     var updateSubmitButton = function() {
+         var currentStatus = statusSelect.val();
+         var submitButton = $("input#college_student_status_submit");
+         submitButton.prop('disabled', currentStatus == originalStatus);
+         if (currentStatus == '') {
+             submitButton.val("Remove College");
+         }
+     }
+
+     statusSelect.change(function(event) {
+         updateSubmitButton();
+     });
+ });
 </script>
