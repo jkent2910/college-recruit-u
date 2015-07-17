@@ -69,6 +69,14 @@ RSpec.describe StudentProfile, type: :model do
       expect(subject).to have_many :factors
     end
 
+    it "has many colleges" do
+      expect(subject).to have_many :colleges
+    end
+
+    it "has many college student statuses" do
+      expect(subject).to have_many :college_student_statuses
+    end
+
     context "when student profile is deleted" do
       before do
         @student_profile = FactoryGirl.create(:student_profile)
@@ -131,6 +139,38 @@ RSpec.describe StudentProfile, type: :model do
       @student_profile.become_fan_of(@other_profile)
       @student_profile.stop_being_a_fan_of(@other_profile)
       expect(@student_profile).not_to be_fan_of(@other_profile)
+    end
+  end
+
+  context "college statuses" do
+    before do
+      @student_profile = FactoryGirl.create(:student_profile)
+      @college = FactoryGirl.create(:college)
+    end
+
+    it "can add a college status when one doesn't already exist" do
+      expect(@student_profile.colleges).to be_empty
+      @student_profile.add_or_update_college_status(@college, 'Just a Fan')
+      expect(@student_profile.colleges).to include(@college)
+    end
+
+    it "can update a college status when one alread exists" do
+      @student_profile.add_or_update_college_status(@college, 'Just a Fan')
+      expect(@student_profile.colleges).to include(@college)
+      expect(@student_profile.college_student_statuses.first.status_name).to eq 'Just a Fan'
+      @student_profile.add_or_update_college_status(@college, 'Applying')
+      expect(@student_profile.college_student_statuses.first.status_name).to eq 'Applying'
+    end
+
+    it "can't add an invalid college status" do
+      expect do
+        @student_profile.add_or_update_college_status(@college, 'something else')
+      end.to raise_exception ActiveRecord::RecordInvalid
+    end
+
+    it "returns the college student status when adding or updating" do
+      status = @student_profile.add_or_update_college_status(@college, 'Just a Fan')
+      expect(status).to be_a(CollegeStudentStatus)
     end
   end
 end

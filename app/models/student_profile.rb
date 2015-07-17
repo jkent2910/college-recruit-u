@@ -14,6 +14,9 @@ class StudentProfile < ActiveRecord::Base
 
   belongs_to :student, class_name: "User", foreign_key: "user_id"
 
+  has_many :colleges, through: :college_student_statuses
+  has_many :college_student_statuses
+
   has_many :fan_relationships, class_name: "Relationship", foreign_key: "fan_of_id"
   has_many :fan_of_relationships, class_name: "Relationship", foreign_key: "fan_id"
 
@@ -46,5 +49,16 @@ class StudentProfile < ActiveRecord::Base
 
   def stop_being_a_fan_of(other)
     self.fan_of.delete(other)
+  end
+
+  def add_or_update_college_status(college, status)
+    college_student_status = self.college_student_statuses.find_or_create_by(college: college)
+    college_student_status.status_name = status
+    college_student_status.save!
+    college_student_status
+  end
+
+  def college_status(college)
+    self.college_student_statuses.where(college: college).take
   end
 end

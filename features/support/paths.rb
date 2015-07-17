@@ -20,6 +20,10 @@ module NavigationHelpers
     when /my edit student profile page/
       edit_student_profile_path(@user.student_profile)
 
+    when /the "(.*?)" college show page/
+      college = College.where(name: $1).take
+      college_path(college)
+
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
     #

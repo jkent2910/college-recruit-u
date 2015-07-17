@@ -6,6 +6,12 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :colleges do
+    member do
+      post :student_status
+    end
+  end
+
   devise_for :users
 
   root 'welcome#index'
