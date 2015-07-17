@@ -23,9 +23,17 @@
      var updateSubmitButton = function() {
          var currentStatus = statusSelect.val();
          var submitButton = $("input#college_student_status_submit");
+
          submitButton.prop('disabled', currentStatus == originalStatus);
-         if (currentStatus == '') {
+
+         if ((currentStatus == '') && (originalStatus != '')) {
              submitButton.val("Remove College");
+         } else {
+             if (originalStatus == '') {
+                 submitButton.val("Add College");
+             } else {
+                 submitButton.val("Update College");
+             }
          }
      }
 
