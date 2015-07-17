@@ -40,25 +40,25 @@ class StudentProfile < ActiveRecord::Base
   end
 
   def fan_of?(other)
-    self.fan_of.include? other
+    fan_of.include? other
   end
 
   def become_fan_of(other)
-    self.fan_of_relationships.create!(fan: self, fan_of: other) unless fan_of? other
+    fan_of_relationships.create!(fan: self, fan_of: other) unless fan_of? other
   end
 
   def stop_being_a_fan_of(other)
-    self.fan_of.delete(other)
+    fan_of.delete(other)
   end
 
   def add_or_update_college_status(college, status)
-    college_student_status = self.college_student_statuses.find_or_create_by(college: college)
+    college_student_status = college_student_statuses.find_or_create_by(college: college)
     college_student_status.status_name = status
     college_student_status.save!
     college_student_status
   end
 
   def college_status(college)
-    self.college_student_statuses.where(college: college).take
+    college_student_statuses.where(college: college).take
   end
 end
