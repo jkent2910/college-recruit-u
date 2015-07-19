@@ -1,14 +1,16 @@
-<div>
+<div class-"row">
+  <div class="col-xs-6 col-xs-offset-3">
   <%= form_tag student_status_college_path do %>
     <%= hidden_field_tag :student_profile_id, @student_profile.to_param %>
     <div class="field">
-      <%= label_tag :college_student_status %><br>
+      <%= label_tag :college_student_status, "College Status:", :class => "profile-header" %><br>
       <%= select_tag :college_student_status, options_for_select([''] + CollegeStudentStatus::VALID_STATUSES, @college_status.try(:status_name)) %>
     </div>
     <div class="actions">
-      <%= submit_tag "Add College", id: :college_student_status_submit, disabled: true %>
+      <%= submit_tag "Add College", id: :college_student_status_submit, disabled: true, :class => "btn btn-default btn-xs" %>
     </div>
   <% end %>
+ </div>
 </div>
 
 <script>

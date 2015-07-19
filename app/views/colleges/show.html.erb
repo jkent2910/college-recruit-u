@@ -1,3 +1,144 @@
-<h1><%= @college.name %></h1>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <h1 class="sub-text"><%= @college.name %></h1> 
+    </div>
+    <div class="col-xs-12">
+      <h4 class="college-text"><%= @college.city %>, <%= @college.state %></h4>
+    <div class="col-xs-12">
+      <h4 class="college-text"><%= @college.region %></h4>
+    </div>
+    <div class="col-xs-12">
+      <h5 class="college-text"><%= @college.college_type %></h5>
+    </div>
+  </div>
+</div>
 
-<%= render "shared/college_student_status" %>
+<div class="container">
+  <%= render "shared/college_student_status" %>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <h2 class="college-text">Connect</h2>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-4">
+      <%= link_to image_tag("social-icons/twitter_vector.png"), "http://www.twitter.com/"+@college.twitter %>
+    </div>
+    <div class="col-xs-4">
+      <%= link_to image_tag("social-icons/facebook_vector.png"), "http:/www.facebook.com"+@college.facebook %>
+    </div>
+    <div class="col-xs-4">
+      <%= link_to image_tag("social-icons/instagram_vector.jpg"), "http://www.instagram.com/"+@college.instagram %>
+    </div>
+  </div>
+  <div class="row"><br />
+    <div class="col-xs-4">
+      <%= link_to 'Find Your Admissions Rep', @college.admissions_rep_page, class: "btn btn-default" %>
+    </div>
+    <div class="col-xs-4 col-xs-offset-3">
+      <%= link_to 'Schedule a Visit', @college.college_visit_page, class: "btn btn-default" %>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <h2 class="college-text">Cost</h2>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12">
+      <h5>In-state tuition: <%= @college.in_state_tuition %></h5>
+      <h5>Out-of-state tuition: <%= @college.out_of_state_tuition %></h5>
+      <h5>Receiving Financial Aid: <%= @college.percent_receive_financial_aid %>%</h5>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <h2 class="college-text">Typical Student</h2>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-4">
+      <%= image_tag("malefemale.jpg") %>
+    </div>
+    <div class="col-xs-6 col-xs-offset-2">
+      <p>Average GPA: <%= @college.avg_gpa %></p>
+      <p>Average SAT: <%= @college.avg_sat %></p>
+      <p>Average ACT: <%= @college.avg_act %></p>
+      <p>% Minority: <%= @college.percent_minority %></p>
+      <p>% International: <%= @college.percent_international %></p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-4">
+      <p><%= @college.percent_female %>%</p>
+    </div>
+    <div class="col-xs-4">
+      <p><%= @college.percent_male %>%</p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12">
+      <p>Popular Majors: <%= @college.popular_majors %></p>
+    </div>
+  </div>
+
+  <div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <h2 class="college-text">Application</h2>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-4">
+      <%= image_tag("essay.svg", class: "img-thumbnail") %>
+    </div>
+    <div class="col-xs-4">
+      <%= image_tag("essay.svg", class: "img-thumbnail") %>
+    </div>
+    <div class="col-xs-4">
+      <%= image_tag("essay.svg", class: "img-thumbnail") %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-4">
+      <p><%= @college.number_of_essays %> Essays </p>
+    </div>
+    <div class="col-xs-4">
+      <p><%= @college.number_of_recommendations %> Rec's </p>
+    </div>
+    <div class="col-xs-4">
+      <p>ACT Score</p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12">
+      <h5>Early Admissions Deadline: <%= @college.early_admissions_deadline %></h4>
+      <h5>Regular Admissions Deadline: <%= @college.fall_deadline %></h4>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <h2 class="college-text">Notable Alums</h2>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12">
+      <%= image_tag("missing.png", class: "img-thumbnail") %>
+    </div>
+    <div class="col-xs-9 col-xs-offset-3">
+      <h4><%= @college.notable_alumni %></h4>
+    </div>
+  </div>
+</div>

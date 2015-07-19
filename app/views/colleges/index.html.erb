@@ -1,7 +1,17 @@
-<h1>Colleges</h1>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <h3 class="sub-text">Colleges</h3>
+    </div>
+  </div>
+</div>
 
-<ul>
+<% @colleges.each_slice(4) do |college| %>
+<div class="row">
   <% @colleges.each do |college| %>
-  <li><%= link_to college.name, college %></li>
-  <% end %>
-</ul>
+  <div class="col-md-4 col-xs-4">
+    <%= link_to college.name, college %>
+    <% end %>
+  </div>
+</div>
+<% end %>
