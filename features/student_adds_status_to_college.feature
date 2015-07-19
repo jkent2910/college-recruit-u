@@ -14,7 +14,7 @@ Feature: Student adds status to a college
   @javascript
   Scenario: Student adds status to a specific college
     Given I am on the "University of Iowa" college show page
-    And I select "Considering" from "College student status"
+    And I select "Considering" from "College Status:"
     And I press "Add College"
     Then I should be on the "University of Iowa" college show page
     And I should see "You are now Considering University of Iowa"
