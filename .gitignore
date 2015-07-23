@@ -12,4 +12,5 @@
 !/log/.keep
 /tmp
 
+/config/google_college_credentials.json
 /config/s3.yml
