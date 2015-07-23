@@ -12,6 +12,9 @@ Rails.application.routes.draw do
     end
   end
 
+  get "search" => "search#index"
+  post "search" => "search#search"
+
   devise_for :users
 
   root 'welcome#index'
