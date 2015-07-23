@@ -15,27 +15,25 @@
 
 <script>
  $(function() {
+     var submitButton = $("input#college_student_status_submit");
      var statusSelect = $("select#college_student_status");
+     var originalButtonText;
      var originalStatus = statusSelect.val();
 
      if (originalStatus != '') {
-         $("input#college_student_status_submit").val("Update College");
+         submitButton.val("Update College");
      }
+     originalButtonText = submitButton.val();
 
      var updateSubmitButton = function() {
          var currentStatus = statusSelect.val();
-         var submitButton = $("input#college_student_status_submit");
 
          submitButton.prop('disabled', currentStatus == originalStatus);
 
          if ((currentStatus == '') && (originalStatus != '')) {
              submitButton.val("Remove College");
          } else {
-             if (originalStatus == '') {
-                 submitButton.val("Add College");
-             } else {
-                 submitButton.val("Update College");
-             }
+             submitButton.val(originalButtonText);
          }
      }
 
