@@ -4,7 +4,7 @@ Feature: Student adds status to a college
   So that my fans can see what schools I'm interested in
 
   Background:
-    And I am Sarah
+    Given I am Sarah
     And I have a student profile
     And the following college:
     | name               | college_type | city      | state | region |
