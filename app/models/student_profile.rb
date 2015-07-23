@@ -35,6 +35,8 @@ class StudentProfile < ActiveRecord::Base
 
   accepts_nested_attributes_for :factor_ratings
 
+  searchable_by :first_name, :last_name, :high_school
+
   def full_name
     "#{first_name} #{last_name}".strip
   end

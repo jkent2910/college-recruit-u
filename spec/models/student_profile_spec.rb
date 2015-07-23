@@ -173,4 +173,32 @@ RSpec.describe StudentProfile, type: :model do
       expect(status).to be_a(CollegeStudentStatus)
     end
   end
+
+  context "search" do
+    before do
+      @student1 = FactoryGirl.create(:student_profile, first_name: "Charlie", last_name: "Puth", high_school: "Ankeny Centential High School")
+      @student2 = FactoryGirl.create(:student_profile, first_name: "Meghan", last_name: "Trainor", high_school: "Ankeny High School")
+      @student3 = FactoryGirl.create(:student_profile, first_name: "Charlie", last_name: "Sheen", high_school: "Valley High School")
+    end
+
+    it "is searchable by first name" do
+      expect(StudentProfile.search("Charlie")).to contain_exactly(@student1, @student3)
+    end
+
+    it "is searchable by last name" do
+      expect(StudentProfile.search("train")).to contain_exactly(@student2)
+    end
+
+    it "is searchable by high school" do
+      expect(StudentProfile.search("ankeny")).to contain_exactly(@student1, @student2)
+    end
+
+    it "is searchable by more than one word" do
+      expect(StudentProfile.search("meg ankeny")).to contain_exactly(@student2)
+    end
+
+    it "can return no records" do
+      expect(StudentProfile.search("charlie sheen ankeny")).to be_empty
+    end
+  end
 end
