@@ -28,6 +28,8 @@ group :development, :test do
   gem 'cucumber-rails',     '~> 1.4.2', require: false
   gem 'database_cleaner',   '~> 1.4.1'
   gem 'factory_girl_rails', '~> 4.5.0'
+  gem 'google-api-client',  '~> 0.8.6'
+  gem 'google_drive',       '~> 1.0.1'
   gem 'launchy',            '~> 2.4.3'
   gem 'rspec-rails',        '~> 3.3.2'
   gem 'spring'
