@@ -48,7 +48,7 @@
             <% else %>
             <li><%= link_to "Create Profile", new_student_profile_path(current_user) %></li>
             <% end %>
-            <li><a href="#">Help</a></li>
+            <li><%= link_to "Explore Colleges", colleges_path %></li>
             <% if user_signed_in? %>
               <li><%= link_to "Sign Out", destroy_user_session_path, :method => 'delete' %></li>
             <% else %>
