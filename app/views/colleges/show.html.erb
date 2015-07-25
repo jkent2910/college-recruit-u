@@ -53,9 +53,9 @@
   </div>
   <div class="row">
     <div class="col-xs-12">
-      <h5>In-state tuition: <%= @college.in_state_tuition %></h5>
-      <h5>Out-of-state tuition: <%= @college.out_of_state_tuition %></h5>
-      <h5>Receiving Financial Aid: <%= @college.percent_receive_financial_aid %>%</h5>
+      <h5><strong>In-state tuition:</strong> <%= @college.in_state_tuition %></h5>
+      <h5><strong>Out-of-state tuition:</strong> <%= @college.out_of_state_tuition %></h5>
+      <h5><strong>Receiving Financial Aid: </strong><%= @college.percent_receive_financial_aid %>%</h5>
     </div>
   </div>
 
@@ -70,24 +70,24 @@
       <%= image_tag("malefemale.jpg") %>
     </div>
     <div class="col-xs-6 col-xs-offset-2">
-      <p>Average GPA: <%= @college.avg_gpa %></p>
-      <p>Average SAT: <%= @college.avg_sat %></p>
-      <p>Average ACT: <%= @college.avg_act %></p>
-      <p>% Minority: <%= @college.percent_minority %></p>
-      <p>% International: <%= @college.percent_international %></p>
+      <p><strong>Average GPA:</strong> <%= @college.avg_gpa %></p>
+      <p><strong>Average SAT:</strong><%= @college.avg_sat %></p>
+      <p><strong>Average ACT:</strong> <%= @college.avg_act %></p>
+      <p><strong>% Minority: </strong><%= @college.percent_minority %></p>
+      <p><strong>% Int'l:</strong> <%= @college.percent_international %></p>
     </div>
   </div>
   <div class="row">
     <div class="col-xs-4">
-      <p><%= @college.percent_female %>%</p>
+      <p><strong><%= @college.percent_female %>%</strong></p>
     </div>
     <div class="col-xs-4">
-      <p><%= @college.percent_male %>%</p>
+      <p><strong><%= @college.percent_male %>%</strong></p>
     </div>
   </div>
   <div class="row">
     <div class="col-xs-12">
-      <p>Popular Majors: <%= @college.popular_majors %></p>
+      <p><strong>Popular Majors:</strong> <%= @college.popular_majors %></p>
     </div>
   </div>
 
@@ -142,3 +142,6 @@
     </div>
   </div>
 </div>
+
+
+<%= link_to 'Browse Colleges', colleges_path, class: "btn btn-info btn-sm"%>

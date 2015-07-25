@@ -20,6 +20,7 @@
       <% elsif current_user.try(:student_profile).try(:id) != student_profile.id %>
       <%= link_to 'Become a Fan', become_a_fan_student_profile_path(current_user.student_profile, other_profile_id: student_profile.to_param), method: :post %>
       <% else %>
+      <%= link_to 'Your Profile', student_profile_path(student_profile) %>
     <% end %>
   </div>
   <% end %>
