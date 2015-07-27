@@ -2,6 +2,11 @@ body {
   padding: 100px;
   padding-top: 80px;
   padding-bottom: 40px;
+  background-color: #F8F8F8 !important;
+}
+
+a:visited {
+  color: #316DC8 !important;
 }
 
 .flash_alert, .flash_error, .flash_notice {
@@ -17,6 +22,16 @@ body {
 
 .navbar-default .navbar-collapse, .navbar-default .navbar-form {
   padding-top: 20px;
+}
+
+.navbar-collapse.collapse.in {
+  background-color: #F8F8F8 !important;
+}
+
+.navbar-default {
+  background-color: #FFDE17 !important;
+  border-color: #2F6189 !important;
+  border-width: 0 0 3px !important;
 }
 
 .navbar-header {
@@ -38,6 +53,21 @@ body {
 .btn-info {
   background-color: #FFDE17 !important;
   font-family: 'Graduate', cursive;
+}
+
+.btn-success {
+  background-color: white !important;
+  border-width: 2px !important;
+}
+
+.btn-danger {
+  background-color: white !important;
+  border-width: 2px !important;
+}
+
+.btn-default {
+  background-color: white !important;
+  border-width: 2px !important; 
 }
 
 input.form-control.search-small {
@@ -63,6 +93,7 @@ input.form-control.search-small {
 .sub-text {
   text-align: center;
   font-family: 'Graduate', cursive;
+  color: #2F6189;
 }
 
 .college-text {
