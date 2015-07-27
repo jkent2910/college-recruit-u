@@ -9,3 +9,9 @@ Given(/^the following colleges?:$/) do |table|
     FactoryGirl.create(:college, hash)
   end
 end
+
+Given(/^the following student profiles:$/) do |table|
+  table.hashes.each do |hash|
+    FactoryGirl.create(:student_profile, hash)
+  end
+end

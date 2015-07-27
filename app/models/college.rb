@@ -6,4 +6,6 @@ class College < ActiveRecord::Base
 
   has_many :student_profiles, through: :college_student_statuses
 
+  searchable_by :name
+
 end
