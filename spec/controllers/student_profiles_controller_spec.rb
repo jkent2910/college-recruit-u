@@ -60,7 +60,7 @@ RSpec.describe StudentProfilesController, type: :controller do
       it "assigns all student_profiles as @student_profiles" do
         student_profile = StudentProfile.create! valid_attributes
         get :index, {}, valid_session
-        expect(assigns(:student_profiles)).to eq([student_profile])
+        expect(assigns(:student_profile)).to eq([student_profile])
       end
     end
 
