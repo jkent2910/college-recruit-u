@@ -1,14 +1,14 @@
 <div class="container">
   <div class="row">
     <div class="col-xs-12">
-      <h3 class="sub-text">Students</h3>
+      <h3 class="sub-text">Recently Joined Students</h3>
     </div>
   </div>
 </div>
 
-<% @student_profiles.each_slice(4) do |student_profiles| %>
-<div class="row">
-  <% @student_profiles.each do |student_profile| %>
+<% @student_profile.each_slice(3) do |student_profiles| %> 
+<div class="row"> <br />
+  <% student_profiles.each do |student_profile| %> 
   <div class="col-md-4 col-xs-4">
     <%= link_to student_profile do  %>
     <%= image_tag student_profile.photo.url(:thumb), height: 100, width: 100 %><br />
@@ -16,15 +16,15 @@
     <%= link_to student_profile.full_name, student_profile %> <br />
     <%= student_profile.high_school %><br />
       <% if current_user.try(:student_profile).try(:fan_of?, student_profile) %>
-      <%= link_to 'Stop being a Fan', stop_being_a_fan_student_profile_path(current_user.student_profile, other_profile_id: student_profile.to_param), method: :post %>
+      <%= link_to 'Stop being a Fan', stop_being_a_fan_student_profile_path(current_user.student_profile, other_profile_id: student_profile.to_param), method: :post,  :class=> "btn btn-danger btn-sm"  %>
       <% elsif current_user.try(:student_profile).try(:id) != student_profile.id %>
-      <%= link_to 'Become a Fan', become_a_fan_student_profile_path(current_user.student_profile, other_profile_id: student_profile.to_param), method: :post %>
+      <%= link_to 'Become a Fan', become_a_fan_student_profile_path(current_user.student_profile, other_profile_id: student_profile.to_param), method: :post, :class=> "btn btn-success btn-sm" %>
       <% else %>
-      <%= link_to 'Your Profile', student_profile_path(student_profile) %>
-    <% end %>
-  </div>
+      <%= link_to 'Your Profile', student_profile_path(student_profile), :class=> "btn btn-primary btn-sm" %>
+    <% end %> 
+  </div> 
   <% end %>
 </div>
 <% end %>
 <br>
-<%= link_to 'New Student profile', new_student_profile_path %>
+<%= link_to 'Explore Colleges', colleges_path, :class=>"btn btn-primary" %>

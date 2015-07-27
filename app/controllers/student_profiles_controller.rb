@@ -7,7 +7,7 @@ class StudentProfilesController < ApplicationController
   # GET /student_profiles
   # GET /student_profiles.json
   def index
-    @student_profiles = StudentProfile.all.order("created_at DESC")
+    @student_profile = StudentProfile.all.order("created_at DESC")
   end
 
   # GET /student_profiles/1
