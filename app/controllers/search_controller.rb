@@ -3,7 +3,9 @@ class SearchController < ApplicationController
   end
 
   def search
-    p params
-    redirect_to :search
+    query = params[:query]
+    @students = StudentProfile.search(query)
+    @colleges = College.search(query)
+    render :index
   end
 end

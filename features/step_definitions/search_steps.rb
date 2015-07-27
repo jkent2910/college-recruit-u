@@ -1,17 +1,20 @@
 When(/^I search for "(.*?)"$/) do |query|
-  pending # express the regexp above with the code you wish you had
-end
-
-Then(/^I should see no students$/) do
-  pending # express the regexp above with the code you wish you had
+  within("form[role=search]") do
+    fill_in(:query, with: query)
+    click_button("Go")
+  end
 end
 
 Then(/^I should see the following colleges$/) do |table|
-  # table is a Cucumber::Ast::Table
-  pending # express the regexp above with the code you wish you had
+  college_results = find("#college-search-results ul")
+  table.hashes.each do |college|
+    expect(college_results).to have_text(college[:name])
+  end
 end
 
 Then(/^I should see the following students$/) do |table|
-  # table is a Cucumber::Ast::Table
-  pending # express the regexp above with the code you wish you had
+  student_results = find("#student-search-results ul")
+  table.hashes.each do |student|
+    expect(student_results).to have_text(student[:name])
+  end
 end

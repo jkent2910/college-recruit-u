@@ -20,17 +20,15 @@ Feature: Student searches for colleges and other students
 
     And I am signed in
 
-  @wip
   Scenario: Student searches for Iowa
     When I search for "Iowa"
     Then I should be on the search results page
-    And I should see no students
+    And I should see "No students were found."
     And I should see the following colleges
     | name                  |
     | Iowa State University |
     | University of Iowa    |
 
-  @wip
   Scenario: Student searches for Harvard
     When I search for "Harvard"
     Then I should be on the search results page
