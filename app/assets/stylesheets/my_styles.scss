@@ -1,6 +1,6 @@
 body {
   padding: 100px;
-  padding-top: 80px;
+  padding-top: 90px;
   padding-bottom: 40px;
   background-color: #F8F8F8 !important;
 }
@@ -114,6 +114,113 @@ input.form-control.search-small {
 
   .navbar-header {
     padding-bottom: 15px;
+  }
+
+}
+
+/* LANDING PAGE */
+
+.logo {
+  padding-top: 75px;
+  padding-bottom: 50px;
+}
+
+.blog-link {
+  padding-top: 5px;
+}
+
+/* FORM */
+
+#email {
+  margin-bottom: 5px;
+}
+
+.nav {
+  padding-top: 15px;
+}
+
+.header-tagline {
+  font-size: 24px;
+  font-style: bold;
+  color: #2F6189;
+  text-align: center;
+  font-family: 'Graduate', cursive;
+}
+
+.header-subtagline {
+  font-size: 24px;
+  color: #2F6189;
+  font-family: 'Graduate', cursive;
+}
+
+.header-text {
+  padding-bottom: 15px;
+}
+
+.subheader-text {
+  background-color: #FFDE17;
+  padding-bottom: 15px;
+}
+
+.cta-tagline {
+  margin-bottom: 5px;
+}
+
+.cta {
+  background-color: #FFDE17;
+  padding-bottom: 15px;
+}
+
+.cta-text {
+  color: #2F6189;
+  text-align: center;
+  font-family: 'Graduate', cursive;
+}
+
+.social {
+  padding-top: 50px;
+  margin-bottom: 70px;
+}
+
+.glyphicon {
+  font-size: 50px;
+  text-align: center;
+}
+
+.value-header {
+  background-color: #2F6189;
+  color: white;
+  padding-top: 5px;
+}
+
+.footer {
+  padding-bottom: 25px;
+}
+
+.value-prop { 
+  font-family: 'Graduate', cursive;
+}
+
+a.btn.btn-success.btn-large {
+  color: black !important;
+}
+
+@media (min-width: 768px) {
+
+  .header-subtagline {
+    text-align: center;
+  }
+
+  .header-tagline {
+    text-align: center;
+  }
+
+  .centered {
+    text-align: center;
+  }
+
+  .header-text {
+    text-align: center;
   }
 
 }
