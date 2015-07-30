@@ -59,5 +59,7 @@ Cucumber::Rails::Database.javascript_strategy = :truncation
 Capybara.javascript_driver = :webkit
 
 Capybara::Webkit.configure do |config|
-  config.block_url "fonts.googleapis.com"
+  config.block_url "*.googleapis.com"
+  config.block_url "*.google-analytics.com"
+  config.block_url "*.doubleclick.net"
 end
