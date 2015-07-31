@@ -1,0 +1,73 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <h1 class="profile-header">Welcome, <%= @student_profile.first_name %></h1>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-6 col-xs-offset-4 hidden-md hidden-lg hidden-xl">
+      <%= image_tag @student_profile.photo.url(:thumb) %>
+    </div>
+    <div class="col-md 6 col-md-offset-5 hidden-xs hidden-sm">
+      <%= image_tag @student_profile.photo.url(:medium) %>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-xs-6">
+      <h4 class="small-txt">New Students</h4>
+    </div>
+  </div>
+  <div class="row">
+    <% @student_profiles.each do |student_profile| %>
+      <div class="col-xs-4">
+        <%= link_to student_profile do  %>
+          <%= image_tag student_profile.photo.url(:thumb), height: 100, width: 100 %><br />
+        <% end %>
+          <%= link_to student_profile.full_name, student_profile %>
+      </div>
+    <% end %><br />
+  </div><br />
+  <div class="row">
+    <div class="col-xs-6">
+      <%= link_to 'Browse All Students', student_profiles_path, class: "btn btn-success btn-sm"%>
+    </div>
+  </div><br />
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <h4 class="small-txt">Explore Colleges</h4>
+    </div>
+  </div>
+  <div class="row">
+    <% @colleges.each do |college| %>
+      <div class="col-xs-4">
+        <%= link_to college.name, college %>
+      </div>
+    <% end %><br />
+  </div><br />
+  <div class="row">
+    <div class="col-xs-6">
+      <%= link_to 'Browse All Colleges', colleges_path, class: "btn btn-success btn-sm"%>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
