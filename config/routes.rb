@@ -12,6 +12,8 @@ Rails.application.routes.draw do
     end
   end
 
+  get '/home' => 'pages#home'
+
   get "search" => "search#index"
   post "search" => "search#search"
 
