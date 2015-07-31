@@ -43,7 +43,7 @@
 
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
-            <li><%= link_to "Home", root_path %></li>
+            <li><a href="/home">Home</a></li>
             <% if current_user.try(:student_profile) %>
             <li><%= link_to "Your Profile", student_profile_path(current_user.student_profile) %></li>
             <% else %>
