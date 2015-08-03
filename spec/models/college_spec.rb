@@ -50,4 +50,20 @@ RSpec.describe College, type: :model do
       expect(College.search("iowa")).to contain_exactly(@college1, @college2)
     end
   end
+
+  describe "logo" do
+    it "is an attachment" do
+      expect(subject).to have_attached_file(:logo)
+    end
+
+    it "validates the file type" do
+      expect(subject).to validate_attachment_content_type(:logo).
+                          allowing("image/png", "image/gif", "image/jpeg").
+                          rejecting("text/html", "bogus/whatever")
+    end
+
+    it "validates the file size" do
+      expect(subject).to validate_attachment_size(:logo).less_than(2.megabytes)
+    end
+  end
 end

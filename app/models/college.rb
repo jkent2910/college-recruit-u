@@ -8,6 +8,11 @@ class College < ActiveRecord::Base
 
   has_many :photos, dependent: :destroy
 
+  has_attached_file :logo, styles: { medium: "300x300>", thumb: "100x100>" }, default_url: "missing.png"
+  validates_attachment :logo,
+                       content_type: { content_type: ["image/jpeg", "image/gif", "image/png"] },
+                       size: { less_than: 2.megabytes }
+
   searchable_by :name
 
 end
