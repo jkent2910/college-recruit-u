@@ -20,6 +20,7 @@ namespace :cru do
     spreadsheet = drive_session.spreadsheet_by_title(spreadsheet_name)
     spreadsheet_dir = drive_session.file_by_id(spreadsheet.parents.first.id)
     photos_dir = spreadsheet_dir.file_by_title("photos")
+    logos_dir = spreadsheet_dir.file_by_title("logos")
 
     raise "Spreadsheet #{spreadsheet_name} not found" unless spreadsheet
 
@@ -36,6 +37,11 @@ namespace :cru do
         puts "Adding #{college_attrs[:name]}"
       end
       college.update!(college_attrs.reject {|k, _| k == :logo })
+
+      logo_name = college_attrs[:logo]
+      logo = logo(logos_dir, logo_name)
+      add_logo(logo, college) unless has_logo?(logo, college)
+
       spreadsheet_photos = photos_for_id(photos_dir, college.id)
       spreadsheet_photos.each do |photo|
         add_photo(photo, college) unless has_photo?(photo, college)
@@ -43,13 +49,34 @@ namespace :cru do
     end
   end
 
+  def logo(logos_dir, name)
+    logos_dir.file_by_title(name)
+  end
+
   def photos_for_id(photos_dir, college_id)
     dir = photos_dir.file_by_title(college_id.to_s)
     dir.contents
   end
 
+  def has_logo?(logo, college)
+    college.logo_file_name == logo.original_filename && college.logo_file_size == logo.file_size
+  end
+
   def has_photo?(photo, college)
     college.photos.any? { |p| p.photo_file_name == photo.original_filename && p.photo_file_size == photo.file_size }
+  end
+
+  def add_logo(logo, college)
+    tf = Tempfile.new('college-logo')
+    begin
+      logo.download_to_file(tf.path)
+      college.logo = tf
+      college.logo_file_name = logo.original_filename
+      college.save!
+    ensure
+      tf.close
+      tf.unlink
+    end
   end
 
   def add_photo(photo, college)
