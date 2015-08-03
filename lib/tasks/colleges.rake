@@ -40,11 +40,15 @@ namespace :cru do
 
       logo_name = college_attrs[:logo]
       logo = logo(logos_dir, logo_name)
-      add_logo(logo, college) unless has_logo?(logo, college)
+      add_or_remove_logo(logo, college) unless has_logo?(logo, college)
 
       spreadsheet_photos = photos_for_id(photos_dir, college.id)
       spreadsheet_photos.each do |photo|
         add_photo(photo, college) unless has_photo?(photo, college)
+      end
+
+      college.photos.each do |photo|
+        photo.destroy unless spreadsheet_has_photo?(photo, spreadsheet_photos)
       end
     end
   end
@@ -59,6 +63,7 @@ namespace :cru do
   end
 
   def has_logo?(logo, college)
+    return false if logo.nil?
     college.logo_file_name == logo.original_filename && college.logo_file_size == logo.file_size
   end
 
@@ -66,17 +71,25 @@ namespace :cru do
     college.photos.any? { |p| p.photo_file_name == photo.original_filename && p.photo_file_size == photo.file_size }
   end
 
-  def add_logo(logo, college)
-    tf = Tempfile.new('college-logo')
-    begin
-      logo.download_to_file(tf.path)
-      college.logo = tf
-      college.logo_file_name = logo.original_filename
-      college.save!
-    ensure
-      tf.close
-      tf.unlink
+  def spreadsheet_has_photo?(photo, spreadsheet_photos)
+    spreadsheet_photos.any? { |p| p.original_filename == photo.photo_file_name && p.file_size == photo.photo_file_size }
+  end
+
+  def add_or_remove_logo(logo, college)
+    if logo.nil?
+      college.logo = nil
+    else
+      tf = Tempfile.new('college-logo')
+      begin
+        logo.download_to_file(tf.path)
+        college.logo = tf
+        college.logo_file_name = logo.original_filename
+      ensure
+        tf.close
+        tf.unlink
+      end
     end
+    college.save!
   end
 
   def add_photo(photo, college)
