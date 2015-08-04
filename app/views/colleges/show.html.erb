@@ -20,6 +20,21 @@
 
 <div class="container">
   <div class="row">
+    <div class="col-xs-3">
+      <h4 class="sub-text">Fans: <%= @student_profile.college_student_statuses.where(status_name: "Just a Fan").count %></h4>
+    </div>
+    <div class="col-xs-5">
+      <h4 class="sub-text">Considering: <%= @student_profile.college_student_statuses.where(status_name: "Considering").count %></h4>
+    </div>
+    <div class="col-xs-4">
+      <h4 class="sub-text">Applying: <%= @student_profile.college_student_statuses.where(status_name: "Applying").count %></h4>
+    </div>
+  </div>
+</div>
+
+
+<div class="container">
+  <div class="row">
     <div class="col-xs-12">
       <h2 class="college-text">Connect</h2>
     </div>
@@ -144,4 +159,4 @@
 </div>
 
 
-<%= link_to 'Browse Colleges', colleges_path, class: "btn btn-success btn-sm"%>
+<%= link_to 'Browse Colleges', colleges_path, class: "btn btn-success btn-sm" %>
