@@ -20,28 +20,53 @@
 
 <div class="container">
   <div class="row">
+    <div class="col-xs-3">
+      <h4 class="sub-text">Fans: <%= @student_profile.college_student_statuses.where(status_name: "Just a Fan").count %></h4>
+    </div>
+    <div class="col-xs-5">
+      <h4 class="sub-text">Considering: <%= @student_profile.college_student_statuses.where(status_name: "Considering").count %></h4>
+    </div>
+    <div class="col-xs-4">
+      <h4 class="sub-text">Applying: <%= @student_profile.college_student_statuses.where(status_name: "Applying").count %></h4>
+    </div>
+  </div>
+</div>
+
+
+<div class="container">
+  <div class="row">
     <div class="col-xs-12">
       <h2 class="college-text">Connect</h2>
     </div>
   </div>
   <div class="row">
-    <div class="col-xs-4 col-md-4 college-text">
-      <%= link_to image_tag("social-icons/twitter_vector.png"), "http://www.twitter.com/"+@college.twitter %>
-    </div>
-    <div class="col-xs-4 col-md-4 college-text">
-      <%= link_to image_tag("social-icons/facebook_vector.png"), "http:/www.facebook.com"+@college.facebook %>
-    </div>
-    <div class="col-xs-4 col-md-4 college-text">
-      <%= link_to image_tag("social-icons/instagram_vector.jpg"), "http://www.instagram.com/"+@college.instagram %>
-    </div>
+    <% if @college.twitter %>
+      <div class="col-xs-4 col-md-4 college-text">
+        <%= link_to image_tag("social-icons/twitter_vector.png"), "http://www.twitter.com/"+@college.twitter %>
+      </div>
+    <% end %>
+    <% if @college.facebook %>
+      <div class="col-xs-4 col-md-4 college-text">
+        <%= link_to image_tag("social-icons/facebook_vector.png"), "http:/www.facebook.com"+@college.facebook %>
+      </div>
+    <% end %>
+    <% if @college.instagram %>
+      <div class="col-xs-4 col-md-4 college-text">
+        <%= link_to image_tag("social-icons/instagram_vector.jpg"), "http://www.instagram.com/"+@college.instagram %>
+      </div>
+    <% end %>
   </div>
   <div class="row"><br />
-    <div class="col-xs-6 col-md-offset-1 col-md-4 col-md-offset-3">
-      <%= link_to 'Find Your Admissions Rep', @college.admissions_rep_page, class: "btn btn-default" %>
-    </div>
-    <div class="col-xs-5 col-xs-offset-1 col-md-2">
-      <%= link_to 'Schedule a Visit', @college.college_visit_page, class: "btn btn-default" %>
-    </div>
+    <% if @college.admissions_rep_page %>
+      <div class="col-xs-6 col-md-offset-1 col-md-4 col-md-offset-3">
+        <%= link_to 'Find Your Admissions Rep', @college.admissions_rep_page, class: "btn btn-default" %>
+      </div>
+    <% end %>
+    <% if @college.college_visit_page %>
+      <div class="col-xs-5 col-xs-offset-1 col-md-2">
+        <%= link_to 'Schedule a Visit', @college.college_visit_page, class: "btn btn-default" %>
+      </div>
+    <% end %>
   </div>
 </div>
 
@@ -144,4 +169,4 @@
 </div>
 
 
-<%= link_to 'Browse Colleges', colleges_path, class: "btn btn-success btn-sm"%>
+<%= link_to 'Browse Colleges', colleges_path, class: "btn btn-success btn-sm" %>

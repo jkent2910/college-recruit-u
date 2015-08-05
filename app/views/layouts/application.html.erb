@@ -44,13 +44,14 @@
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
             <li><a href="/home">Home</a></li>
-            <% if current_user.try(:student_profile) %>
-            <li><%= link_to "Your Profile", student_profile_path(current_user.student_profile) %></li>
-            <% else %>
-            <li><%= link_to "Create Profile", new_student_profile_path(current_user) %></li>
-            <% end %>
-            <li><%= link_to "Explore Colleges", colleges_path %></li>
             <% if user_signed_in? %>
+                <% if current_user.try(:student_profile) %>
+                  <li><%= link_to "Your Profile", student_profile_path(current_user.student_profile) %></li>
+                <% else %>
+                  <li><%= link_to "Create Profile", new_student_profile_path(current_user) %></li>
+                <% end %>
+              <li><%= link_to "Explore Colleges", colleges_path %></li>
+              <li><%= link_to "Browse Students", student_profiles_path %></li>
               <li><%= link_to "Sign Out", destroy_user_session_path, :method => 'delete' %></li>
             <% else %>
               <li><%= link_to "Sign In", new_user_session_path %></li>

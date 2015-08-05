@@ -1,6 +1,6 @@
 <div class-"row">
   <div class="col-xs-6 col-xs-offset-3 college-text">
-  <%= form_tag student_status_college_path do %>
+  <%= form_tag student_status_college_path(@college) do %>
     <%= hidden_field_tag :student_profile_id, @student_profile.to_param %>
     <div class="field college-text">
       <%= label_tag :college_student_status, "College Status:", :class => "profile-header" %><br>
