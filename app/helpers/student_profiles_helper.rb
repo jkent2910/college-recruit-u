@@ -28,7 +28,7 @@ module StudentProfilesHelper
     }
   end
 
-  
+
   def student_interests
     {
       "Marching Band" => {logo: "marchingband.png"},
@@ -49,5 +49,14 @@ module StudentProfilesHelper
       "Swimming" => {logo: "swiming.png"},
       "Speech/Debate" => {logo: "debate.png"}
     }
-end
+  end
+
+  def pronoun(gender)
+    case gender
+    when /female/i
+      "her"
+    else
+      "his"
+    end
+  end
 end
