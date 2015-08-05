@@ -65,19 +65,19 @@
     <div class="col-xs-4">
       <h4 class="sub-text">I'm a Fan</h4>
         <% @student_profile.college_student_statuses.where(status_name: "Just a Fan").each do |college_student_status| %>
-          <%= college_student_status.college.name %>
+          <%= link_to college_student_status.college.name, college_student_status.college %>
         <% end  %>
     </div>
     <div class="col-xs-4">
       <h4 class="sub-text">Considering</h4>
         <% @student_profile.college_student_statuses.where(status_name: "Considering").each do |college_student_status| %>
-          <%= college_student_status.college.name %>
+          <%= link_to college_student_status.college.name, college_student_status.college %>
         <% end  %>
     </div>
     <div class="col-xs-4">
       <h4 class="sub-text">Applying</h4>
         <% @student_profile.college_student_statuses.where(status_name: "Applying").each do |college_student_status| %>
-          <%= college_student_status.college.name %>
+          <%= link_to college_student_status.college.name, college_student_status.college %>
         <% end  %>
     </div>
   </div>
