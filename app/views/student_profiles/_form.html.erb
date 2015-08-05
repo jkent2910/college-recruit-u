@@ -65,16 +65,29 @@
 
 <script>
   $(function() {
-    $(".factor_importance_slider").slider({
-      min: 1,
-      max: 5,
-      step: 1,
-      change: function(event, ui) {
-        $(event.target).prev().val(ui.value);
-      },
-      create: function(event, ui) {
-        $(this).slider('value', $(this).prev().val());
+      function checkJqueryUI() {
+          if (typeof jQuery.ui != 'undefined') {
+              do_jqueryui();
+          }
+          else {
+              window.setTimeout( checkJqueryUI, 50 );
+          }
       }
-    });
+
+      function do_jqueryui() {
+          $(".factor_importance_slider").slider({
+              min: 1,
+              max: 5,
+              step: 1,
+              change: function(event, ui) {
+                  $(event.target).prev().val(ui.value);
+              },
+              create: function(event, ui) {
+                  $(this).slider('value', $(this).prev().val());
+              }
+          });
+      }
+
+      checkJqueryUI();
   });
 </script>
