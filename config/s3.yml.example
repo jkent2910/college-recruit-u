@@ -1,15 +1,15 @@
 development:
-  bucket: 'college-recruit-u/development'
+  bucket: 'collegerecruitu/development'
   access_key_id: 'ACCESS_KEY'
   secret_access_key: 'SECRET_ACCESS_KEY'
 
 test: &test
-  bucket: 'college-recruit-u/test'
+  bucket: 'collegerecruitu/test'
   access_key_id: 'ACCESS_KEY'
   secret_access_key: 'SECRET_ACCESS_KEY'
 
 production:
-  bucket: 'college-recruit-u/production'
+  bucket: 'collegerecruitu/production'
   access_key_id: 'ACCESS_KEY'
   secret_access_key: 'SECRET_ACCESS_KEY'
 
