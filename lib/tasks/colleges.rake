@@ -6,7 +6,7 @@ namespace :cru do
 
   desc "Updates colleges table from Google spreadsheet"
   task update_colleges: :environment do
-    spreadsheet_name = "CRU_College_Info"
+    spreadsheet_name = "colleges_production"
 
     ENV["GOOGLE_APPLICATION_CREDENTIALS"] = Rails.root.join("config", "google_college_credentials.json").to_path
     ENV["SSL_CERT_FILE"] = $LOAD_PATH.grep(/google-api-client/).first + "/cacerts.pem"
@@ -17,7 +17,10 @@ namespace :cru do
     access_token = credentials.access_token
 
     drive_session = GoogleDrive.login_with_oauth(access_token)
+
     spreadsheet = drive_session.spreadsheet_by_title(spreadsheet_name)
+    raise "Spreadsheet #{spreadsheet_name} not found" unless spreadsheet
+
     spreadsheet_dir = drive_session.file_by_id(spreadsheet.parents.first.id)
     photos_dir = spreadsheet_dir.file_by_title("photos")
     logos_dir = spreadsheet_dir.file_by_title("logos")
@@ -59,6 +62,7 @@ namespace :cru do
 
   def photos_for_id(photos_dir, college_id)
     dir = photos_dir.file_by_title(college_id.to_s)
+    return [] if dir.nil?
     dir.contents
   end
 
