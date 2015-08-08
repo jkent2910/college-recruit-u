@@ -1,11 +1,17 @@
 class PagesController < ApplicationController
 
   def home
-    @student_profile = current_user.student_profile
+    if current_user
 
-    @student_profiles = StudentProfile.all
+      @student_profile = current_user.student_profile
 
-    @colleges = College.all
+      @student_profiles = StudentProfile.all
+
+      @colleges = College.all
+
+    else
+      redirect_to root_path
+    end
   end
 
 end
