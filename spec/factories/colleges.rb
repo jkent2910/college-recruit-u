@@ -21,8 +21,6 @@ FactoryGirl.define do
     popular_majors "Business Management, Pre-Law, Anthropology"
     number_of_essays "2"
     number_of_recommendations "3"
-    spring_deadine "January 1"
-    summer_deadline "March 15"
     fall_deadline "June 1"
     early_admissions_deadline "November 15"
     in_state_tuition "12000"
