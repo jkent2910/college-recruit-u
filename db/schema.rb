@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150803160341) do
+ActiveRecord::Schema.define(version: 20150808164645) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -49,8 +49,6 @@ ActiveRecord::Schema.define(version: 20150803160341) do
     t.text     "popular_majors"
     t.string   "number_of_essays"
     t.string   "number_of_recommendations"
-    t.string   "spring_deadine"
-    t.string   "summer_deadline"
     t.string   "fall_deadline"
     t.string   "early_admissions_deadline"
     t.string   "in_state_tuition"
@@ -63,6 +61,7 @@ ActiveRecord::Schema.define(version: 20150803160341) do
     t.string   "logo_content_type"
     t.integer  "logo_file_size"
     t.datetime "logo_updated_at"
+    t.string   "financial_aid_link"
   end
 
   create_table "factor_ratings", force: :cascade do |t|
