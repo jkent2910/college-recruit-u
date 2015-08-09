@@ -148,6 +148,9 @@
           <h5 class="college-text"><strong>Popular Majors:</strong> <%= @college.popular_majors %></h5>
         </div>
       </div>
+      <div class="col-xs-8 col-xs-offset-3">
+        <%= link_to 'See List of Majors', @college.link_to_majors, class: "btn btn-default" %>
+      </div>
     </div>
     <div id="menu3" class="tab-pane fade">
       <div class="row">
@@ -176,7 +179,7 @@
                   <div class="modal-header">
                     <h4 class="modal-title" id="gridSystemModalLabel">We will be in touch soon!</h4>
                   </div>
-                  <%= render "shared/college_student_status" %>
+                  <%= link_to "Request application help", send_application_help_request_college_path(current_user, @college), class: "btn btn-default" %>
                 </div>
               </div>
           </div>
