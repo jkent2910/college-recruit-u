@@ -51,6 +51,32 @@ module StudentProfilesHelper
     }
   end
 
+  def student_majors
+    {
+      "Agriculture" => {logo: "agriculture.png"},
+      "Architecture" => {logo: "architecture.png"},
+      "Art" => {logo: "art.png"},
+      "Biology" => {logo: "biology.png"},
+      "Business" => {logo: "business.png"},
+      "Communications" => {logo: "communications.png"},
+      "Criminal Justice" => {logo: "criminaljustice.png"},
+      "Education" => {logo: "education.png"}, 
+      "English" => {logo: "english.png"},
+      "Engineering" => {logo: "engineering.png"},
+      "Health Sciences" => {logo: "healthscience.png"},
+      "Languages & Literature" => {logo: "literature.png"},
+      "Mathematics" => {logo: "mathematics.png"},
+      "Other" => {logo: ""},
+      "Philosophy & Religion" => {logo: "philosophy.png"}, 
+      "Pre-Law" => {logo: "prelaw.png"},
+      "Pre-Med" => {logo: "premed.png"},
+      "Psychology" => {logo: "psychology.png"},
+      "Social Services" => {logo: "socialservices.png"},
+      "Visual & Performing Arts" => {logo: "performingarts.png"}
+    }
+  end
+
+
   def pronoun(gender)
     case gender
     when /female/i
