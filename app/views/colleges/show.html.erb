@@ -186,7 +186,6 @@
         </div>
       </div>
 
-
       <div class="row">
         <div class="col-xs-12">
           <h5 class="college-text">Early Admissions Deadline: <%= @college.early_admissions_deadline %></h4>
@@ -195,6 +194,33 @@
       </div>
     </div>
   </div>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12">
+        <h5 class="college-text">Still can't find what you're looking for?  Ask a current student or admissions rep a question!</h4>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-10">
+        <div class="col-xs-8 col-xs-offset-4">
+          <button type="button" class="btn btn-default" data-toggle="modal" data-target=".bs-example-modal-sm">Ask a Question</button>
+
+            <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+              <div class="modal-dialog modal-sm">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h4 class="modal-title" id="gridSystemModalLabel">We will be in touch soon!</h4>
+                  </div>
+                  <%= link_to "Send Question!", send_application_help_request_college_path(current_user, @college), class: "btn btn-default" %>
+                </div>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <div class="row">
     <div class="col-xs-12">
       <h4 class="sub-text">Famous Alumni</h2>
