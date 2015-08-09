@@ -19,7 +19,7 @@
   </div>
   <div class="field">
     <%= f.label :gender %><br>
-    <%= f.text_field :gender %>
+    <%= f.select :gender, options_for_select(StudentProfile::VALID_GENDERS, @student_profile.gender) %>
   </div>
   <div class="field">
     <%= f.label :high_school %><br>

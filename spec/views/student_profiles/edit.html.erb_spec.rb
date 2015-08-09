@@ -20,7 +20,7 @@ RSpec.describe "student_profiles/edit", type: :view do
 
       assert_select "input#student_profile_last_name[name=?]", "student_profile[last_name]"
 
-      assert_select "input#student_profile_gender[name=?]", "student_profile[gender]"
+      assert_select "select#student_profile_gender[name=?]", "student_profile[gender]"
 
       assert_select "select#student_profile_high_school[name=?]", "student_profile[high_school]"
 

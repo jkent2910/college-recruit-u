@@ -12,14 +12,14 @@ RSpec.describe "student_profiles/index", type: :view do
       StudentProfile.create!(
         first_name: "First Name",
         last_name: "Last Name",
-        gender: "Gender",
+        gender: "Female",
         high_school: "High School",
         graduation_year: "2016"
       ),
       StudentProfile.create!(
         first_name: "First Name",
         last_name: "Last Name",
-        gender: "Gender",
+        gender: "Female",
         high_school: "High School",
         graduation_year: "2017"
       )
