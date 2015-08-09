@@ -5,6 +5,10 @@ body {
   background-color: #EEEEEE !important;
 }
 
+html, body {
+  overflow-x: hidden;
+}
+
 a:visited {
   color: #316DC8 !important;
 }
@@ -115,6 +119,10 @@ input.form-control.search-small {
   color: #2F6189;
 }
 
+.home-header {
+  margin-top: 25px;
+}
+
 .sub-text {
   text-align: center;
   font-family: 'Graduate', cursive;
@@ -199,7 +207,6 @@ input.form-control.search-small {
 }
 
 .subheader-text {
-  background-color: #FFDE17;
   padding-bottom: 15px;
 }
 
@@ -208,7 +215,6 @@ input.form-control.search-small {
 }
 
 .cta {
-  background-color: #FFDE17;
   padding-bottom: 15px;
 }
 
@@ -216,6 +222,11 @@ input.form-control.search-small {
   color: #2F6189;
   text-align: center;
   font-family: 'Graduate', cursive;
+}
+
+.arrow-text {
+  color: #2F6189;
+  text-align: center;
 }
 
 .social {
@@ -229,7 +240,6 @@ input.form-control.search-small {
 }
 
 .value-header {
-  background-color: #2F6189;
   color: white;
   padding-top: 5px;
 }
@@ -244,6 +254,20 @@ input.form-control.search-small {
 
 a.btn.btn-success.btn-large {
   color: black !important;
+}
+
+.bg-blue {
+  margin: 0 -9999rem;
+  /* add back negative margin value */
+  padding: 0.25rem 9999rem;
+  background-color: #62B4E5;
+}
+
+.bg-yellow {
+  margin: 0 -9999rem;
+  /* add back negative margin value */
+  padding: 0.25rem 9999rem;
+  background-color: #FFDE17;
 }
 
 @media (min-width: 768px) {
@@ -263,5 +287,6 @@ a.btn.btn-success.btn-large {
   .header-text {
     text-align: center;
   }
+
 
 }
