@@ -21,6 +21,11 @@ class CollegesController < ApplicationController
       return
     end
 
+    if student_profile.college_student_statuses.where(status_name: "Enrolling").count == 1 
+      redirect_to college_path(college), notice: "You can only enroll at one school."
+      return
+    end
+
     if status.blank?
       student_profile.college_status(college).destroy
       flash[:notice] = "You removed #{college.name} from your profile"

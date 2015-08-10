@@ -1,9 +1,9 @@
-<div class="container">
-  <div class="row">
+<div class="container home-header">
+  <div class="row boxed-text">
     <div class="col-xs-12">
       <h1 class="profile-header">Welcome, <%= @student_profile.first_name %></h1>
     </div>
-  </div>
+  </div><br />
   <div class="row">
     <div class="col-xs-6 col-xs-offset-4 hidden-md hidden-lg hidden-xl">
       <%= image_tag @student_profile.photo.url(:thumb) %>
@@ -46,6 +46,7 @@
   <div class="row">
     <% @colleges.each do |college| %>
       <div class="col-xs-4">
+        <%= link_to image_tag(college.logo(:thumb)), college %><br />
         <%= link_to college.name, college %>
       </div>
     <% end %><br />
@@ -55,11 +56,6 @@
       <%= link_to 'Browse All Colleges', colleges_path, class: "btn btn-success btn-sm"%>
     </div>
   </div>
-</div>
-
-
-
-
 
 
 

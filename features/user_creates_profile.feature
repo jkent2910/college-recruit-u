@@ -9,7 +9,7 @@ Feature: User creates profile for first time
     Then I should be on the new student profile page
     When I fill in "First name" with "Sarah"
     And I fill in "Last name" with "Smith"
-    And I fill in "Gender" with "Female"
+    And I select "Female" from "Gender"
     And I select "Valley High School" from "High school"
     And I select "2017" from "Graduation year"
     When I press "Create"

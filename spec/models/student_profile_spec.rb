@@ -12,6 +12,10 @@ RSpec.describe StudentProfile, type: :model do
       expect(subject).to validate_inclusion_of(:graduation_year).in_array(StudentProfile::VALID_GRADUATION_YEARS)
     end
 
+    it "allows only valid genders" do
+      expect(subject).to validate_inclusion_of(:gender).in_array(StudentProfile::VALID_GENDERS)
+    end
+    
     it "allows valid student interests" do
       student_profile = FactoryGirl.build(:student_profile, interests: ['Basketball', 'Choir'])
       expect(student_profile).to be_valid

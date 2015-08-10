@@ -3,8 +3,11 @@ class StudentProfile < ActiveRecord::Base
 
   VALID_GRADUATION_YEARS = ['2016', '2017', '2018', '2019']
 
+  VALID_GENDERS = ['Male', 'Female']
+
   validates_presence_of :first_name, :last_name, :gender, :high_school, :graduation_year
   validates_inclusion_of :graduation_year, in: VALID_GRADUATION_YEARS
+  validates_inclusion_of :gender, in: VALID_GENDERS
 
   validates_each :interests do |record, attr, value|
     value.each do |interest|
