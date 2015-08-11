@@ -27,4 +27,5 @@ RSpec.describe "colleges/show.html.erb", type: :view do
     @college.college_visit_page = nil
     expect { render }.not_to raise_exception
   end
+
 end

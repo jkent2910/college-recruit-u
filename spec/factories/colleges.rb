@@ -27,5 +27,6 @@ FactoryGirl.define do
     out_of_state_tuition "24000"
     percent_receive_financial_aid "65"
     notable_alumni "Ashton Kutcher"
+    link_to_majors "www.iowa.com/majors"
   end
 end
