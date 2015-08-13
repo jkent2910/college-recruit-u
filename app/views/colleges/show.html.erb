@@ -40,23 +40,23 @@
 </div>
 
 <div class="container">
-  <div class="row">
+  <div class="row college-show-students">
     <div class="col-xs-3">
-      <h4 class="sub-text">Fans: <%= @student_profile.college_student_statuses.where(status_name: "Just a Fan").count %></h4>
-        <% @student_profile.college_student_statuses.where(status_name: "Just a Fan").each do |student_profile| %>
-          <%= image_tag(@student_profile.photo(:thumb)) %>
+      <h4 class="sub-text">Fans: <%= @college.fans.count %></h4>
+        <% @college.fans.each do |student_profile| %>
+          <%= link_to image_tag(student_profile.photo(:thumb), title: student_profile.full_name), student_profile_path(student_profile)  %>
         <% end %>
     </div>
     <div class="col-xs-5">
-      <h4 class="sub-text">Considering: <%= @student_profile.college_student_statuses.where(status_name: "Considering").count %></h4>
-        <% @student_profile.college_student_statuses.where(status_name: "Considering").each do |student_profile| %>
-          <%= image_tag(@student_profile.photo(:thumb)) %>
+      <h4 class="sub-text">Considering: <%= @college.considering.count %></h4>
+        <% @college.considering.each do |student_profile| %>
+          <%= link_to image_tag(student_profile.photo(:thumb), title: student_profile.full_name), student_profile_path(student_profile)  %>
         <% end %>
     </div>
     <div class="col-xs-4">
-      <h4 class="sub-text">Applying: <%= @student_profile.college_student_statuses.where(status_name: "Applying").count %></h4>
-        <% @student_profile.college_student_statuses.where(status_name: "Applying").each do |student_profile| %>
-          <%= image_tag(@student_profile.photo(:thumb)) %>
+      <h4 class="sub-text">Applying: <%= @college.applying.count %></h4>
+        <% @college.applying.each do |student_profile| %>
+          <%= link_to image_tag(student_profile.photo(:thumb), title: student_profile.full_name), student_profile_path(student_profile)  %>
         <% end %>
     </div>
   </div>
