@@ -35,13 +35,13 @@
     </div>
   </div>
 
-  <div class="row fans">
+  <div class="row student-profile-fans">
     <div class="col-xs-6">
       <div class="row">
         <% @student_profile.fan_of.each do |fan_of| %>
           <div class="col-xs-4">
             <%= link_to student_profile_path(fan_of) do %>
-              <%= image_tag fan_of.photo.url(:thumb), height: 50, width: 50 %><br />
+              <%= image_tag fan_of.photo.url(:thumb) %><br />
               <%= fan_of.first_name %>
             <% end %>
           </div>
@@ -54,7 +54,7 @@
         <% @student_profile.fans.each do |fan| %>
           <div class="col-xs-4">
             <%= link_to student_profile_path(fan) do %>
-              <%= image_tag fan.photo.url(:thumb), height: 50, width: 50 %><br />
+              <%= image_tag fan.photo.url(:thumb) %><br />
               <%= fan.first_name %>
             <% end %>
           </div>
