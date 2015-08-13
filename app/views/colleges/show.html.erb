@@ -148,6 +148,9 @@
           <h5 class="college-text"><strong>Popular Majors:</strong> <%= @college.popular_majors %></h5>
         </div>
       </div>
+      <div class="col-xs-8 col-xs-offset-3">
+        <%= link_to_if @college.link_to_majors.present?, 'See List of Majors', @college.link_to_majors, class: "btn btn-default" %>
+      </div>
     </div>
     <div id="menu3" class="tab-pane fade">
       <div class="row">
@@ -167,6 +170,22 @@
         </div>
       </div>
       <div class="row">
+        <div class="col-xs-10 col-xs-offset-1">
+          <button type="button" class="btn btn-default" data-toggle="modal" data-target=".bs-example-modal-sm">Get Personalized Help With Your Application</button>
+
+            <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+              <div class="modal-dialog modal-sm">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h4 class="modal-title" id="gridSystemModalLabel">We will be in touch soon!</h4>
+                  </div>
+                </div>
+              </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
         <div class="col-xs-12">
           <h5 class="college-text">Early Admissions Deadline: <%= @college.early_admissions_deadline %></h4>
           <h5 class="college-text">Regular Admissions Deadline: <%= @college.fall_deadline %></h4>
@@ -174,6 +193,32 @@
       </div>
     </div>
   </div>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12">
+        <h5 class="college-text">Still can't find what you're looking for?  Ask a current student or admissions rep a question!</h4>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-10">
+        <div class="col-xs-8 col-xs-offset-4">
+          <button type="button" class="btn btn-default" data-toggle="modal" data-target=".bs-example-modal-sm">Ask a Question</button>
+
+            <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+              <div class="modal-dialog modal-sm">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h4 class="modal-title" id="gridSystemModalLabel">We will be in touch soon!</h4>
+                  </div>
+                </div>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <div class="row">
     <div class="col-xs-12">
       <h4 class="sub-text">Famous Alumni</h2>

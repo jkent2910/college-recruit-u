@@ -15,6 +15,13 @@ class StudentProfile < ActiveRecord::Base
     end
   end
 
+  validates_each :majors do |record, attr, value|
+    value.each do |major|
+      record.errors.add(attr, "contains an invalid major") unless student_majors.include?(major)
+    end
+  end
+  
+
   belongs_to :student, class_name: "User", foreign_key: "user_id"
 
   has_many :colleges, through: :college_student_statuses
@@ -35,6 +42,8 @@ class StudentProfile < ActiveRecord::Base
                        size: { less_than: 2.megabytes }
 
   serialize :interests, Array
+
+  serialize :majors, Array
 
   accepts_nested_attributes_for :factor_ratings
 

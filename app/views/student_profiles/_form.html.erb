@@ -40,6 +40,13 @@
       <%="#{key}" %> <br />
     <% end %>
   </div><br />
+  <div class="field">
+    <p>What major(s) are you considering?</p>
+    <% student_majors.each_key do |key| %>
+      <%= check_box_tag 'student_profile[majors[]', "#{key}", @student_profile.majors.include?(key) %>
+      <%="#{key}" %> <br /> 
+      <% end %>
+    </div><br />
 
   <div class="row">
     <p>How important are the following factors to you?  Please rate from 1 - 5 with 1 being "not important at all" and 5 being "extremely important"</p>

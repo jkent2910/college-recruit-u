@@ -15,16 +15,8 @@ RSpec.describe "colleges/show.html.erb", type: :view do
     assert_select "h1", text: "Grandview University"
   end
 
-  it "still renders without a social media links" do
-    @college.twitter = nil
-    @college.facebook = nil
-    @college.instagram = nil
-    expect { render }.not_to raise_exception
-  end
-
-  it "still renders without admissions or visit links" do
-    @college.admissions_rep_page = nil
-    @college.college_visit_page = nil
+  it "still renders with all non-required fields blank" do
+    @college = College.create(name: "Grinnell College", college_type: "Private", city: "Grinnell", state: "Iowa", region: "Town")
     expect { render }.not_to raise_exception
   end
 end
