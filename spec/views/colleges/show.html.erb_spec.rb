@@ -28,4 +28,8 @@ RSpec.describe "colleges/show.html.erb", type: :view do
     expect { render }.not_to raise_exception
   end
 
+  it "still renders with all non-required fields blank" do
+    @college = College.create(name: "Grinnell College", college_type: "Private", city: "Grinnell", state: "Iowa", region: "Town")
+    expect { render }.not_to raise_exception
+  end
 end

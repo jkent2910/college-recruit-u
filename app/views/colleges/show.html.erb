@@ -149,7 +149,7 @@
         </div>
       </div>
       <div class="col-xs-8 col-xs-offset-3">
-        <%= link_to 'See List of Majors', @college.link_to_majors, class: "btn btn-default" %>
+        <%= link_to_if @college.link_to_majors.present?, 'See List of Majors', @college.link_to_majors, class: "btn btn-default" %>
       </div>
     </div>
     <div id="menu3" class="tab-pane fade">
