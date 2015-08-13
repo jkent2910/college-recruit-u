@@ -19,7 +19,7 @@
         <% if current_user == @student_profile.student %>
           <%= link_to "Edit Profile", edit_student_profile_path(@student_profile), :class => "btn btn-default btn-sm" %>
         <% elsif current_user.student_profile.try(:fan_of?, @student_profile) %>
-        <%= link_to "Stop being a Fan", stop_being_a_fan_student_profile_path(current_user.student_profile, other_profile_id: @student_profile.to_param), :method => :post, :class=> "btn btn-danger btn-sm" %> 
+        <%= link_to "Stop being a Fan", stop_being_a_fan_student_profile_path(current_user.student_profile, other_profile_id: @student_profile.to_param), :method => :post, :class=> "btn btn-danger btn-sm" %>
         <% else %>
           <%= link_to "Become a Fan", become_a_fan_student_profile_path(current_user.student_profile, other_profile_id: @student_profile.to_param), :method => :post, :class => "btn btn-success btn-sm" %>
         <% end %>
@@ -35,29 +35,31 @@
     </div>
   </div>
 
-  <div class="row fan_of">
+  <div class="row fans">
     <div class="col-xs-6">
-      <% @student_profile.fan_of.limit(12).each do |fan_of| %>
-        <div class="col-xs-4">
-        <%= link_to student_profile_path(fan_of) do %>
-          <%= image_tag fan_of.photo.url(:thumb), height: 50, width: 50 %><br />
-          <%= fan_of.first_name %>
-        </div>
-          <% end %>
-      <%end %>
+      <div class="row">
+        <% @student_profile.fan_of.each do |fan_of| %>
+          <div class="col-xs-4">
+            <%= link_to student_profile_path(fan_of) do %>
+              <%= image_tag fan_of.photo.url(:thumb), height: 50, width: 50 %><br />
+              <%= fan_of.first_name %>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
     </div>
-  </div>
 
-  <div class="row my_fans">
-    <div class="col-xs-6 col-xs-offset-6">
-      <% @student_profile.fans.limit(12).each do |fan| %>
-        <div class="col-xs-4">
-        <%= link_to student_profile_path(fan) do %>
-          <%= image_tag fan.photo.url(:thumb), height: 50, width: 50 %><br />
-          <%= fan.first_name %>
-        </div>
-          <% end %>
-      <% end%>
+    <div class="col-xs-6">
+      <div class="row">
+        <% @student_profile.fans.each do |fan| %>
+          <div class="col-xs-4">
+            <%= link_to student_profile_path(fan) do %>
+              <%= image_tag fan.photo.url(:thumb), height: 50, width: 50 %><br />
+              <%= fan.first_name %>
+            <% end %>
+          </div>
+        <% end%>
+      </div>
     </div>
   </div> <br />
 
