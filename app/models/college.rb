@@ -28,9 +28,7 @@ class College < ActiveRecord::Base
   end
 
   def enrolling
-    college_student_statuses.enrollings.map(&:student_profile)
+    college_student_statuses.enrolling.map(&:student_profile)
   end
-
-
 
 end

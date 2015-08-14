@@ -15,9 +15,9 @@ class CollegeStudentStatus < ActiveRecord::Base
   belongs_to :student_profile
   belongs_to :college
 
-  scope :just_a_fan, -> { where(status_name: 'Just a Fan') }
-  scope :considering, -> { where(status_name: 'Considering') }
-  scope :applying, -> { where(status_name: 'Applying') }
-  scope :enrolling, -> { where(status_name: 'Enrolling') }
+  scope :just_a_fan,  -> { where(status_name: 'Just a Fan').includes(:student_profile) }
+  scope :considering, -> { where(status_name: 'Considering').includes(:student_profile) }
+  scope :applying,    -> { where(status_name: 'Applying').includes(:student_profile) }
+  scope :enrolling,   -> { where(status_name: 'Enrolling').includes(:student_profile) }
 
 end
