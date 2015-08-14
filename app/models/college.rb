@@ -15,4 +15,20 @@ class College < ActiveRecord::Base
 
   searchable_by :name
 
+  def fans
+    college_student_statuses.just_a_fan.map(&:student_profile)
+  end
+
+  def considering
+    college_student_statuses.considering.map(&:student_profile)
+  end
+
+  def applying
+    college_student_statuses.applying.map(&:student_profile)
+  end
+
+  def enrolling
+    college_student_statuses.enrolling.map(&:student_profile)
+  end
+
 end

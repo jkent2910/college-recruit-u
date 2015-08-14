@@ -66,4 +66,36 @@ RSpec.describe College, type: :model do
       expect(subject).to validate_attachment_size(:logo).less_than(2.megabytes)
     end
   end
+
+  describe "student relationships" do
+    # These specs are slow. Are they worth it?
+
+    before do
+      @college = FactoryGirl.create(:college)
+      @student_fan = FactoryGirl.create(:student_profile)
+      @student_fan.add_or_update_college_status(@college, "Just a Fan")
+      @student_considering = FactoryGirl.create(:student_profile)
+      @student_considering.add_or_update_college_status(@college, "Considering")
+      @student_applying = FactoryGirl.create(:student_profile)
+      @student_applying.add_or_update_college_status(@college, "Applying")
+      @student_enrolling = FactoryGirl.create(:student_profile)
+      @student_enrolling.add_or_update_college_status(@college, "Enrolling")
+    end
+
+    specify "fans" do
+      expect(@college.fans).to contain_exactly(@student_fan)
+    end
+
+    specify "considering" do
+      expect(@college.considering).to contain_exactly(@student_considering)
+    end
+
+    specify "applying" do
+      expect(@college.applying).to contain_exactly(@student_applying)
+    end
+
+    specify "enrolling" do
+      expect(@college.enrolling).to contain_exactly(@student_enrolling)
+    end
+  end
 end
