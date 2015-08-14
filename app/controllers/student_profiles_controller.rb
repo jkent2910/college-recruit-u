@@ -67,13 +67,13 @@ class StudentProfilesController < ApplicationController
   end
 
   def become_a_fan
-    other_profile = StudentProfile.find params.require(:other_profile_id)
+    other_profile = StudentProfile.friendly.find params.require(:other_profile_id)
     @student_profile.become_fan_of(other_profile)
     redirect_to :student_profiles
   end
 
   def stop_being_a_fan
-    other_profile = StudentProfile.find params.require(:other_profile_id)
+    other_profile = StudentProfile.friendly.find params.require(:other_profile_id)
     @student_profile.stop_being_a_fan_of(other_profile)
     redirect_to :student_profiles
   end
@@ -81,7 +81,7 @@ class StudentProfilesController < ApplicationController
   private
   # Use callbacks to share common setup or constraints between actions.
   def set_student_profile
-    @student_profile = StudentProfile.includes(:factor_ratings, :factors).find(params[:id])
+    @student_profile = StudentProfile.includes(:factor_ratings, :factors).friendly.find(params[:id])
   end
 
   def check_for_existing_profile
@@ -91,7 +91,7 @@ class StudentProfilesController < ApplicationController
   end
 
   def ensure_student_ownership
-    if current_user != StudentProfile.find(params[:id]).student
+    if current_user != StudentProfile.friendly.find(params[:id]).student
       redirect_to student_profiles_path, notice: "You are not allowed to perform that action."
     end
   end

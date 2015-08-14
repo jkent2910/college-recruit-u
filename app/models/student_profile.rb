@@ -1,5 +1,8 @@
 class StudentProfile < ActiveRecord::Base
   extend StudentProfilesHelper
+  extend FriendlyId
+
+  friendly_id :full_name, use: :slugged
 
   VALID_GRADUATION_YEARS = ['2016', '2017', '2018', '2019']
 
