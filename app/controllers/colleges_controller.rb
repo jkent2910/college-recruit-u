@@ -6,14 +6,14 @@ class CollegesController < ApplicationController
   end
 
   def show
-    @college = College.find(params[:id])
+    @college = College.friendly.find(params[:id])
     @student_profile = current_user.student_profile
     @college_status = @student_profile.try(:college_status, @college)
   end
 
   def student_status
-    college = College.find(params[:id])
-    student_profile = StudentProfile.find(params[:student_profile_id])
+    college = College.friendly.find(params[:id])
+    student_profile = StudentProfile.friendly.find(params[:student_profile_id])
     status = params[:college_student_status]
 
     if current_user != student_profile.student
