@@ -14,3 +14,14 @@ div.college-show-students {
     width: 50px;
   }
 }
+
+div.centered {
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  img.essay-icon {
+      height: 300px;
+      width: 300px;
+    }
+  }
