@@ -43,14 +43,15 @@
       <h4 class="small-txt">Explore Colleges</h4>
     </div>
   </div>
-  <div class="row">
+  <div class="row colleges-index">
     <% @colleges.each do |college| %>
-      <div class="col-xs-4">
-        <%= link_to image_tag(college.logo(:thumb)), college %><br />
-        <%= link_to college.name, college %>
-      </div>
-    <% end %><br />
-  </div><br />
+    <div class="col-md-3 col-xs-6 college">
+      <%= link_to image_tag(college.logo(:thumb)), college %><br />
+      <%= link_to college.name, college %>
+    </div>
+    <% end %>
+  </div>
+  <br />
   <div class="row">
     <div class="col-xs-6">
       <%= link_to 'Browse All Colleges', colleges_path, class: "btn btn-success btn-sm"%>
