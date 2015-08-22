@@ -60,6 +60,13 @@
         <% end %>
     </div>
   </div>
+  <div class="row college-show-students">
+    <div class="col-xs-3">
+      <h4 class="sub-text">Future Alumni: <%= @college.enrolling.count %></h4>
+      <% @college.enrolling.each do |student_profile| %>
+        <%= link_to image_tag(student_profile.photo(:thumb), title: student_profile.full_name), student_profile_path(student_profile) %>
+        <% end %>
+    </div>
 </div><br />
 
 <div class="container">
