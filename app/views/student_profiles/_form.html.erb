@@ -18,6 +18,10 @@
     <%= f.text_field :last_name %>
   </div>
   <div class="field">
+    <%= f.label :cell_number %><br>
+    <%= f.text_field :cell_number %><br>
+  </div>
+  <div class="field">
     <%= f.label :gender %><br>
     <%= f.select :gender, options_for_select(StudentProfile::VALID_GENDERS, @student_profile.gender) %>
   </div>
