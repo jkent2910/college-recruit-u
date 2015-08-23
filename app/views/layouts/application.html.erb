@@ -9,66 +9,63 @@
 </head>
 <body>
 
-    <!-- Fixed navbar -->
-    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand hidden-xs hidden-sm" href="#" title="College Recruit U">
-            <%= image_tag("CRU_small.png", :class=> "small-logo") %> </a>
-          <%= form_tag search_path do %>
-            <div class="input-group search-small hidden-md hidden-lg">
-              <%= text_field_tag :query, '', class: "form-control search-small", placeholder: "Search" %>
-              <span class="input-group-btn">
-                <button class="btn btn-default search-small" type="button">Go!</button>
-              </span>
-            </div>
-            <div class="row hidden-md hidden-lg">
-              <h5 class="small-screen-logo-text">College Recruit U</h5>
-            </div>
-          <% end %>
-        </div>
-
-        <%= form_tag search_path, class: "navbar-form navbar-right hidden-xs hidden-sm", role: "search" do %>
-          <div class="form-group hidden-xs hidden-sm">
-            <%= text_field_tag :query, '', class: "form-control", placeholder: "Search" %>
-          </div>
-          <button type="submit" class="btn btn-default hidden-xs hidden-sm">Go</button>
-        <% end %>
-
-        <div class="navbar-collapse collapse">
-          <ul class="nav navbar-nav navbar-right">
-            <li><a href="/home" class="navigation-links">Home</a></li>
-            <% if user_signed_in? %>
-                <% if current_user.try(:student_profile) %>
-                  <li><%= link_to "Your Profile", student_profile_path(current_user.student_profile) %></li>
-                <% else %>
-                  <li><%= link_to "Create Profile", new_student_profile_path(current_user) %></li>
-                <% end %>
-              <li><%= link_to "Explore Colleges", colleges_path %></li>
-              <li><%= link_to "Browse Students", student_profiles_path %></li>
-              <li><%= link_to "Sign Out", destroy_user_session_path, :method => 'delete' %></li>
+<!-- Begin Navbar -->
+<div id="nav">
+  <div class="navbar navbar-default navbar-static navbar-fixed-top">
+    <div class="container">
+      <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+      <a class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </a>
+      <div class="navbar-collapse collapse">
+        <ul class="nav navbar-nav">
+          <% if user_signed_in? %>
+          <li><a href="/home" class="navigation-links">Home</a></li>
+            <% if current_user.try(:student_profile) %>
+              <li><%= link_to "Your Profile", student_profile_path(current_user.student_profile) %></li>
             <% else %>
-              <li><%= link_to "Sign In", new_user_session_path %></li>
-              <li><%= link_to "Sign Up", new_user_registration_path %></li>
+              <li><%= link_to "Create Profile", new_student_profile_path(current_user) %></li>
             <% end %>
-          </ul>
-        </div><!--/.nav-collapse -->
-      </div>
-    </div>
 
-    <% flash.each do |name, msg| %>
-      <% if msg.is_a?(String) %>
-        <%= content_tag :div, msg, :class => "flash_#{name}" %>
-      <% end %>
-    <% end %>
+            <li><%= link_to "Colleges", colleges_path %></li>
+            <li><%= link_to "Students", student_profiles_path %></li>
+            <li><%= link_to "Sign Out", destroy_user_session_path, :method => 'delete' %></li>
+              <%= form_tag search_path, class: "navbar-form pull-right hidden-xs hidden-sm", role: "search" do %>
+              <div class="form-group hidden-xs hidden-sm">
+              <%= text_field_tag :query, '', class: "form-control", placeholder: "Search" %>
+              </div>
+              <button type="submit" class="btn btn-default hidden-xs hidden-sm">Go</button>
+              <% end %>
+            <% else %>
+
+          <li><a href="#our-mission">OUR MISSION</a></li>
+          <li><a href="#how-we-help">HOW WE HELP</a></li>
+          <li><a href="#connect">TALK TO US</a></li>
+          <li><a href="https://collegerecruitu.wordpress.com">BLOG</a></li>
+          <li class="right-nav visible-xs"><%= link_to "Welcome Back", new_user_session_path, class: "small-nav-text" %></li>
+          <li class="right-nav visible-xs"><%= link_to "Get Started", new_user_registration_path, class: "small-nav-text" %></li>
+        </ul>
+        <ul class="nav pull-right navbar-nav hidden-xs">
+          <li class="right-nav"><%= link_to "Welcome Back", new_user_session_path, class: "small-nav-text" %></li>
+          <li class="right-nav"><%= link_to "Get Started", new_user_registration_path, class: "small-nav-text" %></li>
+        </ul>
+        <% end %>
+      </div>    
+    </div>
+  </div><!-- /.navbar -->
+</div>
+
+
+<% flash.each do |name, msg| %>
+  <% if msg.is_a?(String) %>
+    <%= content_tag :div, msg, :class => "flash_#{name}" %>
+  <% end %>
+<% end %>
 
 <%= yield %>
 
 </body>
+
 </html>
