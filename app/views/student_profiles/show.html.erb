@@ -1,11 +1,11 @@
 <div class="container">
   <div class="row">
-    <div class="col-xs-12 profile-name">
+    <div class="col-xs-12">
       <h3 class="profile-header"><%= @student_profile.first_name %> <%= @student_profile.last_name %></h3>
       <div class="row text-center">
         <%= image_tag "high-school-logos/#{high_schools[@student_profile.high_school].try(:[], :logo)}" %>
       </div>
-      <h5 class="profile-header">Class of <%=@student_profile.graduation_year %></h5>
+      <h5 class="small-text">Class of <%=@student_profile.graduation_year %></h5>
     </div>
   </div>
   <div class="row text-center">
@@ -15,54 +15,56 @@
   </div>
 
   <div class="row"><br />
-    <div class="col-xs-12 profile-header">
+    <div class="col-xs-12 center">
         <% if current_user == @student_profile.student %>
-          <%= link_to "Edit Profile", edit_student_profile_path(@student_profile), :class => "btn btn-default btn-sm" %>
+          <%= link_to "Edit Profile", edit_student_profile_path(@student_profile), :class => "btn btn-default btn-md" %>
         <% elsif current_user.student_profile.try(:fan_of?, @student_profile) %>
-        <%= link_to "Stop being a Fan", stop_being_a_fan_student_profile_path(current_user.student_profile, other_profile_id: @student_profile.to_param), :method => :post, :class=> "btn btn-danger btn-sm" %>
+        <%= link_to "Stop being a Fan", stop_being_a_fan_student_profile_path(current_user.student_profile, other_profile_id: @student_profile.to_param), :method => :post, :class=> "btn btn-danger btn-md" %>
         <% else %>
-          <%= link_to "Become a Fan", become_a_fan_student_profile_path(current_user.student_profile, other_profile_id: @student_profile.to_param), :method => :post, :class => "btn btn-success btn-sm" %>
+          <%= link_to "Become a Fan", become_a_fan_student_profile_path(current_user.student_profile, other_profile_id: @student_profile.to_param), :method => :post, :class => "btn btn-success btn-md" %>
         <% end %>
     </div>
   </div>
 
-  <div class="row">
-    <div class="col-xs-6">
-      <h4 class="sub-text">Fan of <%= @student_profile.fan_of.count %></h4>
-    </div>
-    <div class="col-xs-6">
-      <h4 class="sub-text"><%= @student_profile.fans.count %> Fans</h4>
-    </div>
-  </div>
-
-  <div class="row student-profile-fans">
-    <div class="col-xs-6">
-      <div class="row">
-        <% @student_profile.fan_of.each do |fan_of| %>
-          <div class="col-xs-4 col-md-2">
-            <%= link_to student_profile_path(fan_of) do %>
-              <%= image_tag fan_of.photo.url(:thumb) %><br />
-              <%= fan_of.first_name %>
-            <% end %>
-          </div>
-        <% end %>
+  <div class="fans-container">
+    <div class="row">
+      <div class="col-xs-6">
+        <h4 class="sub-text">Fan of <%= @student_profile.fan_of.count %></h4>
+      </div>
+      <div class="col-xs-6">
+        <h4 class="sub-text"><%= @student_profile.fans.count %> Fans</h4>
       </div>
     </div>
-
-    <div class="col-xs-6">
-      <div class="row">
-        <% @student_profile.fans.each do |fan| %>
-          <div class="col-xs-4 col-md-2">
-            <%= link_to student_profile_path(fan) do %>
-              <%= image_tag fan.photo.url(:thumb) %><br />
-              <%= fan.first_name %>
+      <div class="row student-profile-fans">
+        <div class="col-xs-6">
+          <div class="row">
+            <% @student_profile.fan_of.each do |fan_of| %>
+              <div class="col-xs-4 col-md-2">
+                <%= link_to student_profile_path(fan_of) do %>
+                  <%= image_tag fan_of.photo.url(:thumb) %><br />
+                  <%= fan_of.first_name %>
+                <% end %>
+              </div>
             <% end %>
           </div>
-        <% end%>
+        </div>
+      <div class="col-xs-6">
+        <div class="row">
+          <% @student_profile.fans.each do |fan| %>
+            <div class="col-xs-4 col-md-2">
+              <%= link_to student_profile_path(fan) do %>
+                <%= image_tag fan.photo.url(:thumb) %><br />
+                <%= fan.first_name %>
+              <% end %>
+            </div>
+          <% end%>
+        </div>
       </div>
     </div>
-  </div> <br />
+  </div> 
+</div><br />
 
+<div class="container student-colleges-container">
   <div class="row student-profile-colleges">
     <div class="col-xs-4">
       <h4 class="sub-text">I'm a Fan</h4>
@@ -104,7 +106,7 @@
   <div class="row">
     <div class="col-xs-12">
       <% if @student_profile.college_student_statuses.where(status_name: "Enrolling").blank? %>
-      <h5 class="college-text"><%= @student_profile.first_name %> is still being recruited! </h5>
+      <h5 class="sub-text-centered"><%= @student_profile.first_name %> is still being recruited! </h5>
       <% else %>
       <h5 class="college-text"><%= @student_profile.first_name %> is going to <% @student_profile.college_student_statuses.where(status_name: "Enrolling").each do |college_student_status | %>
         <%= link_to college_student_status.college.name, college_student_status.college %> </h5>
@@ -117,9 +119,12 @@
       <% end %>
     </div>
   </div>
+</div>
 
+<div class="container student-interests-container">
   <div class="row">
     <div class="col-xs-12 col-md-6 col-md-offset-3">
+      <h5 class="sub-text-centered">You can find <%= @student_profile.first_name %>....</h5>
       <% @student_profile.interests.each do |interest| %>
         <%= image_tag "interests/#{student_interests[interest].try(:[], :logo)}", title: interest %>
       <% end %>
@@ -133,7 +138,9 @@
         <% end %>
     </div>
   </div><br />
+</div>
 
+<div class="container majors-container">
   <div class="row">
     <div class="col-xs-12 col-md-6 col-md-offset-3">
       <% @student_profile.majors.each do |major| %>
@@ -145,13 +152,14 @@
   <div class="row">
     <div class="col-xs-12">
       <% if @student_profile.majors.blank? %>
-        <h5 class="college-text"><%= @student_profile.first_name %> has not added any majors yet </h5>
+        <h5 class="sub-text-centered"><%= @student_profile.first_name %> isn't sure what to study in college yet </h5>
         <% end %>
     </div>
   </div><br />
+</div>
 
 
-
+<div class="container factors-container">
   <div class="row">
     <div class="col-xs-12 col-md-6 col-md-offset-3 text-center">
       <h4 class="sub-text">What's important to <%= @student_profile.first_name %></h4>
@@ -172,5 +180,8 @@
         <% end %>
     </div>
   </div><br />
+</div>
 
-<%= link_to 'Browse Students', student_profiles_path, class: "btn btn-success btn-sm"%>
+<div class="container links-container">
+  <%= link_to 'Browse Students', student_profiles_path, class: "btn btn-success btn-md"%>
+</div>

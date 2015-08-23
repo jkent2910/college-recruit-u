@@ -19,9 +19,37 @@ div.centered {
   text-align: center;
 }
 
+.small-screen-text-black {
+  font-family: 'Signika', sans-serif;
+  color: black;
+  text-align: center;
+  font-size: 36px;
+}
+
+.boxed-text {
+  padding-top: 5px;
+  padding-bottom: 5px;
+  text-align: center;
+  font-family: 'Signika', sans-serif;
+}
+
 @media (min-width: 768px) {
   img.essay-icon {
       height: 300px;
       width: 300px;
     }
+  }
+
+@media only screen and (max-width: 750px) {
+  .colleges {
+  padding-top: 25px;
+  }
+}
+
+@media only screen 
+  and (min-width: 768px)
+  and (max-width: 1024px) {
+  .colleges {
+  padding-top: 25px;
+  }
   }

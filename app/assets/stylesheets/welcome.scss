@@ -2,11 +2,18 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-@import url(http://fonts.googleapis.com/css?family=Droid+Sans);
+@import url(http://fonts.googleapis.com/css?family=Spinnaker);
 @import url(http://fonts.googleapis.com/css?family=Signika);
 
 body {
   padding-top: 50px;
+  font-family: 'Spinnaker', sans-serif !important;
+}
+
+.md-text {
+  font-family: 'Signika', sans-serif;
+  color: black;
+  font-size: 28px;
 }
 
 .background { 
@@ -24,6 +31,10 @@ body {
 
 .center {
   text-align: center;
+}
+
+a.btn-success:visited {
+  color: white;
 }
 
 .header-text {
@@ -195,6 +206,10 @@ span.glyphicon {
     border-radius: 8px !important;
 }
 
+.alert {
+  margin-bottom: 0px !important;
+}
+
 
 @media only screen and (max-width: 750px) {
   .small-screen-padding {
@@ -218,6 +233,7 @@ span.glyphicon {
   width: 150px;
   margin-top: 5px;
   }
+
 }
 
 @media only screen 

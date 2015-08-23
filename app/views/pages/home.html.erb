@@ -1,18 +1,21 @@
 <div class="container home-header">
   <div class="row boxed-text">
     <div class="col-xs-12">
-      <h1 class="profile-header">Welcome, <%= @student_profile.first_name %></h1>
+      <h1 class="profile-header">Welcome <%= @student_profile.try(:first_name) %></h1>
     </div>
   </div><br />
-  <div class="row">
-    <div class="col-xs-6 col-xs-offset-4 hidden-md hidden-lg hidden-xl">
-      <%= image_tag @student_profile.photo.url(:thumb) %>
-    </div>
-    <div class="col-md 6 col-md-offset-5 hidden-xs hidden-sm">
-      <%= image_tag @student_profile.photo.url(:medium) %>
+  <% if current_user.student_profile != nil %>
+    <div class="row">
+      <div class="col-xs-6 col-xs-offset-4 hidden-md hidden-lg hidden-xl">
+        <%= image_tag @student_profile.photo.url(:thumb) %>
+      </div>
+      <div class="col-md 6 col-md-offset-5 hidden-xs hidden-sm">
+        <%= image_tag @student_profile.photo.url(:medium) %>
+      </div>
     </div>
   </div>
-</div>
+  <% else %> 
+  <% end %>
 
 <div class="container">
   <div class="row">
