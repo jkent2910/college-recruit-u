@@ -64,37 +64,92 @@
   </div> 
 </div><br />
 
-<div class="container student-colleges-container">
-  <div class="row student-profile-colleges">
-    <div class="col-xs-4">
-      <h4 class="sub-text">I'm a Fan</h4>
-        <% @student_profile.college_student_statuses.where(status_name: "Just a Fan").each do |college_student_status| %>
-          <%= link_to college_student_status.college do %>
-            <%= image_tag(college_student_status.college.logo(:thumb)) %><br />
-            <%= college_student_status.college.name %>
-          <% end %>
-        <% end %>
+<div class="container visible-xs">
+  <div class="row">
+    <div class="col-xs-12">
+      <h4 class="sub-text-centered">I'm a Fan</h4>
     </div>
-    <div class="col-xs-4">
-      <h4 class="sub-text">Considering</h4>
-        <% @student_profile.college_student_statuses.where(status_name: "Considering").each do |college_student_status| %>
-          <%= link_to college_student_status.college do %>
-            <%= image_tag(college_student_status.college.logo(:thumb)) %><br />
-            <%= college_student_status.college.name %>
-          <% end %>
-        <% end %>
+    <div class="col-xs-12 student-colleges-container">
+      <% @student_profile.college_student_statuses.where(status_name: "Just a Fan").each do |college_student_status| %>
+        <div class="col-xs-3 student-profile-colleges">
+            <%= link_to college_student_status.college do %>
+              <%= image_tag(college_student_status.college.logo(:thumb)) %>
+            <% end %>
+        </div>
+      <% end %>
     </div>
-    <div class="col-xs-4">
-      <h4 class="sub-text">Applying</h4>
-        <% @student_profile.college_student_statuses.where(status_name: "Applying").each do |college_student_status| %>
-          <%= link_to college_student_status.college do %>
-            <%= image_tag(college_student_status.college.logo(:thumb)) %><br />
-            <%= college_student_status.college.name %>
-          <% end %>
-        <% end %>
+    <div class="col-xs-12">
+      <h4 class="sub-text-centered">Considering</h4>
+    </div>
+    <div class="col-xs-12 student-colleges-container">
+      <% @student_profile.college_student_statuses.where(status_name: "Considering").each do |college_student_status| %>
+        <div class="col-xs-4 student-profile-colleges">
+            <%= link_to college_student_status.college do %>
+              <%= image_tag(college_student_status.college.logo(:thumb)) %>
+            <% end %>
+        </div>
+      <% end %>
+    </div>
+    <div class="col-xs-12">
+      <h4 class="sub-text-centered">Applying</h4>
+    </div>
+      <div class="col-xs-12 student-colleges-container">
+      <% @student_profile.college_student_statuses.where(status_name: "Applying").each do |college_student_status| %>
+        <div class="col-xs-4 student-profile-colleges">
+            <%= link_to college_student_status.college do %>
+              <%= image_tag(college_student_status.college.logo(:thumb)) %>
+            <% end %>
+        </div>
+      <% end %>
     </div>
   </div>
 
+<div class="container hidden-xs">
+  <div class="row">
+    <div class="col-md-4 col-sm-4">
+      <h4 class="sub-text-centered">I'm a Fan</h4>
+    </div>
+    <div class="col-md-4 col-sm-4">
+      <h4 class="sub-text-centered">Considering</h4>
+    </div>
+    <div class="col-md-4 col-sm-4">
+      <h4 class="sub-text-centered">Applying</h4>
+    </div>
+  </div>
+</div>
+<div class="container hidden-xs">
+  <div class="row">
+    <div class="col-md-4 col-sm-4 student-colleges-container">
+      <% @student_profile.college_student_statuses.where(status_name: "Just a Fan").each do |college_student_status| %>
+        <div class="col-md-2 col-sm-3 student-profile-colleges">
+            <%= link_to college_student_status.college do %>
+              <%= image_tag(college_student_status.college.logo(:thumb)) %>
+            <% end %>
+        </div>
+      <% end %>
+    </div>
+    <div class="col-md-4 col-sm-4 student-colleges-container">
+      <% @student_profile.college_student_statuses.where(status_name: "Considering").each do |college_student_status| %>
+        <div class="col-md-2 col-sm-3 student-profile-colleges">
+            <%= link_to college_student_status.college do %>
+              <%= image_tag(college_student_status.college.logo(:thumb)) %>
+            <% end %>
+        </div>
+      <% end %>
+    </div>
+
+    <div class="col-md-4 col-sm-4 student-colleges-container">
+      <% @student_profile.college_student_statuses.where(status_name: "Applying").each do |college_student_status| %>
+        <div class="col-md-2 col-sm-3 student-profile-colleges">
+            <%= link_to college_student_status.college do %>
+              <%= image_tag(college_student_status.college.logo(:thumb)) %>
+            <% end %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+<div class="container">
   <div class="row">
     <div class="col-xs-12">
       <% if @student_profile.college_student_statuses.blank? %>
