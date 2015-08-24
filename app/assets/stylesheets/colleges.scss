@@ -44,6 +44,11 @@ div.centered {
   .colleges {
   padding-top: 25px;
   }
+
+  .college-name-and-logo {
+  padding-top: 10px;
+  margin-bottom: 10px;
+  }
 }
 
 @media only screen 
@@ -52,4 +57,10 @@ div.centered {
   .colleges {
   padding-top: 25px;
   }
+  .college-name-and-logo {
+  margin-bottom: 10px;
+  margin-top: 20px;
+  }
+
+
   }

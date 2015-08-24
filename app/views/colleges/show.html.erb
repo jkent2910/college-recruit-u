@@ -1,5 +1,5 @@
 <div class="container">
-  <div class="row">
+  <div class="row college-name-and-logo">
     <div class="col-xs-8 col-md-6 col-md-offset-2">
       <h1 class="small-screen-text-black"><%= @college.name%></h1>
     </div>
@@ -101,12 +101,12 @@
       </div>
       <div class="row"><br />
         <% if @college.admissions_rep_page %>
-          <div class="col-xs-6 col-md-offset-4 col-md-1">
+          <div class="col-xs-6 col-md-offset-4 col-md-1 centered">
             <%= link_to 'Find Your Admissions Rep', @college.admissions_rep_page, class: "btn btn-default" %>
           </div>
         <% end %>
         <% if @college.college_visit_page %>
-          <div class="col-xs-5 col-xs-offset-1 col-md-2">
+          <div class="col-xs-5 col-xs-offset-1 col-md-offset-1 col-md-2 centered">
             <%= link_to 'Schedule a Visit', @college.college_visit_page, class: "btn btn-default" %>
           </div>
         <% end %>
@@ -116,9 +116,15 @@
     <div id="menu1" class="tab-pane fade">
       <div class="row">
         <div class="col-xs-12 col-md-6 col-md-offset-3">
-          <h5 class="sub-text-centered"><strong>In-state tuition:</strong> <%= @college.in_state_tuition %></h5>
-          <h5 class="sub-text-centered"><strong>Out-of-state tuition:</strong> <%= @college.out_of_state_tuition %></h5>
-          <h5 class="sub-text-centered"><strong>Receiving Financial Aid: </strong><%= @college.percent_receive_financial_aid %></h5>
+          <% if @college.in_state_tuition != ""  %>
+            <h5 class="sub-text-centered"><strong>In-state tuition:</strong> <%= @college.in_state_tuition %></h5>
+          <% end %>
+          <% if @college.out_of_state_tuition != ""  %>
+            <h5 class="sub-text-centered"><strong>Out-of-state tuition:</strong> <%= @college.out_of_state_tuition %></h5>
+          <% end %>
+          <% if @college.percent_receive_financial_aid != "" %>
+            <h5 class="sub-text-centered"><strong>Receiving Financial Aid: </strong><%= @college.percent_receive_financial_aid %></h5>
+          <% end %>
           <% if @college.financial_aid_link %>
             <div class="col-xs-12 col-md-6 col-md-offset-3 centered">
               <%= link_to 'Find Scholarships', @college.financial_aid_link, class: "btn btn-default" %>
@@ -131,23 +137,39 @@
     <div id="menu2" class="tab-pane fade">
       <div class="row">
         <div class="col-xs-12">
-          <h5 class="sub-text-centered"><strong>Female:</strong> <%= @college.percent_female %></h5>
-          <h5 class="sub-text-centered"><strong>Male:</strong> <%= @college.percent_male %></h5>
+          <% if @college.percent_female != "" %>
+            <h5 class="sub-text-centered"><strong>Female:</strong> <%= @college.percent_female %></h5>
+          <% end %>
+          <% if @college.percent_male != "" %>
+            <h5 class="sub-text-centered"><strong>Male:</strong> <%= @college.percent_male %></h5>
+          <% end %>
         </div>
         <div class="col-xs-6 col-xs-offset-3 col-md-6 col-md-offset-3 centered">
           <%= image_tag("male-female-symbols.jpg", height: 100, width: 150)%>
         </div>
         <div class="col-xs-12">
-          <h5 class="sub-text-centered"><strong>Average GPA: </strong><%= @college.avg_gpa %></h5>
-          <h5 class="sub-text-centered"><strong>Average SAT: </strong><%= @college.avg_sat %></h5>
-          <h5 class="sub-text-centered"><strong>Average ACT: </strong> <%= @college.avg_act %></h5>
-          <h5 class="sub-text-centered"><strong>% Minority: </strong><%= @college.percent_minority %></h5>
-          <h5 class="sub-text-centered"><strong>% Int'l: </strong> <%= @college.percent_international %></h5>
+          <% if @college.avg_gpa != "" %>
+            <h5 class="sub-text-centered"><strong>Average GPA: </strong><%= @college.avg_gpa %></h5>
+          <% end %>
+          <% if @college.avg_sat != ""  %>
+            <h5 class="sub-text-centered"><strong>Average SAT: </strong><%= @college.avg_sat %></h5>
+          <% end %>
+          <% if @college.avg_act != ""  %>
+            <h5 class="sub-text-centered"><strong>Average ACT: </strong> <%= @college.avg_act %></h5>
+          <% end %>
+          <% if @college.percent_minority != ""  %>
+            <h5 class="sub-text-centered"><strong>% Minority: </strong><%= @college.percent_minority %></h5>
+          <% end %>
+          <% if @college.percent_international != ""  %>
+            <h5 class="sub-text-centered"><strong>% Int'l: </strong> <%= @college.percent_international %></h5>
+          <% end %>
         </div>
       </div>
       <div class="row">
         <div class="col-xs-12">
+          <% if @college.popular_majors != ""  %>
           <h5 class="sub-text-centered"><strong>Popular Majors:</strong> <%= @college.popular_majors %></h5>
+          <% end %>
         </div>
       </div>
       <div class="col-xs-12 col-md-6 col-md-offset-3 centered">
@@ -220,20 +242,22 @@
   </div>
 
   <div class="row">
-    <div class="col-xs-12">
+    <div class="col-xs-12 centered">
+      <% if @college.notable_alumni? %>
       <h4 class="sub-text-centered">Famous Alumni</h2>
     </div>
   </div>
   <div class="row">
-    <div class="col-xs-12">
+    <div class="col-xs-12 centered">
       <h4 class="sub-text-centered"><%= @college.notable_alumni %></h4>
     </div>
   </div>
+    <% else %>
+    <% end %>
 </div>
 </div>
 <br />
 
 <div class="links-container">
-
-<%= link_to 'Browse Colleges', colleges_path, class: "btn btn-success btn-md" %>
+  <%= link_to 'Browse Colleges', colleges_path, class: "btn btn-success btn-md" %>
 </div>
