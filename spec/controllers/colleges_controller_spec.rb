@@ -74,6 +74,22 @@ RSpec.describe CollegesController, type: :controller do
       end
     end
 
+    context "only allow one college to be enrolled status" do
+      before do 
+        @other_college = FactoryGirl.create(:college)
+        @student_profile.add_or_update_college_status(@college, 'Enrolling')
+      end
+
+      it "confirm test is set up correctly" do
+        expect(@student_profile.college_status(@college).status_name).to eq('Enrolling')
+      end
+
+      it "does not allow student to add more than one college with enrolling status" do
+        post :student_status, {id: @other_college.to_param, student_profile_id: @student_profile.to_param, college_student_status: 'Enrolling'}
+        expect(flash[:notice]).to match /you can only/i
+      end
+    end
+
     context "when the specified student profile does not belong to the current user" do
       before do
         other_profile = FactoryGirl.create(:student_profile)
