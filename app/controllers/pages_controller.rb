@@ -8,7 +8,6 @@ class PagesController < ApplicationController
       @student_profiles = StudentProfile.all
 
       @colleges = College.all
-
     else
       redirect_to root_path
     end

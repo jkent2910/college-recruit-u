@@ -1,7 +1,7 @@
 <div class="container">
-  <div class="row">
+  <div class="row college-name-and-logo">
     <div class="col-xs-8 col-md-6 col-md-offset-2">
-      <h1 class="sub-text"><%= @college.name%></h1>
+      <h1 class="small-screen-text-black"><%= @college.name%></h1>
     </div>
     <div class="col-xs-4 col-md-2">
       <%= image_tag(@college.logo(:thumb)) %>
@@ -20,17 +20,17 @@
 <div class="container">
   <div class="row">
     <div class="col-xs-12">
-      <h4 class="college-text"><%= @college.city %>, <%= @college.state %></h4>
+      <h4 class="sub-text-centered"><%= @college.city %>, <%= @college.state %></h4>
     </div>
   </div>
   <div class="row">
     <div class="col-xs-12">
-      <h5 class="college-text"><%= @college.region %></h4>
+      <h5 class="sub-text-centered"><%= @college.region %></h4>
     </div>
   </div>
   <div class="row">
     <div class="col-xs-12">
-      <h5 class="college-text"><%= @college.college_type %></h5>
+      <h5 class="sub-text-centered"><%= @college.college_type %></h5>
     </div>
   </div>
 </div>
@@ -41,19 +41,19 @@
 
 <div class="container">
   <div class="row college-show-students">
-    <div class="col-xs-3">
+    <div class="col-xs-3 col-md-4 centered">
       <h4 class="sub-text">Fans: <%= @college.fans.count %></h4>
         <% @college.fans.each do |student_profile| %>
           <%= link_to image_tag(student_profile.photo(:thumb), title: student_profile.full_name), student_profile_path(student_profile)  %>
         <% end %>
     </div>
-    <div class="col-xs-5">
+    <div class="col-xs-5 col-md-4 centered">
       <h4 class="sub-text">Considering: <%= @college.considering.count %></h4>
         <% @college.considering.each do |student_profile| %>
           <%= link_to image_tag(student_profile.photo(:thumb), title: student_profile.full_name), student_profile_path(student_profile)  %>
         <% end %>
     </div>
-    <div class="col-xs-4">
+    <div class="col-xs-4 col-md-4 centered">
       <h4 class="sub-text">Applying: <%= @college.applying.count %></h4>
         <% @college.applying.each do |student_profile| %>
           <%= link_to image_tag(student_profile.photo(:thumb), title: student_profile.full_name), student_profile_path(student_profile)  %>
@@ -101,12 +101,12 @@
       </div>
       <div class="row"><br />
         <% if @college.admissions_rep_page %>
-          <div class="col-xs-6 col-md-offset-4 col-md-1">
+          <div class="col-xs-6 col-md-offset-4 col-md-1 centered">
             <%= link_to 'Find Your Admissions Rep', @college.admissions_rep_page, class: "btn btn-default" %>
           </div>
         <% end %>
         <% if @college.college_visit_page %>
-          <div class="col-xs-5 col-xs-offset-1 col-md-2">
+          <div class="col-xs-5 col-xs-offset-1 col-md-offset-1 col-md-2 centered">
             <%= link_to 'Schedule a Visit', @college.college_visit_page, class: "btn btn-default" %>
           </div>
         <% end %>
@@ -116,11 +116,17 @@
     <div id="menu1" class="tab-pane fade">
       <div class="row">
         <div class="col-xs-12 col-md-6 col-md-offset-3">
-          <h5 class="college-text"><strong>In-state tuition:</strong> <%= @college.in_state_tuition %></h5>
-          <h5 class="college-text"><strong>Out-of-state tuition:</strong> <%= @college.out_of_state_tuition %></h5>
-          <h5 class="college-text"><strong>Receiving Financial Aid: </strong><%= @college.percent_receive_financial_aid %></h5>
+          <% if @college.in_state_tuition != ""  %>
+            <h5 class="sub-text-centered"><strong>In-state tuition:</strong> <%= @college.in_state_tuition %></h5>
+          <% end %>
+          <% if @college.out_of_state_tuition != ""  %>
+            <h5 class="sub-text-centered"><strong>Out-of-state tuition:</strong> <%= @college.out_of_state_tuition %></h5>
+          <% end %>
+          <% if @college.percent_receive_financial_aid != "" %>
+            <h5 class="sub-text-centered"><strong>Receiving Financial Aid: </strong><%= @college.percent_receive_financial_aid %></h5>
+          <% end %>
           <% if @college.financial_aid_link %>
-            <div class="col-xs-8 col-xs-offset-3 col-md-6 col-md-offset-3 centered">
+            <div class="col-xs-12 col-md-6 col-md-offset-3 centered">
               <%= link_to 'Find Scholarships', @college.financial_aid_link, class: "btn btn-default" %>
             </div>
           <% end %>
@@ -131,26 +137,42 @@
     <div id="menu2" class="tab-pane fade">
       <div class="row">
         <div class="col-xs-12">
-          <h5 class="college-text"><strong>Female:</strong> <%= @college.percent_female %></h5>
-          <h5 class="college-text"><strong>Male:</strong> <%= @college.percent_male %></h5>
+          <% if @college.percent_female != "" %>
+            <h5 class="sub-text-centered"><strong>Female:</strong> <%= @college.percent_female %></h5>
+          <% end %>
+          <% if @college.percent_male != "" %>
+            <h5 class="sub-text-centered"><strong>Male:</strong> <%= @college.percent_male %></h5>
+          <% end %>
         </div>
         <div class="col-xs-6 col-xs-offset-3 col-md-6 col-md-offset-3 centered">
           <%= image_tag("male-female-symbols.jpg", height: 100, width: 150)%>
         </div>
         <div class="col-xs-12">
-          <h5 class="college-text"><strong>Average GPA: </strong><%= @college.avg_gpa %></h5>
-          <h5 class="college-text"><strong>Average SAT: </strong><%= @college.avg_sat %></h5>
-          <h5 class="college-text"><strong>Average ACT: </strong> <%= @college.avg_act %></h5>
-          <h5 class="college-text"><strong>% Minority: </strong><%= @college.percent_minority %></h5>
-          <h5 class="college-text"><strong>% Int'l: </strong> <%= @college.percent_international %></h5>
+          <% if @college.avg_gpa != "" %>
+            <h5 class="sub-text-centered"><strong>Average GPA: </strong><%= @college.avg_gpa %></h5>
+          <% end %>
+          <% if @college.avg_sat != ""  %>
+            <h5 class="sub-text-centered"><strong>Average SAT: </strong><%= @college.avg_sat %></h5>
+          <% end %>
+          <% if @college.avg_act != ""  %>
+            <h5 class="sub-text-centered"><strong>Average ACT: </strong> <%= @college.avg_act %></h5>
+          <% end %>
+          <% if @college.percent_minority != ""  %>
+            <h5 class="sub-text-centered"><strong>% Minority: </strong><%= @college.percent_minority %></h5>
+          <% end %>
+          <% if @college.percent_international != ""  %>
+            <h5 class="sub-text-centered"><strong>% Int'l: </strong> <%= @college.percent_international %></h5>
+          <% end %>
         </div>
       </div>
       <div class="row">
         <div class="col-xs-12">
-          <h5 class="college-text"><strong>Popular Majors:</strong> <%= @college.popular_majors %></h5>
+          <% if @college.popular_majors != ""  %>
+          <h5 class="sub-text-centered"><strong>Popular Majors:</strong> <%= @college.popular_majors %></h5>
+          <% end %>
         </div>
       </div>
-      <div class="col-xs-8 col-xs-offset-3 col-md-6 col-md-offset-3 centered">
+      <div class="col-xs-12 col-md-6 col-md-offset-3 centered">
         <%= link_to_if @college.link_to_majors.present?, 'See List of Majors', @college.link_to_majors, class: "btn btn-default" %>
       </div>
     </div>
@@ -166,10 +188,10 @@
       </div>
       <div class="row">
         <div class="col-xs-6 col-md-3 col-md-offset-3 ">
-          <h5 class="college-text"><%= @college.number_of_essays %> Essays </h5>
+          <h5 class="sub-text-centered"><%= @college.number_of_essays %> Essays </h5>
         </div>
         <div class="col-xs-6 col-md-3 ">
-          <h5 class="college-text"><%= @college.number_of_recommendations %> Recommendations </h5>
+          <h5 class="sub-text-centered"><%= @college.number_of_recommendations %> Recommendations </h5>
         </div>
       </div>
       <div class="row">
@@ -188,7 +210,7 @@
           </div>
         </div>
       <div class="row">
-        <div class="col-xs-12">
+        <div class="col-xs-12 centered">
           <h5 class="college-text">Early Admissions Deadline: <%= @college.early_admissions_deadline %></h4>
           <h5 class="college-text">Regular Admissions Deadline: <%= @college.fall_deadline %></h4>
         </div>
@@ -199,11 +221,11 @@
   <div class="container">
     <div class="row">
       <div class="col-xs-12 col-md-12">
-        <h5 class="college-text">Still can't find what you're looking for?  Ask a current student or admissions rep a question!</h4>
+        <h5 class="sub-text-centered">Still can't find what you're looking for?  Ask a current student or admissions rep a question!</h4>
       </div>
     </div>
     <div class="row">
-      <div class="col-xs-8 col-xs-offset-4 col-md-6 col-md-offset-3 centered">
+      <div class="col-xs-12 col-md-6 col-md-offset-3 centered">
         <button type="button" class="btn btn-default" data-toggle="modal" data-target=".bs-example-modal-sm">Ask a Question</button>
           <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
             <div class="modal-dialog modal-sm">
@@ -220,17 +242,22 @@
   </div>
 
   <div class="row">
-    <div class="col-xs-12">
-      <h4 class="sub-text">Famous Alumni</h2>
+    <div class="col-xs-12 centered">
+      <% if @college.notable_alumni? %>
+      <h4 class="sub-text-centered">Famous Alumni</h2>
     </div>
   </div>
   <div class="row">
-    <div class="col-xs-12">
-      <h4 class="college-text"><%= @college.notable_alumni %></h4>
+    <div class="col-xs-12 centered">
+      <h4 class="sub-text-centered"><%= @college.notable_alumni %></h4>
     </div>
   </div>
+    <% else %>
+    <% end %>
 </div>
 </div>
 <br />
 
-<%= link_to 'Browse Colleges', colleges_path, class: "btn btn-success btn-sm" %>
+<div class="links-container">
+  <%= link_to 'Browse Colleges', colleges_path, class: "btn btn-success btn-md" %>
+</div>

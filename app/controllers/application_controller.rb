@@ -7,4 +7,5 @@ class ApplicationController < ActionController::Base
   def home
     render text: 'home'
   end
+
 end

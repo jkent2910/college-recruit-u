@@ -49,7 +49,7 @@
     </div><br />
 
   <div class="row">
-    <p>How important are the following factors to you?  Please rate from 1 - 5 with 1 being "not important at all" and 5 being "extremely important"</p>
+    <p class="p-text">How important are the following factors to you?  Please rate from 1 - 5 with 1 being "not important at all" and 5 being "extremely important"</p>
     <div class="col-md-6">
       <% Factor.all.each do |factor| %>
       <% factor_rating = @student_profile.factor_ratings.where(factor_id: factor.id).take %>
@@ -65,7 +65,7 @@
   </div>
 
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit class: 'btn btn-md btn-primary' %>
   </div>
   <% end %>
 </div>

@@ -1,27 +1,29 @@
-<h1>Search Results</h1>
+<div class="container">
+  <h1>Search Results</h1>
 
-<div id="student-search-results">
-  <h2>Students</h2>
-  <% if @students.nil? || @students.empty? %>
-    <p>No students were found.</p>
-  <% else %>
-    <ul>
-      <% @students.each do |student| %>
-        <li><%= link_to student.full_name, student %></li>
-      <% end %>
-    </ul>
-  <% end %>
-</div>
+  <div id="student-search-results">
+    <h2>Students</h2>
+    <% if @students.nil? || @students.empty? %>
+      <p>No students were found.</p>
+    <% else %>
+      <ul>
+        <% @students.each do |student| %>
+          <li><%= link_to student.full_name, student %></li>
+        <% end %>
+      </ul>
+    <% end %>
+  </div>
 
-<div id="college-search-results">
-  <h2>Colleges</h2>
-  <% if @colleges.nil? || @colleges.empty? %>
-    <p>No colleges were found.</p>
-  <% else %>
-    <ul>
-      <% @colleges.each do |college| %>
-        <li><%= link_to college.name, college %></li>
-      <% end %>
-    </ul>
-  <% end %>
+  <div id="college-search-results">
+    <h2>Colleges</h2>
+    <% if @colleges.nil? || @colleges.empty? %>
+      <p>No colleges were found.</p>
+    <% else %>
+      <ul>
+        <% @colleges.each do |college| %>
+          <li><%= link_to college.name, college %></li>
+        <% end %>
+      </ul>
+    <% end %>
+  </div>
 </div>

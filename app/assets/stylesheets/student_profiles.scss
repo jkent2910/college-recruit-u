@@ -4,9 +4,103 @@ div.student-profile-fans {
     width: 50px;
   }
 }
+
 div.student-profile-colleges {
   img {
     height: 50px;
     width: 50px;
+  }
+}
+
+.profile-header {
+  font-family: 'Signika', sans-serif;
+  text-align: center;
+  font-size: 48px;
+}
+
+.small-text {
+  font-family: 'Signika', sans-serif;
+  text-align: center;
+  font-size: 24px;
+}
+
+.sub-text {
+  font-family: 'Spinnaker', sans-serif;
+  font-size: 18px;
+}
+
+.sub-text-centered {
+  font-family: 'Spinnaker', sans-serif;
+  font-size: 18px;  
+  text-align: center;
+}
+
+.fans-container {
+  margin-top: 10px;
+  border-style: solid;
+  border-radius: 25px;
+  padding: 15px;
+  border-width: 1px;
+  border-color: #EECC22;
+}
+
+.student-colleges-container {
+  margin-top: 10px;
+  border-style: solid;
+  border-radius: 25px;
+  padding: 10px;
+  border-width: 1px;
+  border-color: #EECC22;
+  padding-bottom: 5px;
+  margin-bottom: 10px;
+}
+
+.student-interests-container {
+  padding: 10px;
+}
+
+.majors-container {
+  padding: 10px;
+}
+
+.factors-container {
+  margin-top: 10px;
+  border-style: solid;
+  border-radius: 25px;
+  padding: 20px;
+  border-width: 1px;
+  border-color: #114499;
+  padding-bottom: 5px;
+  margin-bottom: 10px;
+}
+
+.links-container {
+  margin-bottom: 25px;
+  margin-left: 10px;
+}
+
+.p-text {
+  font-family: 'Spinnaker', sans-serif !important;
+  font-size: 14px;
+  padding: 6px;
+}
+
+.profile-create-container {
+  margin-top: 25px;
+}
+
+
+@media only screen and (max-width: 750px) {
+  .students {
+  padding-top: 25px;
+  }
+}
+
+@media only screen 
+  and (min-width: 768px)
+  and (max-width: 1024px) {
+
+  .students {
+  padding-top: 25px;
   }
 }
