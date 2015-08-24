@@ -5,10 +5,10 @@ Feature: Person visits site
 
   Scenario: Person views home page
     Given I am anybody
-    And I visit the home page
-    Then I should be on the home page
-    And I should see "Sign In"
-    And I should see "Sign Up"
+    And I visit the landing page
+    Then I should be on the landing page
+    And I should see "Start Exploring"
+    And I should see "Continue Your Journey"
 
   Scenario: Person tries to create new student profile
     Given I am anybody
