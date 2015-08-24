@@ -6,7 +6,7 @@
 @import url(http://fonts.googleapis.com/css?family=Signika);
 
 body {
-  padding-top: 50px;
+  padding-top: 60px;
   font-family: 'Spinnaker', sans-serif !important;
 }
 
@@ -14,6 +14,13 @@ body {
   font-family: 'Signika', sans-serif;
   color: black;
   font-size: 28px;
+}
+
+.navbar-brand {
+  margin-top: -20px;
+  background-color: white;
+  padding-bottom: 72px !important;
+  margin-bottom: -5px;
 }
 
 .background { 
@@ -233,6 +240,13 @@ span.glyphicon {
   width: 150px;
   margin-top: 5px;
   }
+
+.navbar-brand {
+  margin-top: -20px;
+  background-color: white;
+  padding-bottom: 92px !important;
+  margin-bottom: -25px;
+}
 
 }
 
