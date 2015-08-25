@@ -3,7 +3,7 @@
   <%= form_tag student_status_college_path(@college) do %>
     <%= hidden_field_tag :student_profile_id, @student_profile.to_param %>
     <div class="field">
-      <%= label_tag :college_student_status, "College Status:", :class => "sub-text" %><br>
+      <span class="glyphicon glyphicon-bookmark glyphicon-xs-black"></span><%= label_tag :college_student_status, "College Status:", :class => "sub-text" %><br>
       <%= select_tag :college_student_status, options_for_select([''] + CollegeStudentStatus::VALID_STATUSES, @college_status.try(:status_name)) %>
     </div>
     <div class="actions">

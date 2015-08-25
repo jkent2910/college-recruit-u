@@ -157,6 +157,25 @@ span.glyphicon {
   font-size: 5em;
 }
 
+span.glyphicon-sm {
+  font-size: 2em;
+  color: white;
+}
+
+span.glyphicon-sm-blue {
+  font-size: 2em;
+  color: #114499;
+}
+
+span.glyphicon-xs-black {
+  font-size: 1em;
+  color: black;
+}
+
+.nav > li > a {
+  display: inline-block !important;
+}
+
 .why-care {
   margin-top: 15px;
   margin-bottom: 25px;
@@ -265,5 +284,10 @@ span.glyphicon {
   .navbar-default .navbar-nav > li > a {
   font-size: 14px !important;
   }
+}
 
+@media (min-width: 768px) and (max-width: 991px) {
+  .visible-sm {
+    display: inline-block !important;
+  }
 }

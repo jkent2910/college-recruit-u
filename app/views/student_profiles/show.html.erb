@@ -29,10 +29,10 @@
   <div class="fans-container">
     <div class="row">
       <div class="col-xs-6">
-        <h4 class="sub-text">Fan of <%= @student_profile.fan_of.count %></h4>
+        <h4 class="sub-text-blue"><span class="glyphicon glyphicon-star-empty glyphicon-sm-blue"></span>Fan of <%= @student_profile.fan_of.count %></h4>
       </div>
       <div class="col-xs-6">
-        <h4 class="sub-text"><%= @student_profile.fans.count %> Fans</h4>
+        <h4 class="sub-text-blue"><span class="glyphicon glyphicon-star-empty glyphicon-sm-blue"></span><%= @student_profile.fans.count %> Fans</h4>
       </div>
     </div>
       <div class="row student-profile-fans">
@@ -67,7 +67,7 @@
 <div class="container visible-xs">
   <div class="row">
     <div class="col-xs-12">
-      <h4 class="sub-text-centered">I'm a Fan</h4>
+      <h4 class="sub-text-centered-blue"><span class="glyphicon glyphicon-sunglasses glyphicon-sm-blue"></span>I'm a Fan</h4>
     </div>
     <div class="col-xs-12 student-colleges-container">
       <% @student_profile.college_student_statuses.where(status_name: "Just a Fan").each do |college_student_status| %>
@@ -79,7 +79,7 @@
       <% end %>
     </div>
     <div class="col-xs-12">
-      <h4 class="sub-text-centered">Considering</h4>
+      <h4 class="sub-text-centered-blue"><span class="glyphicon glyphicon-zoom-in glyphicon-sm-blue"></span>Considering</h4>
     </div>
     <div class="col-xs-12 student-colleges-container">
       <% @student_profile.college_student_statuses.where(status_name: "Considering").each do |college_student_status| %>
@@ -91,7 +91,7 @@
       <% end %>
     </div>
     <div class="col-xs-12">
-      <h4 class="sub-text-centered">Applying</h4>
+      <h4 class="sub-text-centered-blue"><span class="glyphicon glyphicon-file glyphicon-sm-blue"></span>Applying</h4>
     </div>
       <div class="col-xs-12 student-colleges-container">
       <% @student_profile.college_student_statuses.where(status_name: "Applying").each do |college_student_status| %>
@@ -108,13 +108,13 @@
 <div class="container hidden-xs">
   <div class="row">
     <div class="col-md-4 col-sm-4">
-      <h4 class="sub-text-centered">I'm a Fan</h4>
+      <h4 class="sub-text-centered-blue"><span class="glyphicon glyphicon-sunglasses glyphicon-sm-blue"></span>I'm a Fan</h4>
     </div>
     <div class="col-md-4 col-sm-4">
-      <h4 class="sub-text-centered">Considering</h4>
+      <h4 class="sub-text-centered-blue"><span class="glyphicon glyphicon-zoom-in glyphicon-sm-blue"></span>Considering</h4>
     </div>
     <div class="col-md-4 col-sm-4">
-      <h4 class="sub-text-centered">Applying</h4>
+      <h4 class="sub-text-centered-blue"><span class="glyphicon glyphicon-file glyphicon-sm-blue"></span>Applying</h4>
     </div>
   </div>
 </div>
@@ -165,10 +165,10 @@
       <% if @student_profile.college_student_statuses.where(status_name: "Enrolling").blank? %>
       <h5 class="sub-text-centered"><%= @student_profile.first_name %> is still being recruited! </h5>
       <% else %>
-      <h5 class="college-text"><%= @student_profile.first_name %> is going to <% @student_profile.college_student_statuses.where(status_name: "Enrolling").each do |college_student_status | %>
+      <h5 class="sub-text-centered"><%= @student_profile.first_name %> is going to <% @student_profile.college_student_statuses.where(status_name: "Enrolling").each do |college_student_status | %>
         <%= link_to college_student_status.college.name, college_student_status.college %> </h5>
         <div class="row">
-          <div class='col-xs-12 col-xs-offset-3 col-md-6 col-md-offset-3 centered'>
+          <div class='col-xs-6 col-xs-offset-3 col-sm-6 col-sm-offset-3 col-md-6 col-md-offset-3 centered'>
             <%= image_tag(college_student_status.college.logo(:thumb)) %>
           </div>
         </div>
@@ -200,6 +200,7 @@
 <div class="container majors-container">
   <div class="row">
     <div class="col-xs-12 col-md-6 col-md-offset-3">
+      <h5 class="sub-text-centered">Majors Interested In:</h5>
       <% @student_profile.majors.each do |major| %>
         <%= image_tag "majors/#{student_majors[major].try(:[], :logo)}", title: major %>
       <% end %>
@@ -209,7 +210,7 @@
   <div class="row">
     <div class="col-xs-12">
       <% if @student_profile.majors.blank? %>
-        <h5 class="sub-text-centered"><%= @student_profile.first_name %> isn't sure what to study in college yet </h5>
+        <h5 class="sub-text-centered"><span class="glyphicon glyphicon-book glyphicon-sm-blue"></span> <%= @student_profile.first_name %> isn't sure what to study in college yet </h5>
         <% end %>
     </div>
   </div><br />

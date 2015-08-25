@@ -20,7 +20,7 @@
 <div class="container">
   <div class="row">
     <div class="col-xs-12">
-      <h4 class="sub-text-centered"><%= @college.city %>, <%= @college.state %></h4>
+      <h4 class="sub-text-centered"><span class="glyphicon glyphicon-globe glyphicon-xs-black"></span><%= @college.city %>, <%= @college.state %></h4>
     </div>
   </div>
   <div class="row">
@@ -42,19 +42,19 @@
 <div class="container">
   <div class="row college-show-students">
     <div class="col-xs-3 col-md-4 centered">
-      <h4 class="sub-text">Fans: <%= @college.fans.count %></h4>
+      <h4 class="sub-text-blue"><span class="glyphicon glyphicon-sunglasses glyphicon-sm-blue"></span> Fans: <%= @college.fans.count %></h4>
         <% @college.fans.each do |student_profile| %>
           <%= link_to image_tag(student_profile.photo(:thumb), title: student_profile.full_name), student_profile_path(student_profile)  %>
         <% end %>
     </div>
     <div class="col-xs-5 col-md-4 centered">
-      <h4 class="sub-text">Considering: <%= @college.considering.count %></h4>
+      <h4 class="sub-text-blue"><span class="glyphicon glyphicon-zoom-in glyphicon-sm-blue"></span> Considering: <%= @college.considering.count %></h4>
         <% @college.considering.each do |student_profile| %>
           <%= link_to image_tag(student_profile.photo(:thumb), title: student_profile.full_name), student_profile_path(student_profile)  %>
         <% end %>
     </div>
     <div class="col-xs-4 col-md-4 centered">
-      <h4 class="sub-text">Applying: <%= @college.applying.count %></h4>
+      <h4 class="sub-text-blue"><span class="glyphicon glyphicon-file glyphicon-sm-blue"></span> Applying: <%= @college.applying.count %></h4>
         <% @college.applying.each do |student_profile| %>
           <%= link_to image_tag(student_profile.photo(:thumb), title: student_profile.full_name), student_profile_path(student_profile)  %>
         <% end %>
@@ -115,7 +115,8 @@
 
     <div id="menu1" class="tab-pane fade">
       <div class="row">
-        <div class="col-xs-12 col-md-6 col-md-offset-3">
+        <div class="col-xs-12 col-md-6 col-md-offset-3 centered">
+          <span class="glyphicon glyphicon-usd glyphicon-sm-blue"></span><span class="glyphicon glyphicon-usd glyphicon-sm-blue"></span>
           <% if @college.in_state_tuition != ""  %>
             <h5 class="sub-text-centered"><strong>In-state tuition:</strong> <%= @college.in_state_tuition %></h5>
           <% end %>
@@ -191,7 +192,7 @@
           <h5 class="sub-text-centered"><%= @college.number_of_essays %> Essays </h5>
         </div>
         <div class="col-xs-6 col-md-3 ">
-          <h5 class="sub-text-centered"><%= @college.number_of_recommendations %> Recommendations </h5>
+          <h5 class="sub-text-centered"><%= @college.number_of_recommendations %> Rec's </h5>
         </div>
       </div>
       <div class="row">
@@ -221,7 +222,7 @@
   <div class="container">
     <div class="row">
       <div class="col-xs-12 col-md-12">
-        <h5 class="sub-text-centered">Still can't find what you're looking for?  Ask a current student or admissions rep a question!</h4>
+        <h5 class="sub-text-centered"><span class="glyphicon glyphicon-question-sign glyphicon-xs-black"></span>Still can't find what you're looking for?  Ask a current student or admissions rep a question!</h4>
       </div>
     </div>
     <div class="row">
@@ -243,8 +244,8 @@
 
   <div class="row">
     <div class="col-xs-12 centered">
-      <% if @college.notable_alumni? %>
-      <h4 class="sub-text-centered">Famous Alumni</h2>
+      <% if @college.notable_alumni? %><br />
+      <h4 class="sub-text-centered"><span class="glyphicon glyphicon-king glyphicon-xs-black"></span>Famous Alumni</h2>
     </div>
   </div>
   <div class="row">
