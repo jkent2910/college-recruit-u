@@ -4,6 +4,10 @@ class StudentProfile < ActiveRecord::Base
 
   friendly_id :full_name, use: :slugged
 
+  phony_normalize :cell_number, :default_country_code => 'US'
+
+  validates :cell_number, :phony_plausible => true
+
   VALID_GRADUATION_YEARS = ['2016', '2017', '2018', '2019']
 
   VALID_GENDERS = ['Male', 'Female']

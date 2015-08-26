@@ -74,6 +74,45 @@ RSpec.describe CollegesController, type: :controller do
       end
     end
 
+    context "when enrolling in more than one college" do
+      before do
+        @enrolling_college1 = FactoryGirl.create(:college, name: "College 1")
+        @enrolling_college2 = FactoryGirl.create(:college, name: "College 2")
+        @student_profile.add_or_update_college_status(@enrolling_college1, 'Enrolling')
+        @student_profile.add_or_update_college_status(@enrolling_college2, 'Enrolling')
+      end
+
+      it "allows the student to remove a college with an enrolling status" do
+        expect(@student_profile.college_student_statuses.enrolling.count).to be 2
+        post :student_status, {id: @enrolling_college1.to_param, student_profile_id: @student_profile.to_param, college_student_status: ''}
+        expect(@student_profile.college_student_statuses.enrolling.count).to be 1
+        expect(flash[:notice]).to match /you removed/i
+      end
+
+      it "allows the student to remove a college when enrolling in 3 colleges" do
+        enrolling_college3 = FactoryGirl.create(:college, name: "College 3")
+        @student_profile.add_or_update_college_status(enrolling_college3, 'Enrolling')
+        expect(@student_profile.college_student_statuses.enrolling.count).to be 3
+        post :student_status, {id: @enrolling_college1.to_param, student_profile_id: @student_profile.to_param, college_student_status: ''}
+        expect(@student_profile.college_student_statuses.enrolling.count).to be 2
+        expect(flash[:notice]).to match /you removed/i
+      end
+    end
+
+    context "when enrolling in a college" do
+      before do
+        @other_college = FactoryGirl.create(:college)
+        @student_profile.add_or_update_college_status(@college, 'Enrolling')
+      end
+
+      it "does not allow student to enroll in another college" do
+        expect(@student_profile.college_student_statuses.enrolling.count).to be 1
+        post :student_status, {id: @other_college.to_param, student_profile_id: @student_profile.to_param, college_student_status: 'Enrolling'}
+        expect(@student_profile.college_student_statuses.enrolling.count).to be 1
+        expect(flash[:notice]).to match /you can only/i
+      end
+    end
+
     context "when the specified student profile does not belong to the current user" do
       before do
         other_profile = FactoryGirl.create(:student_profile)

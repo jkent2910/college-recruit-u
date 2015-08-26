@@ -217,6 +217,10 @@ GEM
       mime-types
       mimemagic (= 0.3.0)
     pg (0.18.2)
+    phony (2.14.14)
+    phony_rails (0.12.10)
+      activesupport (>= 3.0)
+      phony (~> 2.12)
     pry (0.10.1)
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
@@ -352,6 +356,7 @@ DEPENDENCIES
   launchy (~> 2.4.3)
   paperclip (~> 4.3)
   pg
+  phony_rails
   pry-byebug
   rails (= 4.2.2)
   rspec-rails (~> 3.3.2)
