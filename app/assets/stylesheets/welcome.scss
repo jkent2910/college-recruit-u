@@ -67,7 +67,7 @@ a.btn-success:visited {
   transition: all 1s ease;
 }
 
-.glyphicon:hover {
+.glyphicon-enlarge:hover {
   -webkit-transform:scale(2.25); /* Safari and Chrome */
   -moz-transform:scale(2.25); /* Firefox */
   -ms-transform:scale(2.25); /* IE 9 */
@@ -284,10 +284,18 @@ span.glyphicon-xs-black {
   .navbar-default .navbar-nav > li > a {
   font-size: 14px !important;
   }
+
+  .alert-dismissible {
+  padding-top: 35px !important;
+  }
 }
 
 @media (min-width: 768px) and (max-width: 991px) {
   .visible-sm {
     display: inline-block !important;
+  }
+
+  .alert-dismissible {
+  padding-top: 35px !important;
   }
 }
