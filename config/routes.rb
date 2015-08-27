@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   resources :colleges do
     member do
       post :student_status
+      post :ask_question
     end
   end
 
