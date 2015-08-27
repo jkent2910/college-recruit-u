@@ -1,12 +1,12 @@
 source 'https://rubygems.org'
 
-gem 'rails', '4.2.2'
+gem 'rails', '4.2.4'
 gem 'pg'
 
 gem 'aws-sdk',         '~> 1.6'  # http://www.rubydoc.info/gems/paperclip/Paperclip/Storage/S3
 gem 'bootstrap-sass',  '~> 3.3.5'
 gem 'coffee-rails',    '~> 4.1.0'
-gem 'devise',          '~> 3.5.1'
+gem 'devise',          '~> 3.5.2'
 gem 'font-awesome-sass'
 gem 'friendly_id', '~> 5.1.0'
 gem 'google-api-client',  '~> 0.8.6'
