@@ -6,4 +6,12 @@ class UserMailer < ApplicationMailer
 
     mail subject: "Question about #{@college.name}", reply_to: [@student_profile.student.email], to: EMAIL_ADDRESSES[:college_question]
   end
+
+  def application_help(student_profile, college, question)
+    @student_profile = student_profile
+    @college = college
+    @question = question
+
+    mail subject: "Help with application for #{@college.name}", reply_to: [@student_profile.student.email], to: EMAIL_ADDRESSES[:application_help]
+  end
 end

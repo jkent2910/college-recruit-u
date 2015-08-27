@@ -10,6 +10,7 @@ Rails.application.routes.draw do
     member do
       post :student_status
       post :ask_question
+      post :application_help
     end
   end
 

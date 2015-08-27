@@ -155,4 +155,27 @@ RSpec.describe CollegesController, type: :controller do
       expect(response).to redirect_to(@college)
     end
   end
+
+  describe "POST #application_help" do
+    it "loads the specified college as @college" do
+      post :application_help, {id: @college.to_param, question: "please help me"}
+      expect(assigns[:college]).to eq @college
+    end
+
+    it "sends an email" do
+      expect {
+        post :application_help, {id: @college.to_param, question: "please help me"}
+      }.to change(ActionMailer::Base.deliveries, :count).by(1)
+    end
+
+    it "displays an appropriate message" do
+      post :application_help, {id: @college.to_param, question: "please help me"}
+      expect(flash[:notice]).to match /we'll be in touch/i
+    end
+
+    it "redirects to the college show page" do
+      post :application_help, {id: @college.to_param, question: "please help me"}
+      expect(response).to redirect_to(@college)
+    end
+  end
 end

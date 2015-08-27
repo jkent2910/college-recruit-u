@@ -215,11 +215,14 @@
                     <h4 class="modal-title" id="gridSystemModalLabel">We will be in touch soon!</h4>
                   </div>
                   <div class="modal-body">
-                    <p>One fine body&hellip;</p>
-                  </div>
+                    <p>Application help</p>
+                    <%= form_tag application_help_college_path(@college), id: "application-help-form" do %>
+                    <%= text_area_tag :question, nil, rows: 5 %>
+                    <% end %>
+                </div>
                   <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
+                    <button type="button" class="btn btn-primary" id="application-help-btn">Send</button>
                   </div>
                 </div>
               </div>
@@ -243,8 +246,8 @@
     </div>
     <div class="row">
       <div class="col-xs-12 col-md-6 col-md-offset-3 centered">
-        <button type="button" class="btn btn-default" data-toggle="modal" data-target=".bs-ask-help-modal">Ask a Question</button>
-          <div class="modal fade bs-ask-help-modal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+        <button type="button" class="btn btn-default" data-toggle="modal" data-target=".bs-ask-question-modal">Ask a Question</button>
+          <div class="modal fade bs-ask-question-modal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
             <div class="modal-dialog modal-sm">
               <div class="modal-content">
                 <div class="modal-header">
@@ -254,7 +257,6 @@
                   <p>Question</p>
                   <%= form_tag ask_question_college_path(@college), id: "send-question-form" do %>
                   <%= text_area_tag :question, nil, rows: 5 %>
-                  <%= hidden_field_tag :student, @student_profile.full_name %>
                   <% end %>
                 </div>
                 <div class="modal-footer">
@@ -292,5 +294,10 @@
              $("form#send-question-form").submit();
          }
      );
+     $("button#application-help-btn").click(
+         function() {
+             $("form#application-help-form").submit();
+         }
+     )
  }());
 </script>
