@@ -33,6 +33,30 @@ div.centered {
   font-family: 'Signika', sans-serif;
 }
 
+.sub-text-blue {
+  font-family: 'Spinnaker', sans-serif;
+  font-size: 18px;  
+  color: #114499;
+}
+
+.nav-pills > li.active > a {
+  background-color: #EECC22 !important;
+}
+
+.nav-pills > li > a {
+  color: #114499;
+}
+
+.btn-default {
+  color: #114499 !important;
+  border-color: #114499 !important;
+  border-width: 1px !important;
+}
+
+.links-container {
+  padding-left: 5px;
+}
+
 @media (min-width: 768px) {
   img.essay-icon {
       height: 300px;

@@ -1,5 +1,5 @@
 When(/^I search for "(.*?)"$/) do |query|
-  within("form[role=search]") do
+  within("form[role=search]", match: :first) do
     fill_in(:query, with: query)
     click_button("Go")
   end

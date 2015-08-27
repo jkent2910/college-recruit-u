@@ -6,7 +6,7 @@
 @import url(http://fonts.googleapis.com/css?family=Signika);
 
 body {
-  padding-top: 50px;
+  padding-top: 60px;
   font-family: 'Spinnaker', sans-serif !important;
 }
 
@@ -14,6 +14,13 @@ body {
   font-family: 'Signika', sans-serif;
   color: black;
   font-size: 28px;
+}
+
+.navbar-brand {
+  margin-top: -20px;
+  background-color: white;
+  padding-bottom: 72px !important;
+  margin-bottom: -5px;
 }
 
 .background { 
@@ -60,7 +67,7 @@ a.btn-success:visited {
   transition: all 1s ease;
 }
 
-.glyphicon:hover {
+.glyphicon-enlarge:hover {
   -webkit-transform:scale(2.25); /* Safari and Chrome */
   -moz-transform:scale(2.25); /* Firefox */
   -ms-transform:scale(2.25); /* IE 9 */
@@ -150,6 +157,29 @@ span.glyphicon {
   font-size: 5em;
 }
 
+span.glyphicon-sm {
+  font-size: 2em;
+  color: white;
+}
+
+span.glyphicon-sm-blue {
+  font-size: 2em;
+  color: #114499;
+}
+
+span.glyphicon-xs-black {
+  font-size: 1em;
+  color: black;
+}
+
+.nav > li > a {
+  display: inline-block !important;
+}
+
+.navbar-brand:hover {
+  background: white !important;
+}
+
 .why-care {
   margin-top: 15px;
   margin-bottom: 25px;
@@ -234,6 +264,13 @@ span.glyphicon {
   margin-top: 5px;
   }
 
+.navbar-brand {
+  margin-top: -20px;
+  background-color: white;
+  padding-bottom: 92px !important;
+  margin-bottom: -25px;
+}
+
 }
 
 @media only screen 
@@ -252,4 +289,17 @@ span.glyphicon {
   font-size: 14px !important;
   }
 
+  .alert-dismissible {
+  padding-top: 35px !important;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  .visible-sm {
+    display: inline-block !important;
+  }
+
+  .alert-dismissible {
+  padding-top: 35px !important;
+  }
 }

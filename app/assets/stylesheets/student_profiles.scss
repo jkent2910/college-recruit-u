@@ -12,10 +12,15 @@ div.student-profile-colleges {
   }
 }
 
+a:hover {
+  background-color: #EECC22;
+}
+
 .profile-header {
   font-family: 'Signika', sans-serif;
   text-align: center;
   font-size: 48px;
+  padding-top: 15px;
 }
 
 .small-text {
@@ -29,10 +34,24 @@ div.student-profile-colleges {
   font-size: 18px;
 }
 
+.sub-text-blue {
+  font-family: 'Spinnaker', sans-serif;
+  font-size: 18px;
+  color: #114499;
+}
+
 .sub-text-centered {
   font-family: 'Spinnaker', sans-serif;
   font-size: 18px;  
   text-align: center;
+}
+
+
+.sub-text-centered-blue {
+  font-family: 'Spinnaker', sans-serif;
+  font-size: 18px;  
+  text-align: center;
+  color: #114499;
 }
 
 .fans-container {
