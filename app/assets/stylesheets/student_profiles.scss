@@ -1,19 +1,23 @@
-div.student-profile-fans {
-  img {
-    height: 50px;
-    width: 50px;
-  }
-}
-
-div.student-profile-colleges {
-  img {
-    height: 50px;
-    width: 50px;
-  }
-}
+// Buttons 
 
 a:hover {
   background-color: #EECC22;
+}
+
+a.btn-danger:visited {
+  color: white;
+}
+
+a.btn-primary:visited {
+  color: white;
+}
+
+// Text 
+
+.p-text {
+  font-family: 'Spinnaker', sans-serif !important;
+  font-size: 14px;
+  padding: 6px;
 }
 
 .profile-header {
@@ -46,13 +50,30 @@ a:hover {
   text-align: center;
 }
 
-
 .sub-text-centered-blue {
   font-family: 'Spinnaker', sans-serif;
   font-size: 18px;  
   text-align: center;
   color: #114499;
 }
+
+// Images 
+
+div.student-profile-fans {
+  img {
+    height: 50px;
+    width: 50px;
+  }
+}
+
+div.student-profile-colleges {
+  img {
+    height: 50px;
+    width: 50px;
+  }
+}
+
+// Containers 
 
 .fans-container {
   margin-top: 10px;
@@ -98,16 +119,11 @@ a:hover {
   margin-left: 10px;
 }
 
-.p-text {
-  font-family: 'Spinnaker', sans-serif !important;
-  font-size: 14px;
-  padding: 6px;
-}
-
 .profile-create-container {
   margin-top: 25px;
 }
 
+// Media Queries
 
 @media only screen and (max-width: 750px) {
   .students {
