@@ -24,3 +24,7 @@ end
 Given(/^I should see that I am a fan of "(.*?)"$/) do |name|
   expect(page).to have_content name
 end
+
+Then(/^I should see a "(.*?)" factor of "(.*?)"$/) do |factor, value|
+  expect(page).to have_selector(:xpath, "//div[text()='#{factor}']/following-sibling::div/div[@aria-valuenow='#{value}']")
+end
