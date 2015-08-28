@@ -54,6 +54,14 @@ class CollegesController < ApplicationController
     redirect_to @college
   end
 
+  def request_college
+    student_profile = current_user.student_profile
+    question = params[:question]
+    UserMailer.request_a_college(student_profile, question).deliver_now
+    flash[:notice] = "We will get right on that!"
+    redirect_to colleges_path
+  end
+
   private
 
   def status_message(status)

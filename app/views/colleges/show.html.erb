@@ -212,10 +212,10 @@
               <div class="modal-dialog modal-sm">
                 <div class="modal-content">
                   <div class="modal-header">
-                    <h4 class="modal-title" id="gridSystemModalLabel">We will be in touch soon!</h4>
+                    <h4 class="modal-title" id="gridSystemModalLabel">What can we help you with?</h4>
                   </div>
                   <div class="modal-body">
-                    <p>Application help</p>
+                    <p>Review an essay?  Answer a question?  Let us know, we're here to help you!</p>
                     <%= form_tag application_help_college_path(@college), id: "application-help-form" do %>
                     <%= text_area_tag :question, nil, rows: 5 %>
                     <% end %>
@@ -251,10 +251,10 @@
             <div class="modal-dialog modal-sm">
               <div class="modal-content">
                 <div class="modal-header">
-                  <h4 class="modal-title" id="gridSystemModalLabel">We will be in touch soon!</h4>
+                  <h4 class="modal-title" id="gridSystemModalLabel">Let us connect you with an admissions rep or student!</h4>
                 </div>
                 <div class="modal-body">
-                  <p>Question</p>
+                  <p>Type your question below</p>
                   <%= form_tag ask_question_college_path(@college), id: "send-question-form" do %>
                   <%= text_area_tag :question, nil, rows: 5 %>
                   <% end %>

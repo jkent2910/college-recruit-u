@@ -86,3 +86,4 @@ end
 EMAIL_ADDRESSES = {}
 EMAIL_ADDRESSES[:college_question] = ["jkent2910@gmail.com", "davidbody@bigcreek.com"]
 EMAIL_ADDRESSES[:application_help] = ["jkent2910@gmail.com", "davidbody@bigcreek.com"]
+EMAIL_ADDRESSES[:request_a_college] = ["jkent2910@gmail.com", "davidbody@bigcreek.com"]

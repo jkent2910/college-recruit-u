@@ -11,4 +11,8 @@ class UserMailerPreview < ActionMailer::Preview
     UserMailer.application_help
   end
 
+  def request_a_college
+    UserMailer.request_a_college
+  end
+
 end
