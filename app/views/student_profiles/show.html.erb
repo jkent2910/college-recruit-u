@@ -181,39 +181,31 @@
 <div class="container student-interests-container">
   <div class="row">
     <div class="col-xs-12 col-md-6 col-md-offset-3">
+      <% if @student_profile.interests.blank? %>
+      <h5 class="sub-text-centered"><span class="glyphicon glyphicon-heart glyphicon-sm-blue"></span><%= @student_profile.first_name %> has not added any interests yet</h5>
+      <% else %>
       <h5 class="sub-text-centered">You can find <%= @student_profile.first_name %>....</h5>
       <% @student_profile.interests.each do |interest| %>
-        <%= image_tag "interests/#{student_interests[interest].try(:[], :logo)}", title: interest %>
+      <%= image_tag "interests/#{student_interests[interest].try(:[], :logo)}", title: interest %>
+      <% end %>
       <% end %>
     </div>
   </div>
-
-  <div class="row">
-    <div class="col-xs-12">
-      <% if @student_profile.interests.blank? %>
-        <h5 class="college-text"><%= @student_profile.first_name %> has not added any interests yet </h5>
-        <% end %>
-    </div>
-  </div><br />
 </div>
 
 <div class="container majors-container">
   <div class="row">
     <div class="col-xs-12 col-md-6 col-md-offset-3">
-      <h5 class="sub-text-centered">Majors Interested In:</h5>
-      <% @student_profile.majors.each do |major| %>
-        <%= image_tag "majors/#{student_majors[major].try(:[], :logo)}", title: major %>
-      <% end %>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="col-xs-12">
       <% if @student_profile.majors.blank? %>
-        <h5 class="sub-text-centered"><span class="glyphicon glyphicon-book glyphicon-sm-blue"></span> <%= @student_profile.first_name %> isn't sure what to study in college yet </h5>
+      <h5 class="sub-text-centered"><span class="glyphicon glyphicon-book glyphicon-sm-blue"></span> <%= @student_profile.first_name %> isn't sure what to study in college yet </h5>
+        <% else %>
+        <h5 class="sub-text-centered">Majors Interested In:</h5>
+        <% @student_profile.majors.each do |major| %>
+        <%= image_tag "majors/#{student_majors[major].try(:[], :logo)}", title: major %>
+        <% end %>
         <% end %>
     </div>
-  </div><br />
+  </div>
 </div>
 
 
