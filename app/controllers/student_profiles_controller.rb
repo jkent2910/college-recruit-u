@@ -46,6 +46,8 @@ class StudentProfilesController < ApplicationController
   # PATCH/PUT /student_profiles/1.json
   def update
     respond_to do |format|
+      @student_profile.interests = student_profile_params[:interests]
+      @student_profile.majors = student_profile_params[:majors]
       if @student_profile.update(student_profile_params)
         format.html { redirect_to @student_profile, notice: 'Student profile was successfully updated.' }
         format.json { render :show, status: :ok, location: @student_profile }
@@ -79,6 +81,7 @@ class StudentProfilesController < ApplicationController
   end
 
   private
+
   # Use callbacks to share common setup or constraints between actions.
   def set_student_profile
     @student_profile = StudentProfile.includes(:factor_ratings, :factors).friendly.find(params[:id])

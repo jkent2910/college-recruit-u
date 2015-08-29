@@ -19,5 +19,5 @@ Feature: Student specifies importance of various factors
     And I set the importance of "Cost" to "2"
     And I press "Update Student profile"
     Then I should be on my student profile page
-    And I should see "College size 4"
-    And I should see "Cost 2"
+    And I should see a "College size" factor of "4"
+    And I should see a "Cost" factor of "2"

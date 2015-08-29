@@ -182,6 +182,28 @@ RSpec.describe StudentProfilesController, type: :controller do
           expect(response).to render_template("edit")
         end
       end
+
+      context "interests and majors" do
+        before do
+          @student_profile = FactoryGirl.create(:student_profile, student: @sarah, interests: ['Marching Band', "Choir"], majors: ["Art", "Biology"])
+        end
+
+        let(:attributes_without_interests_or_majors) {
+          {
+            graduation_year: "2017",
+            interests: [],
+            majors: []
+          }
+        }
+
+        it "clears existing interests and majors when no check boxes are checked" do
+          put :update, {:id => @student_profile.to_param, :student_profile => attributes_without_interests_or_majors}, valid_session
+          @student_profile.reload
+          expect(@student_profile.graduation_year).to eq("2017")
+          expect(@student_profile.interests).to be_empty
+          expect(@student_profile.majors).to be_empty
+        end
+      end
     end
 
     describe "DELETE #destroy" do
