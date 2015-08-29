@@ -99,7 +99,7 @@
         <% end %>
         <% if @college.facebook %>
           <div class="col-xs-4 col-md-offset-1 col-md-1 college-text">
-            <%= link_to image_tag("social-icons/facebook_vector.png"), "http:/www.facebook.com"+@college.facebook %>
+            <%= link_to image_tag("social-icons/facebook_vector.png"), "http://www.facebook.com"+@college.facebook %>
           </div>
         <% end %>
         <% if @college.instagram %>
@@ -208,11 +208,11 @@
         <div class="col-xs-10 col-xs-offset-1 col-md-6 col-md-offset-3 centered">
           <button type="button" class="btn btn-default" data-toggle="modal" data-target=".bs-app-help-modal">Get Personalized Help With Your Application</button>
 
-            <div class="modal fade bs-app-help-modal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+            <div class="modal fade bs-app-help-modal" tabindex="-1" role="dialog" aria-labelledby="application-help-title">
               <div class="modal-dialog modal-sm">
                 <div class="modal-content">
                   <div class="modal-header">
-                    <h4 class="modal-title" id="gridSystemModalLabel">What can we help you with?</h4>
+                    <h4 class="modal-title" id="application-help-title">What can we help you with?</h4>
                   </div>
                   <div class="modal-body">
                     <p>Review an essay?  Answer a question?  Let us know, we're here to help you!</p>
@@ -231,8 +231,8 @@
         </div>
       <div class="row">
         <div class="col-xs-12 centered">
-          <h5 class="college-text">Early Admissions Deadline: <%= @college.early_admissions_deadline %></h4>
-          <h5 class="college-text">Regular Admissions Deadline: <%= @college.fall_deadline %></h4>
+          <h5 class="college-text">Early Admissions Deadline: <%= @college.early_admissions_deadline %></h5>
+          <h5 class="college-text">Regular Admissions Deadline: <%= @college.fall_deadline %></h5>
         </div>
       </div>
     </div>
@@ -247,11 +247,11 @@
     <div class="row">
       <div class="col-xs-12 col-md-6 col-md-offset-3 centered">
         <button type="button" class="btn btn-default" data-toggle="modal" data-target=".bs-ask-question-modal">Ask a Question</button>
-          <div class="modal fade bs-ask-question-modal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+          <div class="modal fade bs-ask-question-modal" tabindex="-1" role="dialog" aria-labelledby="ask-question-title">
             <div class="modal-dialog modal-sm">
               <div class="modal-content">
                 <div class="modal-header">
-                  <h4 class="modal-title" id="gridSystemModalLabel">Let us connect you with an admissions rep or student!</h4>
+                  <h4 class="modal-title" id="ask-question-title">Let us connect you with an admissions rep or student!</h4>
                 </div>
                 <div class="modal-body">
                   <p>Type your question below</p>
