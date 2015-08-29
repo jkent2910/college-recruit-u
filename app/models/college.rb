@@ -34,7 +34,7 @@ class College < ActiveRecord::Base
   end
 
   def total_students_count
-    (fans + considering + applying + enrolling).count 
+    college_student_statuses.count
   end
 
 end
