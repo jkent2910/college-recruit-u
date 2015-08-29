@@ -2,28 +2,38 @@
   <h1>Search Results</h1>
 
   <div id="student-search-results">
-    <h2>Students</h2>
-    <% if @students.nil? || @students.empty? %>
-      <p>No students were found.</p>
-    <% else %>
-      <ul>
-        <% @students.each do |student| %>
-          <li><%= link_to student.full_name, student %></li>
-        <% end %>
-      </ul>
-    <% end %>
+    <div class="row">
+      <h2>Students</h2>
+      <% if @students.nil? || @students.empty? %>
+        <p>No students were found.</p>
+      <% else %>
+      <% @students.each do |student_profile | %>
+        <div class="col-xs-6 col-sm-4 col-md-2">
+          <%= link_to student_profile do %>
+            <%= image_tag student_profile.photo.url(:thumb), height: 100, width: 100 %><br />
+          <% end %>
+          <%= link_to student_profile.full_name, student_profile %><br />
+        </div>
+      <% end %>
+      <% end %>
+    </div>
   </div>
 
   <div id="college-search-results">
-    <h2>Colleges</h2>
-    <% if @colleges.nil? || @colleges.empty? %>
-      <p>No colleges were found.</p>
-    <% else %>
-      <ul>
-        <% @colleges.each do |college| %>
-          <li><%= link_to college.name, college %></li>
-        <% end %>
-      </ul>
-    <% end %>
+    <div class="row">
+      <h2>Colleges</h2>
+      <% if @colleges.nil? || @colleges.empty? %>
+        <p>No colleges were found.</p>
+      <% else %>
+      <% @colleges.each do |college| %>
+        <div class="col-xs-6 col-sm-4 col-md-2">
+          <%= link_to college do %>
+            <%=image_tag college.logo.url(:thumb), height: 100, width: 100 %><br />
+          <% end %>
+          <%= link_to college.name, college %><br />
+        </div>
+      <% end %>
+     <% end %>
+   </div>
   </div>
-</div>
+
