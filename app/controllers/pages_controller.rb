@@ -5,9 +5,9 @@ class PagesController < ApplicationController
 
       @student_profile = current_user.student_profile
 
-      @student_profiles = StudentProfile.all
+      @student_profiles = StudentProfile.all.order("created_at DESC")
 
-      @colleges = College.all
+      @colleges = College.order('name ASC')
     else
       redirect_to root_path
     end
