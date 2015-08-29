@@ -33,4 +33,8 @@ class College < ActiveRecord::Base
     college_student_statuses.enrolling.map(&:student_profile)
   end
 
+  def total_students_count
+    (fans + considering + applying + enrolling).count 
+  end
+
 end
