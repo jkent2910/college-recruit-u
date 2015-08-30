@@ -256,7 +256,17 @@ span.glyphicon-xs-black {
 
 // Media Queries
 
-@media only screen and (max-width: 750px) {
+@media only screen and (max-width: 575px) {
+  .btn-yellow {
+  font-size: .8em !important;
+  }
+
+  .btn-white {
+  font-size: .8em !important;
+  }
+}
+
+@media only screen and (max-width: 767px) {
   .small-screen-padding {
   padding-top: 25px;
   }
