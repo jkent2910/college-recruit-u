@@ -1,0 +1,2 @@
+sendgrid_username: <%= ENV['sendgrid_username'] %>
+sendgrid_password: <%= ENV['sendgrid_password'] %>

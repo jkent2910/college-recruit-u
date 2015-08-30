@@ -14,3 +14,4 @@
 
 /config/google_college_credentials.json
 /config/s3.yml
+/config/sendgrid.yml

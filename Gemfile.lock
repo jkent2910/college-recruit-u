@@ -106,6 +106,7 @@ GEM
     erubis (2.7.0)
     execjs (2.6.0)
     extlib (0.9.16)
+    ey_config (0.0.7)
     factory_girl (4.5.0)
       activesupport (>= 3.0.0)
     factory_girl_rails (4.5.0)
@@ -343,6 +344,7 @@ DEPENDENCIES
   cucumber-rails (~> 1.4.2)
   database_cleaner (~> 1.4.1)
   devise (~> 3.5.2)
+  ey_config
   factory_girl_rails (~> 4.5.0)
   font-awesome-sass
   friendly_id (~> 5.1.0)
