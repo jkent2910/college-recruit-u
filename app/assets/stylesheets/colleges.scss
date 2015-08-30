@@ -72,6 +72,20 @@ div.centered {
 
 // Media Queries
 
+@media only screen and (max-width: 575px) {
+  .btn-iphone5 {
+  font-size: .8em !important;
+  }
+
+  .btn-iphone5 {
+  font-size: .8em !important;
+  }
+
+.nav-pills > li > a {
+  font-size:  .65em !important;
+  }
+}
+
 @media (min-width: 768px) {
   img.essay-icon {
     height: 300px;
