@@ -66,8 +66,6 @@ Rails.application.configure do
 
   # For generating links in emails.
   # TODO: Update this with the actual host name.
-  sendgrid_config = YAML.load_file("#{Rails.root}/config/sendgrid.yml")[RAILS_ENV]
-
   config.action_mailer.default_url_options = { host: 'ec2-52-6-207-202.compute-1.amazonaws.com' }
 
   config.action_mailer.delivery_method = :smtp
@@ -78,9 +76,9 @@ Rails.application.configure do
      :address => "smtp.sendgrid.net",
      :port => 587,
      :domain => "collegerecruitu.com",
-     :user_name => EY::Config.get(:sendgrid, sendgrid_config['sendgrid_username']),
-     :password => EY::Config.get(:sendgrid, sendgrid_config['sendgrid_password'])
-}
+     :user_name => EY::Config.get(:sendgrid, 'SENDGRID_USERNAME'),
+     :password => EY::Config.get(:sendgrid, 'SENDGRID_PASSWORD')
+  }
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
   # the I18n.default_locale when a translation cannot be found).
