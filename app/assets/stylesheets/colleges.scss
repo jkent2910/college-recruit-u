@@ -6,7 +6,7 @@
 
 .nav-pills > li > a {
   color: #114499;
-  font-size: 13px;
+  font-size: 13px !important;
 }
 
 .btn-default {
@@ -64,6 +64,10 @@ div.centered {
 
 .links-container {
   padding-left: 5px;
+}
+
+.college-name-and-logo {
+  margin-top: 60px;
 }
 
 // Media Queries
