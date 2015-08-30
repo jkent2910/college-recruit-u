@@ -66,11 +66,13 @@ Rails.application.configure do
 
   # For generating links in emails.
   # TODO: Update this with the actual host name.
-  sendgrid_config = YAML.load_file("#{Rails.root}/config/sendgrid.yml")
+  sendgrid_config = YAML.load_file("#{Rails.root}/config/sendgrid.yml")[RAILS_ENV]
+
   config.action_mailer.default_url_options = { host: 'ec2-52-6-207-202.compute-1.amazonaws.com' }
+
   config.action_mailer.delivery_method = :smtp
-  config.action_mailer.perform_deliveries = true 
-  config.action_mailer.raise_delivery_errors = true 
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.raise_delivery_errors = true
   config.action_mailer.smtp_settings = {
      :authentication => :plain,
      :address => "smtp.sendgrid.net",
