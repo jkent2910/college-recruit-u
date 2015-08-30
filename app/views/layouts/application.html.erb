@@ -1,73 +1,77 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>CollegeRecruitU</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <link href='http://fonts.googleapis.com/css?family=Graduate' rel='stylesheet' type='text/css'>
-  <%= csrf_meta_tags %>
-</head>
-<body>
+  <head>
+    <title>CollegeRecruitU</title>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <link href='http://fonts.googleapis.com/css?family=Graduate' rel='stylesheet' type='text/css'>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
 
-<!-- Begin Navbar -->
-<div id="nav">
-  <div class="navbar navbar-default navbar-static navbar-fixed-top">
-    <div class="container">
-      <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
-      <a class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </a>
-      <a class="navbar-brand" href="#"><%= image_tag("cru-1-2-small.png") %></a>
-      <div class="navbar-collapse collapse">
-        <ul class="nav navbar-nav">
-          <% if user_signed_in? %>
-          <li><a href="/home" class="navigation-links">Home</a></li>
-            <% if current_user.try(:student_profile) %>
+    <!-- Begin Navbar -->
+    <div id="nav">
+      <div class="navbar navbar-default navbar-static navbar-fixed-top">
+        <div class="container">
+          <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+          <a class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <a class="navbar-brand" href="#"><%= image_tag("cru-1-2-small.png") %></a>
+          <div class="navbar-collapse collapse">
+            <% if user_signed_in? %>
+
+            <ul class="nav navbar-nav">
+              <li><a href="/home" class="navigation-links">Home</a></li>
+              <% if current_user.try(:student_profile) %>
               <li><span class="hidden-sm glyphicon glyphicon-home glyphicon-sm"></span><%= link_to "Your Profile", student_profile_path(current_user.student_profile) %></li>
-            <% else %>
+              <% else %>
               <li><span class="hidden-sm glyphicon glyphicon-home glyphicon-sm"></span><%= link_to "Create Profile", new_student_profile_path(current_user) %></li>
-            <% end %>
+              <% end %>
 
-            <li><span class="hidden-sm glyphicon glyphicon-education glyphicon-sm"></span><%= link_to "Colleges", colleges_path %></li>
-            <li><span class="hidden-sm glyphicon glyphicon-user glyphicon-sm"></span><%= link_to "Students", student_profiles_path %></li>
-            <li><%= link_to "Sign Out", destroy_user_session_path, :method => 'delete' %></li>
+              <li><span class="hidden-sm glyphicon glyphicon-education glyphicon-sm"></span><%= link_to "Colleges", colleges_path %></li>
+              <li><span class="hidden-sm glyphicon glyphicon-user glyphicon-sm"></span><%= link_to "Students", student_profiles_path %></li>
+              <li><%= link_to "Sign Out", destroy_user_session_path, :method => 'delete' %></li>
               <%= form_tag search_path, class: "navbar-form pull-right hidden-xs hidden-sm", role: "search" do %>
               <div class="form-group hidden-xs hidden-sm">
-              <%= text_field_tag :query, '', class: "form-control", placeholder: "Search" %>
+                <%= text_field_tag :query, '', class: "form-control", placeholder: "Search" %>
               </div>
               <button type="submit" class="btn btn-default hidden-xs hidden-sm">Go</button>
               <% end %>
               <%= form_tag search_path, class: "navbar-form pull-left visible-xs visible-sm", role: "search" do %>
               <div class="form-group visible-xs visible-sm">
-              <%= text_field_tag :query, '', class: "form-control", placeholder: "Search" %>
+                <%= text_field_tag :query, '', class: "form-control", placeholder: "Search" %>
               </div>
               <button type="submit" class="btn btn-default visible-inline-xs visible-inline-sm btn-sm">Go</button>
               <% end %>
+            </ul>
 
             <% else %>
 
-          <li><a href="#our-mission">OUR MISSION</a></li>
-          <li><a href="#how-we-help">HOW WE HELP</a></li>
-          <li><a href="#connect">TALK TO US</a></li>
-          <li><a href="https://collegerecruitu.wordpress.com">BLOG</a></li>
-          <li class="right-nav visible-xs"><%= link_to "Welcome Back", new_user_session_path, class: "small-nav-text" %></li>
-          <li class="right-nav visible-xs"><%= link_to "Get Started", new_user_registration_path, class: "small-nav-text" %></li>
-        </ul>
-        <ul class="nav pull-right navbar-nav hidden-xs">
-          <li class="right-nav"><%= link_to "Welcome Back", new_user_session_path, class: "small-nav-text" %></li>
-          <li class="right-nav"><%= link_to "Get Started", new_user_registration_path, class: "small-nav-text" %></li>
-        </ul>
-        <% end %>
-      </div>    
+            <ul class="nav navbar-nav">
+              <li><a href="#our-mission">OUR MISSION</a></li>
+              <li><a href="#how-we-help">HOW WE HELP</a></li>
+              <li><a href="#connect">TALK TO US</a></li>
+              <li><a href="https://collegerecruitu.wordpress.com">BLOG</a></li>
+              <li class="right-nav visible-xs"><%= link_to "Welcome Back", new_user_session_path, class: "small-nav-text" %></li>
+              <li class="right-nav visible-xs"><%= link_to "Get Started", new_user_registration_path, class: "small-nav-text" %></li>
+            </ul>
+            <ul class="nav pull-right navbar-nav hidden-xs">
+              <li class="right-nav"><%= link_to "Welcome Back", new_user_session_path, class: "small-nav-text" %></li>
+              <li class="right-nav"><%= link_to "Get Started", new_user_registration_path, class: "small-nav-text" %></li>
+            </ul>
+
+            <% end %>
+          </div>
+        </div>
+      </div><!-- /.navbar -->
     </div>
-  </div><!-- /.navbar -->
-</div>
-  <%= flash_messages %>
+    <%= flash_messages %>
 
-<%= yield %>
+    <%= yield %>
 
-</body>
+  </body>
 
 </html>

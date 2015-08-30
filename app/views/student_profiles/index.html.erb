@@ -1,7 +1,7 @@
 <div class="container students">
   <div class="row">
     <div class="col-xs-12">
-      <h3 class="sub-text">New Students!</h3>
+      <h3 class="md-text">Students</h3>
     </div>
   </div>
 </div>
@@ -15,13 +15,13 @@
       <%= link_to student_profile.full_name, student_profile %><br />
       <%= student_profile.high_school %><br />
         <% if current_user.try(:student_profile).try(:fan_of?, student_profile) %>
-          <%= link_to 'Stop being a Fan', stop_being_a_fan_student_profile_path(current_user.student_profile, other_profile_id: student_profile.to_param), method: :post,  :class=> "btn btn-danger btn-sm"  %>
+          <%= link_to 'Stop being a Fan', stop_being_a_fan_student_profile_path(current_user.student_profile, other_profile_id: student_profile.to_param), method: :post,  :class=> "btn btn-danger btn-sm btn-padding"  %>
         <% elsif current_user.try(:student_profile).try(:id) != student_profile.id && current_user.student_profile != nil %>
-          <%= link_to 'Become a Fan', become_a_fan_student_profile_path(current_user.student_profile, other_profile_id: student_profile.to_param), method: :post, :class=> "btn btn-success btn-sm" %>
+          <%= link_to 'Become a Fan', become_a_fan_student_profile_path(current_user.student_profile, other_profile_id: student_profile.to_param), method: :post, :class=> "btn btn-success btn-sm btn-padding" %>
         <% elsif current_user.student_profile == nil %>
           <p>Create a profile so you can become a fan of others!</p>
         <% else %>
-          <%= link_to 'Your Profile', student_profile_path(student_profile), :class=> "btn btn-default btn-sm" %>
+          <%= link_to 'Your Profile', student_profile_path(student_profile), :class=> "btn btn-default btn-sm btn-padding" %>
         <% end %> 
     </div> 
   <% end %> 

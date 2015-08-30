@@ -81,3 +81,9 @@ Rails.application.configure do
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 end
+
+# Email addresses used for notifications
+EMAIL_ADDRESSES = {}
+EMAIL_ADDRESSES[:college_question] = ["jkent2910@gmail.com", "davidbody@bigcreek.com"]
+EMAIL_ADDRESSES[:application_help] = ["jkent2910@gmail.com", "davidbody@bigcreek.com"]
+EMAIL_ADDRESSES[:request_a_college] = ["jkent2910@gmail.com", "davidbody@bigcreek.com"]

@@ -1,7 +1,33 @@
 <div class="container colleges">
   <div class="row">
     <div class="col-xs-12">
-      <h3 class="sub-text">Colleges</h3>
+      <h3 class="md-text">Colleges</h3>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-12">
+      <h3 class="sub-text">Want a college added?</h3>
+      <button type="button" class="btn btn-default" data-toggle="modal" data-target=".bs-app-help-modal">Request College</button>
+      <div class="modal fade bs-app-help-modal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+        <div class="modal-dialog modal-sm">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title" id="gridSystemModalLabel">What college would you like us to build?</h4>
+            </div>
+             <div class="modal-body">
+              <p>College name</p>
+                <%= form_tag request_college_colleges_path, id: "college-request-form" do %>
+                <%= text_area_tag :question, nil, rows: 1 %>
+                <% end %>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" id="college-request-btn">Send</button>
+              </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -10,6 +36,7 @@
     <div class="col-md-3 col-xs-6 college">
       <%= link_to image_tag(college.logo(:thumb)), college %><br />
       <%= link_to college.name, college %>
+      <p><%= college.total_students_count %> have this college on their profile</p>
     </div>
     <% end %>
   </div>
@@ -19,3 +46,14 @@
 <div class="container">
   <%= link_to 'Browse Students', student_profiles_path, class: "btn btn-success btn-md"%>
 </div><br /><br />
+
+
+<script>
+  $(function () {
+    $("button#college-request-btn").click(
+         function() {
+             $("form#college-request-form").submit();
+         }
+     );
+ }());
+</script>

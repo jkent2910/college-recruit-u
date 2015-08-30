@@ -1,23 +1,21 @@
-div.colleges-index {
-  img {
-    height: 100px;
-    width: 100px;
-  }
-  div.college {
-    padding-top: 10px;
-  }
+// Buttons, Links
+
+.nav-pills > li.active > a {
+  background-color: #EECC22 !important;
 }
 
-div.college-show-students {
-  img {
-    height: 50px;
-    width: 50px;
-  }
+.nav-pills > li > a {
+  color: #114499;
+  font-size: 13px;
 }
 
-div.centered {
-  text-align: center;
+.btn-default {
+  color: #114499 !important;
+  border-color: #114499 !important;
+  border-width: 1px !important;
 }
+
+// Text
 
 .small-screen-text-black {
   font-family: 'Signika', sans-serif;
@@ -35,57 +33,67 @@ div.centered {
 
 .sub-text-blue {
   font-family: 'Spinnaker', sans-serif;
-  font-size: 18px;  
+  font-size: 18px;
   color: #114499;
 }
 
-.nav-pills > li.active > a {
-  background-color: #EECC22 !important;
+// Images
+
+div.colleges-index {
+  img {
+    height: 100px;
+    width: 100px;
+  }
+  div.college {
+    padding-top: 10px;
+  }
 }
 
-.nav-pills > li > a {
-  color: #114499;
-  font-size: 13px;
+div.college-show-students {
+  img {
+    height: 50px;
+    width: 50px;
+  }
 }
 
-.btn-default {
-  color: #114499 !important;
-  border-color: #114499 !important;
-  border-width: 1px !important;
+// Containers
+
+div.centered {
+  text-align: center;
 }
 
 .links-container {
   padding-left: 5px;
 }
 
+// Media Queries
+
 @media (min-width: 768px) {
   img.essay-icon {
-      height: 300px;
-      width: 300px;
-    }
-  }
-
-@media only screen and (max-width: 750px) {
-  .colleges {
-  padding-top: 25px;
-  }
-
-  .college-name-and-logo {
-  padding-top: 10px;
-  margin-bottom: 10px;
+    height: 300px;
+    width: 300px;
   }
 }
 
-@media only screen 
-  and (min-width: 768px)
-  and (max-width: 1024px) {
+@media only screen and (max-width: 750px) {
   .colleges {
-  padding-top: 25px;
+    padding-top: 25px;
+  }
+
+  .college-name-and-logo {
+    padding-top: 10px;
+    margin-bottom: 10px;
+  }
+}
+
+@media only screen
+and (min-width: 768px)
+and (max-width: 1024px) {
+  .colleges {
+    padding-top: 25px;
   }
   .college-name-and-logo {
-  margin-bottom: 10px;
-  margin-top: 20px;
+    margin-bottom: 10px;
+    margin-top: 20px;
   }
-
-
-  }
+}

@@ -97,5 +97,9 @@ RSpec.describe College, type: :model do
     specify "enrolling" do
       expect(@college.enrolling).to contain_exactly(@student_enrolling)
     end
+
+    specify "total count" do
+      expect(@college.total_students_count).to equal(4)
+    end
   end
 end

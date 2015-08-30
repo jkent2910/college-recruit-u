@@ -2,7 +2,7 @@ class CollegesController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @colleges = College.all
+    @colleges = College.all.order('name ASC')
   end
 
   def show
@@ -34,6 +34,32 @@ class CollegesController < ApplicationController
     end
 
     redirect_to college_path(college)
+  end
+
+  def ask_question
+    @college = College.friendly.find(params[:id])
+    student_profile = current_user.student_profile
+    question = params[:question]
+    UserMailer.ask_a_question(student_profile, @college, question).deliver_now
+    flash[:notice] = "We'll be in touch soon!"
+    redirect_to @college
+  end
+
+  def application_help
+    @college = College.friendly.find(params[:id])
+    student_profile = current_user.student_profile
+    question = params[:question]
+    UserMailer.application_help(student_profile, @college, question).deliver_now
+    flash[:notice] = "We'll be in touch soon!"
+    redirect_to @college
+  end
+
+  def request_college
+    student_profile = current_user.student_profile
+    question = params[:question]
+    UserMailer.request_a_college(student_profile, question).deliver_now
+    flash[:notice] = "We will get right on that!"
+    redirect_to colleges_path
   end
 
   private
