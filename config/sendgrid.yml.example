@@ -1,3 +1,0 @@
-production:
-  sendgrid_username: 'SENDGRID_USERNAME'
-  sendgrid_password: 'SENDGRID_PASSWORD'
