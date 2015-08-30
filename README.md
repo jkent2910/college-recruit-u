@@ -54,7 +54,7 @@ $ rake cucumber
 
 This app is deployed on [EngineYard](https://www.engineyard.com/).
 
-The files `config/google_college_credentials.json` and `config/s3.yml` should be copied manually to `/data/collegerecruitu/shared/config` on the EngineYard server. Also, a production `config/secrets.yml` should be created in `data/collegerecruitu/shared/config`.
+The files `config/google_college_credentials.json` and `config/s3.yml` should be copied manually to `/data/collegerecruitu/shared/config` on the EngineYard server. Also, a production `config/secrets.yml` and `config/sendgrid.yml` should be created in `data/collegerecruitu/shared/config`.
 
 These will be symlinked into the app's `config` directory upon deployment by the `deploy/before_migrate.rb` deployment hook.
 
