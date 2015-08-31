@@ -25,6 +25,8 @@ module StudentProfilesHelper
       "Carlisle High School" => {logo: "carlisle.png"},
       "Indianola High School" => {logo: "indianola.png"},
       "Norwalk Senior High School" => {logo: "norwalk.png"},
+      "South Sioux City High School" => {logo: "south-sioux-city.jpg"},
+      "Sioux City West High School" => {logo: "sioux-city-west.png"}
     }
   end
 
