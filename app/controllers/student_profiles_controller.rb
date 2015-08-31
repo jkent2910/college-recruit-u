@@ -7,13 +7,13 @@ class StudentProfilesController < ApplicationController
   # GET /student_profiles
   # GET /student_profiles.json
   def index
-    @student_profile = StudentProfile.all.order("created_at DESC")
+    @student_profiles = StudentProfile.where(incognito: false).order("created_at DESC")
   end
 
   # GET /student_profiles/1
   # GET /student_profiles/1.json
   def show
-    @student_profiles = StudentProfile.all
+    @student_profiles = StudentProfile.where(incognito: false)
   end
 
   # GET /student_profiles/new

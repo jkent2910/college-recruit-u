@@ -26,4 +26,12 @@ RSpec.describe SearchController, type: :controller do
       expect(response).to render_template(:index)
     end
   end
+
+  specify "search excludes incognito student profiles" do
+    student_profile = FactoryGirl.create(:student_profile, first_name: "Maggie", incognito: false)
+    incognito_profile = FactoryGirl.create(:student_profile, first_name: "Maggie", incognito: true)
+    post :search, query: "Maggie"
+    expect(assigns(:students)).to include(student_profile)
+    expect(assigns(:students)).not_to include(incognito_profile)
+  end
 end
