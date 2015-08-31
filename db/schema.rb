@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150822002304) do
+ActiveRecord::Schema.define(version: 20150831183352) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -121,8 +121,8 @@ ActiveRecord::Schema.define(version: 20150822002304) do
     t.string   "gender"
     t.string   "high_school"
     t.string   "graduation_year"
-    t.datetime "created_at",         null: false
-    t.datetime "updated_at",         null: false
+    t.datetime "created_at",                         null: false
+    t.datetime "updated_at",                         null: false
     t.string   "photo_file_name"
     t.string   "photo_content_type"
     t.integer  "photo_file_size"
@@ -131,6 +131,7 @@ ActiveRecord::Schema.define(version: 20150822002304) do
     t.text     "majors"
     t.string   "slug"
     t.string   "cell_number"
+    t.boolean  "incognito",          default: false
   end
 
   add_index "student_profiles", ["slug"], name: "index_student_profiles_on_slug", unique: true, using: :btree
