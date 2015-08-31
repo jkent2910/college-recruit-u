@@ -5,7 +5,7 @@ class PagesController < ApplicationController
 
       @student_profile = current_user.student_profile
 
-      @student_profiles = StudentProfile.all.order("created_at DESC")
+      @student_profiles = StudentProfile.where(incognito: false).order("created_at DESC")
 
       @colleges = College.order('name ASC')
     else
