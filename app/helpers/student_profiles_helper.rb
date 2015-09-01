@@ -29,6 +29,7 @@ module StudentProfilesHelper
       "Sioux City West High School" => {logo: "sioux-city-west.png"},
       "Xavier High School" => {logo: "xavier.jpg"},
       "Linn-Mar High School" => {logo: "linn-mar.jpg"},
+      "Forreston High School" => {logo: "forreston-logo.jpg"},
       "Other" => {logo: "other.png"}
     }
   end
