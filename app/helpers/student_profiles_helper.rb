@@ -28,7 +28,8 @@ module StudentProfilesHelper
       "South Sioux City High School" => {logo: "south-sioux-city.jpg"},
       "Sioux City West High School" => {logo: "sioux-city-west.png"},
       "Xavier High School" => {logo: "xavier.jpg"},
-      "Linn-Mar High School" => {logo: "linn-mar.jpg"}
+      "Linn-Mar High School" => {logo: "linn-mar.jpg"},
+      "Other" => {logo: "other.png"}
     }
   end
 
@@ -50,7 +51,7 @@ module StudentProfilesHelper
       "Bowling" => {logo: "bowling.png"},
       "Robotics" => {logo: "robotics.png"},
       "Writing" => {logo: "writing.png"},
-      "Swimming" => {logo: "swiming.png"},
+      "Swimming" => {logo: "swimming.png"},
       "Speech/Debate" => {logo: "debate.png"}
     }
   end
@@ -70,7 +71,7 @@ module StudentProfilesHelper
       "Health Sciences" => {logo: "healthscience.png"},
       "Languages & Literature" => {logo: "literature.png"},
       "Mathematics" => {logo: "mathematics.png"},
-      "Other" => {logo: ""},
+      "Other" => {logo: "other.png"},
       "Philosophy & Religion" => {logo: "philosophy.png"}, 
       "Pre-Law" => {logo: "prelaw.png"},
       "Pre-Med" => {logo: "premed.png"},
