@@ -1,4 +1,4 @@
-// Buttons 
+// Buttons
 
 a:hover {
   background-color: #EECC22;
@@ -16,7 +16,7 @@ a.btn-primary:visited {
   margin-bottom: 3px !important;
 }
 
-// Text 
+// Text
 
 .p-text {
   font-family: 'Spinnaker', sans-serif !important;
@@ -50,18 +50,18 @@ a.btn-primary:visited {
 
 .sub-text-centered {
   font-family: 'Spinnaker', sans-serif;
-  font-size: 18px;  
+  font-size: 18px;
   text-align: center;
 }
 
 .sub-text-centered-blue {
   font-family: 'Spinnaker', sans-serif;
-  font-size: 18px;  
+  font-size: 18px;
   text-align: center;
   color: #114499;
 }
 
-// Images 
+// Images
 
 div.student-profile-fans {
   img {
@@ -71,13 +71,19 @@ div.student-profile-fans {
 }
 
 div.student-profile-colleges {
+  a:hover {
+    img {
+      background-color: white;
+    }
+  }
   img {
+    max-width: none;
     height: 50px;
     width: 50px;
   }
 }
 
-// Containers 
+// Containers
 
 .fans-container {
   margin-top: 10px;
@@ -135,7 +141,7 @@ div.student-profile-colleges {
   }
 }
 
-@media only screen 
+@media only screen
   and (min-width: 768px)
   and (max-width: 1024px) {
 
