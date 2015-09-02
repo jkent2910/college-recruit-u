@@ -1,9 +1,11 @@
 <div class="container">
   <div class="row college-name-and-logo">
-    <div class="col-xs-8 col-md-6 col-md-offset-2">
+    <div class="col-xs-12 centered">
       <h1 class="small-screen-text-black"><%= @college.name%></h1>
     </div>
-    <div class="col-xs-4 col-md-2">
+  </div>
+  <div class="row">
+    <div class="col-xs-12 centered">
       <%= image_tag(@college.logo(:thumb)) %>
     </div>
   </div>
