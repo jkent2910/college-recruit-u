@@ -61,7 +61,7 @@
         </div>
       </div>
     </div>
-  </div> 
+  </div>
 </div><br />
 
 <div class="container visible-xs">
@@ -70,7 +70,7 @@
       <h4 class="sub-text-centered-blue"><span class="glyphicon glyphicon-sunglasses glyphicon-sm-blue"></span>I'm a Fan</h4>
     </div>
     <div class="col-xs-12 student-colleges-container">
-      <% @student_profile.college_student_statuses.where(status_name: "Just a Fan").each do |college_student_status| %>
+      <% @student_profile.college_student_statuses.just_a_fan.each do |college_student_status| %>
         <div class="col-xs-3 student-profile-colleges">
             <%= link_to college_student_status.college do %>
               <%= image_tag(college_student_status.college.logo(:thumb)) %>
@@ -82,7 +82,7 @@
       <h4 class="sub-text-centered-blue"><span class="glyphicon glyphicon-zoom-in glyphicon-sm-blue"></span>Considering</h4>
     </div>
     <div class="col-xs-12 student-colleges-container">
-      <% @student_profile.college_student_statuses.where(status_name: "Considering").each do |college_student_status| %>
+      <% @student_profile.college_student_statuses.considering.each do |college_student_status| %>
         <div class="col-xs-4 student-profile-colleges">
             <%= link_to college_student_status.college do %>
               <%= image_tag(college_student_status.college.logo(:thumb)) %>
@@ -94,7 +94,7 @@
       <h4 class="sub-text-centered-blue"><span class="glyphicon glyphicon-file glyphicon-sm-blue"></span>Applying</h4>
     </div>
       <div class="col-xs-12 student-colleges-container">
-      <% @student_profile.college_student_statuses.where(status_name: "Applying").each do |college_student_status| %>
+      <% @student_profile.college_student_statuses.applying.each do |college_student_status| %>
         <div class="col-xs-4 student-profile-colleges">
             <%= link_to college_student_status.college do %>
               <%= image_tag(college_student_status.college.logo(:thumb)) %>
@@ -121,7 +121,7 @@
 <div class="container hidden-xs">
   <div class="row">
     <div class="col-md-4 col-sm-4 student-colleges-container">
-      <% @student_profile.college_student_statuses.where(status_name: "Just a Fan").each do |college_student_status| %>
+      <% @student_profile.college_student_statuses.just_a_fan.each do |college_student_status| %>
         <div class="col-md-2 col-sm-3 student-profile-colleges">
             <%= link_to college_student_status.college do %>
               <%= image_tag(college_student_status.college.logo(:thumb)) %>
@@ -130,7 +130,7 @@
       <% end %>
     </div>
     <div class="col-md-4 col-sm-4 student-colleges-container">
-      <% @student_profile.college_student_statuses.where(status_name: "Considering").each do |college_student_status| %>
+      <% @student_profile.college_student_statuses.considering.each do |college_student_status| %>
         <div class="col-md-2 col-sm-3 student-profile-colleges">
             <%= link_to college_student_status.college do %>
               <%= image_tag(college_student_status.college.logo(:thumb)) %>
@@ -140,7 +140,7 @@
     </div>
 
     <div class="col-md-4 col-sm-4 student-colleges-container">
-      <% @student_profile.college_student_statuses.where(status_name: "Applying").each do |college_student_status| %>
+      <% @student_profile.college_student_statuses.applying.each do |college_student_status| %>
         <div class="col-md-2 col-sm-3 student-profile-colleges">
             <%= link_to college_student_status.college do %>
               <%= image_tag(college_student_status.college.logo(:thumb)) %>
