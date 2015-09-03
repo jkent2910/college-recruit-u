@@ -2,7 +2,7 @@ class CollegesController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @colleges = College.all.order('name ASC')
+    @colleges = College.all.order('name ASC').includes(:college_student_statuses)
   end
 
   def show

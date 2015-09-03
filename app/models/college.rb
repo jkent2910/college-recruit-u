@@ -34,7 +34,9 @@ class College < ActiveRecord::Base
   end
 
   def total_students_count
-    college_student_statuses.count
+    # When college_student_statuses are eager loaded, calling length
+    # instead of count is faster because it saves a database query.
+    college_student_statuses.length
   end
 
 end
