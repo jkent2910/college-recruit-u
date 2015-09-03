@@ -68,14 +68,7 @@ a.btn-primary:visited {
 
 // Images
 
-div.student-profile-fans {
-  img {
-    height: 50px;
-    width: 50px;
-  }
-}
-
-div.student-profile-colleges {
+div.student-profile-fans, div.student-profile-colleges {
   a:hover {
     img {
       background-color: white;
@@ -89,6 +82,10 @@ div.student-profile-colleges {
 }
 
 // Containers
+
+.student-profiles-index {
+  margin-top: 15px;
+}
 
 .actions {
   margin-top: 5px;
@@ -120,6 +117,7 @@ div.student-profile-colleges {
   border-color: #EECC22;
   padding-bottom: 5px;
   margin-bottom: 10px;
+  min-height: 67px !important;
 }
 
 .student-interests-container {
