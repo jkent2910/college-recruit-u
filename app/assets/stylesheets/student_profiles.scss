@@ -68,14 +68,7 @@ a.btn-primary:visited {
 
 // Images
 
-div.student-profile-fans {
-  img {
-    height: 50px;
-    width: 50px;
-  }
-}
-
-div.student-profile-colleges {
+div.student-profile-fans, div.student-profile-colleges {
   a:hover {
     img {
       background-color: white;
