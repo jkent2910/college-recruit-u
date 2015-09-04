@@ -20,7 +20,7 @@ module StudentProfilesHelper
       "North High School" => {logo: "north.png"},
       "North Polk High School" => {logo: "north-polk.png"},
       "Norwalk Senior High School" => {logo: "norwalk.png"},
-      "Other" => {logo: "other.png"}
+      "Other" => {logo: "other.png"},
       "Roosevelt High School" => {logo: "roosevelt.png"},
       "Saydel High School High School" => {logo: "saydel.png"},
       "Sioux City West High School" => {logo: "sioux-city-west.png"},
@@ -50,7 +50,7 @@ module StudentProfilesHelper
       "Marching Band" => {logo: "marchingband.png"},
       "Robotics" => {logo: "robotics.png"},
       "Soccer" => {logo: "soccer.png"},
-      "Speech/Debate" => {logo: "debate.png"}
+      "Speech/Debate" => {logo: "debate.png"},
       "Swimming" => {logo: "swimming.png"},
       "Tennis" => {logo: "tennis.png"},
       "Track" => {logo: "track.png"},
