@@ -4,7 +4,7 @@ class SearchController < ApplicationController
 
   def search
     query = params[:query]
-    @students = StudentProfile.search(query)
+    @students = StudentProfile.search(query).where(incognito: false)
     @colleges = College.search(query)
     render :index
   end

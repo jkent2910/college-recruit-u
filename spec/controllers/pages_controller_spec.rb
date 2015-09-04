@@ -20,6 +20,12 @@ RSpec.describe PagesController, type: :controller do
       expect(assigns(:student_profiles)).to eq [@student_profile]
     end
 
+    it "excludes incognito student profiles" do
+      incognito_profile = FactoryGirl.create(:student_profile, incognito: true)
+      get :home
+      expect(assigns(:student_profiles)).not_to include(incognito_profile)
+    end
+
     it "assigns all colleges as @colleges" do
       college = FactoryGirl.create(:college)
       get :home

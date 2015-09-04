@@ -8,7 +8,7 @@ RSpec.describe "student_profiles/index", type: :view do
     FactoryGirl.create(:student_profile, student: @student_user)
     sign_in @student_user
 
-    assign(:student_profile, [
+    assign(:student_profiles, [
       StudentProfile.create!(
         first_name: "First Name",
         last_name: "Last Name",
