@@ -43,12 +43,18 @@
 // Images
 
 div.colleges-index {
+  a:hover {
+    img {
+      background-color: white;
+    }
+  }
   img {
     height: 100px;
     width: 100px;
   }
   div.college {
     padding-top: 10px;
+    min-height: 200px;
   }
 }
 
