@@ -43,11 +43,11 @@
 <div class="container">
   <div class="row">
     <div class="col-xs-12">
-      <h4 class="small-txt">Explore Colleges</h4>
+      <h4 class="small-txt">Recently Added Colleges</h4>
     </div>
   </div>
   <div class="row colleges-index">
-    <% @colleges.each do |college| %>
+    <% @new_colleges.each do |college| %>
     <div class="col-md-3 col-xs-6 college">
       <%= link_to image_tag(college.logo(:thumb)), college %><br />
       <%= link_to college.name, college %>
@@ -60,6 +60,10 @@
       <%= link_to 'Browse All Colleges', colleges_path, class: "btn btn-success btn-sm"%>
     </div>
   </div>
+</div>
+<br />
+<br />
+
 
 <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
