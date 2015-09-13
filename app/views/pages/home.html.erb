@@ -1,15 +1,15 @@
 <div class="container home-header">
   <div class="row boxed-text">
     <div class="col-xs-12">
-      <h1 class="profile-header">Welcome <%= @student_profile.try(:first_name) %></h1>
+      <h1 class="profile-header">Welcome, <%= @student_profile.try(:first_name) %></h1>
     </div>
   </div><br />
   <% if current_user.student_profile != nil %>
     <div class="row">
-      <div class="col-xs-6 col-xs-offset-4 hidden-md hidden-lg hidden-xl">
-        <%= image_tag @student_profile.photo.url(:thumb) %>
+      <div class="col-xs-12 hidden-md hidden-lg hidden-xl centered">
+        <%= image_tag @student_profile.photo.url(:medium) %>
       </div>
-      <div class="col-md 6 col-md-offset-5 hidden-xs hidden-sm">
+      <div class="col-md-12 hidden-xs hidden-sm centered">
         <%= image_tag @student_profile.photo.url(:medium) %>
       </div>
     </div>

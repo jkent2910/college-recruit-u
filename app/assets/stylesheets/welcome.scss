@@ -116,15 +116,22 @@ a.btn-success:visited {
   font-size: 28px;
 }
 
+.md-text-white {
+  font-family: 'Signika', sans-serif;
+  color: white !important;
+  font-size: 28px;
+}
+
 .small-screen-text {
   font-family: 'Signika', sans-serif;
   color: white;
   text-align: center;
-  font-size: 24px;
+  font-size: 32px;
 }
 
 .small-nav-text {
   font-size: 16px !important;
+  color: white;
 }
 
 .sub-header-text {
@@ -133,6 +140,10 @@ a.btn-success:visited {
   text-align: center;
   font-size: 36px;
   letter-spacing: 1.5px;
+}
+
+ul {
+  list-style: none;
 }
 
 .white-text {
@@ -181,6 +192,10 @@ a.btn-success:visited {
   transition: all 1s ease;
 }
 
+.glyphicon-menu-hamburger {
+  font-size: 3em !important;
+}
+
 span.glyphicon {
   font-size: 5em;
 }
@@ -208,6 +223,10 @@ span.glyphicon-xs-black {
 
 .center {
   text-align: center;
+}
+
+.dropdown-menu {
+  background-color: #114499 !important;
 }
 
 .logo {
@@ -258,11 +277,11 @@ span.glyphicon-xs-black {
 
 @media only screen and (max-width: 575px) {
   .btn-yellow {
-  font-size: .8em !important;
+  font-size: 1.2em !important;
   }
 
   .btn-white {
-  font-size: .8em !important;
+  font-size: 1.2em !important;
   }
 }
 
@@ -280,7 +299,7 @@ span.glyphicon-xs-black {
   }
 
   .background {
-  padding-bottom: 55px;
+  padding-bottom: 80px;
   }
 
   .right-nav {
@@ -289,12 +308,17 @@ span.glyphicon-xs-black {
   margin-top: 5px;
   }
 
-.navbar-brand {
+  .navbar-brand {
   margin-top: -20px;
   background-color: white;
   padding-bottom: 92px !important;
   margin-bottom: -25px;
-}
+  }
+
+  .navbar-form {
+  border-top: none !important;
+  border-bottom: none !important;
+  }
 
 }
 
