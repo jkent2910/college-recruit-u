@@ -1,11 +1,22 @@
 // Buttons, Links
 
-.nav-pills > li.active > a {
-  background-color: #EECC22 !important;
-}
+.college-info {
+  .nav-pills > li {
+    border: 1px solid #114499;
+    border-radius: 5px;
+  }
 
-.nav-pills > li > a {
-  color: #114499;
+  .nav-pills > li.active > a {
+    background-color: #EECC22 !important;
+  }
+
+  .nav-pills > li > a {
+    color: #114499;
+  }
+
+  .tab-content {
+    margin-top: 1.5em;
+  }
 }
 
 .btn-default {
@@ -91,15 +102,15 @@ div.centered {
 
 @media only screen and (max-width: 575px) {
   .btn-iphone5 {
-  font-size: .8em !important;
+    font-size: .8em !important;
   }
 
   .btn-iphone5 {
-  font-size: .8em !important;
+    font-size: .8em !important;
   }
 
-.nav-pills > li > a {
-  font-size:  .65em !important;
+  .nav-pills > li > a {
+    font-size:  .65em !important;
   }
 }
 
