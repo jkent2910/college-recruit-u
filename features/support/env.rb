@@ -62,4 +62,5 @@ Capybara::Webkit.configure do |config|
   config.block_url "*.googleapis.com"
   config.block_url "*.google-analytics.com"
   config.block_url "*.doubleclick.net"
+  config.block_url "*.twitter.com"
 end
