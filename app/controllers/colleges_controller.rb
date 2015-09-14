@@ -1,3 +1,4 @@
+# coding: utf-8
 class CollegesController < ApplicationController
   before_action :authenticate_user!
 
@@ -9,6 +10,7 @@ class CollegesController < ApplicationController
     @college = College.friendly.find(params[:id])
     @student_profile = current_user.student_profile
     @college_status = @student_profile.try(:college_status, @college)
+    @twitter_message = "I have #{@college.name} on my profile–where are you considering? Join for free"
   end
 
   def student_status
