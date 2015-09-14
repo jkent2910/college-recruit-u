@@ -230,6 +230,7 @@ GEM
       byebug (~> 5.0)
       pry (~> 0.10)
     rack (1.6.4)
+    rack-ssl-enforcer (0.2.9)
     rack-test (0.6.3)
       rack (>= 1.0)
     rails (4.2.4)
@@ -360,6 +361,7 @@ DEPENDENCIES
   pg
   phony_rails
   pry-byebug
+  rack-ssl-enforcer (~> 0.2.9)
   rails (= 4.2.4)
   rspec-rails (~> 3.3.2)
   sass-rails (~> 5.0)

@@ -17,6 +17,7 @@ gem 'jquery-rails',    '~> 4.0.4'
 gem 'jquery-ui-rails', '~> 5.0.5'
 gem "paperclip",       '~> 4.3'
 gem 'phony_rails'
+gem 'rack-ssl-enforcer', '~> 0.2.9'
 gem 'sass-rails',      '~> 5.0'
 gem 'sdoc',            '~> 0.4.0', group: :doc
 gem 'turbolinks'

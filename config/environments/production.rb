@@ -66,7 +66,7 @@ Rails.application.configure do
 
   # For generating links in emails.
   # TODO: Update this with the actual host name.
-  config.action_mailer.default_url_options = { host: 'ec2-52-6-207-202.compute-1.amazonaws.com' }
+  config.action_mailer.default_url_options = { host: 'www.collegerecruitu.com' }
 
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.perform_deliveries = true
@@ -92,6 +92,9 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+
+  # Require SSL
+  config.middleware.use Rack::SslEnforcer
 end
 
 # Email addresses used for notifications
