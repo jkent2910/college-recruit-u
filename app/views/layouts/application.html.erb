@@ -11,45 +11,43 @@
     <%= csrf_meta_tags %>
     <%= favicon_link_tag 'favicon.ico' %>
   </head>
-  <body>
 
-  <div id="nav">
-    <div class="navbar navbar-default navbar-static navbar-fixed-top">
-      <li class="dropdown">
+  <body>
+    <div id="nav">
+      <div class="navbar navbar-default navbar-static navbar-fixed-top">
         <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-label="Left Align" data-target=".navbar-components">
           <span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span>
         </button>
         <ul class="dropdown-menu">
           <% if user_signed_in? %>
           <li><a href="/home" class="navigation-links"><h2 class="md-text-white">Home</h2></a></li>
-            <% if current_user.try(:student_profile) %>
-            <li><%= link_to "Your Profile", student_profile_path(current_user.student_profile), :class => ("md-text-white") %></li>
-            <% else %>
-            <li><%= link_to "Create Profile", new_student_profile_path(current_user), :class => ("md-text-white") %></li>
-            <% end %>
+          <% if current_user.try(:student_profile) %>
+          <li><%= link_to "Your Profile", student_profile_path(current_user.student_profile), :class => ("md-text-white") %></li>
+          <% else %>
+          <li><%= link_to "Create Profile", new_student_profile_path(current_user), :class => ("md-text-white") %></li>
+          <% end %>
           <li><%= link_to "Colleges", colleges_path, :class => ("md-text-white")%></li>
           <li><%= link_to "Students", student_profiles_path, :class => ("md-text-white") %></li>
           <li><a href="www.collegerecruitu.wordpress.com"><h2 class="md-text-white">Blog</h2></a></li>
           <li><a href="/download"><h2 class="md-text-white">Help</h2></a></li>
           <li><%= link_to "Sign Out", destroy_user_session_path, :method => 'delete', :class => ("md-text-white") %></li>
         </ul>
-        <%= form_tag search_path, class: "navbar-form pull-right hidden-xs hidden-sm", role: "search" do %>
-        <div class="form-group hidden-xs hidden-sm">
-          <%= text_field_tag :query, '', class: "form-control", placeholder: "Search" %>
-          <button type="submit" class="btn btn-default hidden-xs hidden-sm">Go</button>
+        <div class="cru-search-div">
+          <%= form_tag search_path, class: "form-inline pull-right", role: "search" do %>
+          <%= text_field_tag :query, '', class: "form-control cru-search-field", placeholder: "Search" %>
+          <button type="submit" class="btn btn-default">Go</button>
+          <% end %>
         </div>
-        <% end %>
         <% else %>
-          <ul>
-            <li><a href="#our-mission"><h2 class="md-text-white">OUR MISSION</h2></a></li>
-            <li><a href="#how-we-help"><h2 class="md-text-white">HOW WE HELP</h2></a></li>
-            <li><a href="#connect"><h2 class="md-text-white">TALK TO US</h2></a></li>
-            <li><a href="https://collegerecruitu.wordpress.com"><h2 class="md-text-white">BLOG</h2></a></li>
-          </ul>
+        <ul>
+          <li><a href="#our-mission"><h2 class="md-text-white">OUR MISSION</h2></a></li>
+          <li><a href="#how-we-help"><h2 class="md-text-white">HOW WE HELP</h2></a></li>
+          <li><a href="#connect"><h2 class="md-text-white">TALK TO US</h2></a></li>
+          <li><a href="https://collegerecruitu.wordpress.com"><h2 class="md-text-white">BLOG</h2></a></li>
+        </ul>
         <% end %>
-      </li>
+      </div>
     </div>
-  </div>
 
     <%= flash_messages %>
 

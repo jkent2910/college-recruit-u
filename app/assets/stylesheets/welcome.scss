@@ -5,14 +5,14 @@
 @import url(http://fonts.googleapis.com/css?family=Spinnaker);
 @import url(http://fonts.googleapis.com/css?family=Signika);
 
-// Global Styles 
+// Global Styles
 body {
-  padding-top: 60px;
+  padding-top: 72px;
   font-family: 'Spinnaker', sans-serif !important;
 }
 
-.background { 
-  background: image-url('YourFutureStartsHere2.jpeg') no-repeat center center fixed; 
+.background {
+  background: image-url('YourFutureStartsHere2.jpeg') no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -27,7 +27,7 @@ input, textarea {
   max-width: 100%;
 }
 
-// Buttons, Links 
+// Buttons, Links
 
 a.btn-success:visited {
   color: white;
@@ -53,7 +53,7 @@ a.btn-success:visited {
 
 .btn-xlarge {
     padding: 18px 28px !important;
-    font-size: 16px !important; 
+    font-size: 16px !important;
     font-family: 'Signika', sans-serif;
     background-color: #EECC22 !important;
     color: white !important;
@@ -85,7 +85,7 @@ a.btn-success:visited {
 
 .btn-xlarge-white {
     padding: 18px 28px !important;
-    font-size: 16px !important; 
+    font-size: 16px !important;
     font-family: 'Signika', sans-serif;
     line-height: normal !important;
     -webkit-border-radius: 8px !important;
@@ -263,6 +263,19 @@ span.glyphicon-xs-black {
   border: 2px solid white;
 }
 
+.cru-search-div {
+  min-width: 240px;
+  float: right;
+  padding-top: 1em;
+  padding-right: 1em;
+}
+
+.cru-search-field {
+  display: inline-block !important;
+  width: auto !important;
+  vertical-align: middle !important;
+}
+
 .social-media-links {
   margin-top: 25px;
   margin-bottom: 75px;
@@ -322,7 +335,7 @@ span.glyphicon-xs-black {
 
 }
 
-@media only screen 
+@media only screen
   and (min-width: 768px)
   and (max-width: 1024px) {
 
