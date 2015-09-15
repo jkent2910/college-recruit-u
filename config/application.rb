@@ -25,6 +25,6 @@ module CollegeRecruitU
     config.active_record.raise_in_transactional_callbacks = true
 
     # Redirect to desired URL
-    config.middleware.insert_before(Rack::Lock, CollegeRecruitU::RackRedirect) if Rails.env == 'production'
+    config.middleware.insert_before(Rack::Runtime, CollegeRecruitU::RackRedirect) if Rails.env == 'production'
   end
 end
