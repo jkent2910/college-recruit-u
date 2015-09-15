@@ -5,17 +5,16 @@
     </div>
   </div><br />
   <% if current_user.student_profile != nil %>
-    <div class="row">
-      <div class="col-xs-12 hidden-md hidden-lg hidden-xl centered">
-        <%= image_tag @student_profile.photo.url(:medium) %>
-      </div>
-      <div class="col-md-12 hidden-xs hidden-sm centered">
-        <%= image_tag @student_profile.photo.url(:medium) %>
-      </div>
+  <div class="row">
+    <div class="col-xs-12 hidden-md hidden-lg hidden-xl centered">
+      <%= image_tag @student_profile.photo.url(:medium) %>
+    </div>
+    <div class="col-md-12 hidden-xs hidden-sm centered">
+      <%= image_tag @student_profile.photo.url(:medium) %>
     </div>
   </div>
-  <% else %> 
   <% end %>
+</div>
 
 <div class="container">
   <div class="row">
