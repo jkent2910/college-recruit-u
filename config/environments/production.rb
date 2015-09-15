@@ -95,6 +95,9 @@ Rails.application.configure do
 
   # Require SSL
   config.middleware.use Rack::SslEnforcer
+
+  # Redirect to desired URL
+  config.middleware.insert_before(Rack::Lock, CRU::RackRedirect)
 end
 
 # Email addresses used for notifications
