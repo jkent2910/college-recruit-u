@@ -1,4 +1,5 @@
 require File.expand_path('../boot', __FILE__)
+require File.expand_path('../../lib/rack-redirect', __FILE__)
 
 require 'rails/all'
 
@@ -22,5 +23,8 @@ module CollegeRecruitU
 
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
+
+    # Redirect to desired URL
+    config.middleware.insert_before(Rack::Lock, CollegeRecruitU::RackRedirect) if Rails.env == 'production'
   end
 end
