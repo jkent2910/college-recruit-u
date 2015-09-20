@@ -52,8 +52,10 @@ module StudentProfilesHelper
       "Soccer" => {logo: "soccer.png"},
       "Speech/Debate" => {logo: "debate.png"},
       "Swimming" => {logo: "swimming.png"},
+      "Technology" => {logo: "technology.png"},
       "Tennis" => {logo: "tennis.png"},
       "Track" => {logo: "track.png"},
+      "Wrestling" => { logo: "wrestling.jpg"},
       "Writing" => {logo: "writing.png"},
     }
   end
@@ -66,6 +68,7 @@ module StudentProfilesHelper
       "Biology" => {logo: "biology.png"},
       "Business" => {logo: "business.png"},
       "Communications" => {logo: "communications.png"},
+      "Computer Science" => {logo: "computer-science.png"},
       "Criminal Justice" => {logo: "criminaljustice.png"},
       "Education" => {logo: "education.png"}, 
       "English" => {logo: "english.png"},
