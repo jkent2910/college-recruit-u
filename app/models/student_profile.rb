@@ -27,12 +27,11 @@ class StudentProfile < ActiveRecord::Base
       record.errors.add(attr, "contains an invalid major") unless student_majors.include?(major)
     end
   end
-  
 
   belongs_to :student, class_name: "User", foreign_key: "user_id"
 
   has_many :colleges, through: :college_student_statuses
-  has_many :college_student_statuses
+  has_many :college_student_statuses, dependent: :delete_all
 
   has_many :fan_relationships, class_name: "Relationship", foreign_key: "fan_of_id"
   has_many :fan_of_relationships, class_name: "Relationship", foreign_key: "fan_id"

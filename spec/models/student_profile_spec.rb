@@ -15,7 +15,7 @@ RSpec.describe StudentProfile, type: :model do
     it "allows only valid genders" do
       expect(subject).to validate_inclusion_of(:gender).in_array(StudentProfile::VALID_GENDERS)
     end
-    
+
     it "allows valid student interests" do
       student_profile = FactoryGirl.build(:student_profile, interests: ['Basketball', 'Choir'])
       expect(student_profile).to be_valid
@@ -89,6 +89,8 @@ RSpec.describe StudentProfile, type: :model do
         @student_profile.become_fan_of(other_profile)
         other_profile.become_fan_of(@student_profile)
         @student_profile.factor_ratings << FactoryGirl.create(:factor_rating, factor: factor)
+        college = FactoryGirl.create(:college)
+        @student_profile.add_or_update_college_status(college, "Just a Fan")
       end
 
       specify "setup is correct" do
@@ -96,6 +98,7 @@ RSpec.describe StudentProfile, type: :model do
         expect(Factor.count).to eq 1
         expect(FactorRating.count).to eq 1
         expect(Relationship.count).to eq 2
+        expect(CollegeStudentStatus.count).to eq 1
       end
 
       specify "student profile is deleted" do
@@ -108,6 +111,10 @@ RSpec.describe StudentProfile, type: :model do
 
       specify "factor ratings are deleted" do
         expect { @student_profile.destroy }.to change { FactorRating.count }.by(-1)
+      end
+
+      specify "college relationships are deleted" do
+        expect { @student_profile.destroy }.to change { CollegeStudentStatus.count }.by(-1)
       end
     end
   end
