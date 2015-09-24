@@ -14,7 +14,7 @@ Feature: Student views colleges
 
   Scenario: Student views colleges alphabetically
     Given I am on the colleges page
-    And I follow "View Alphabetically"
+    # And I follow "View Alphabetically"
     Then I should see the following colleges:
     | name                  | students |
     | Harvard University    |        0 |
