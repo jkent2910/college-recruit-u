@@ -4,6 +4,10 @@ class CollegesController < ApplicationController
 
   def index
     @colleges = College.all.order('name ASC').includes(:college_student_statuses)
+
+    if sort_order == "pop"
+      @colleges = @colleges.sort_by { |college| -college.college_student_statuses.length }
+    end
   end
 
   def show
@@ -68,5 +72,9 @@ class CollegesController < ApplicationController
 
   def status_message(status)
     status + CollegeStudentStatus::STATUS_MESSAGE_SUFFIX[status]
+  end
+
+  def sort_order
+    %w[alpha pop].include?(params[:order]) ? params[:order] : "alpha"
   end
 end

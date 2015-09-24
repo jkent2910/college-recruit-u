@@ -12,7 +12,6 @@ Feature: Student views colleges
     | Iowa State University | Public       | Ames      | Iowa          | Town   |
     | Harvard University    | Private      | Cambridge | Massachusetts | City   |
 
-  @wip
   Scenario: Student views colleges alphabetically
     Given I am on the colleges page
     And I follow "View Alphabetically"
@@ -22,13 +21,12 @@ Feature: Student views colleges
     | Iowa State University |        0 |
     | University of Iowa    |        0 |
 
-  @wip
   Scenario: Student views colleges by popularity
     Given the colleges have the following student interest:
-    | name                  | fans | considering | applying | enrollowing |
-    | University of Iowa    |    1 |           1 |        1 |             |
-    | Iowa State University |    1 |           2 |          |           1 |
-    | Harvard University    |      |             |          |             |
+    | name                  | Just a Fan | Considering | Applying | Enrolling |
+    | University of Iowa    |          1 |           1 |        1 |           |
+    | Iowa State University |          1 |           2 |          |         1 |
+    | Harvard University    |            |             |          |           |
     And I am on the colleges page
     And I follow "View by Popularity"
     Then I should see the following colleges:
