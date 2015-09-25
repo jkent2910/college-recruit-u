@@ -45,6 +45,7 @@
   <div class="row">
     <div class="col-xs-12">
       <h4 class="small-txt">Recently Added Colleges</h4>
+      <div><%= link_to_if params[:order] == "pop", "View Alphabetically", order: "alpha" %> | <%= link_to_unless params[:order] == "pop", "View by Popularity", order: "pop" %></div>
     </div>
   </div>
   <div class="row colleges-index">
@@ -52,6 +53,7 @@
     <div class="col-md-3 col-xs-6 college">
       <%= link_to image_tag(college.logo(:thumb)), college %><br />
       <%= link_to college.name, college %>
+      <p><%= college.total_students_count %> have this college on their profile</p>
     </div>
     <% end %>
   </div>
