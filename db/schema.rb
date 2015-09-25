@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150904200937) do
+ActiveRecord::Schema.define(version: 20150925143444) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -64,6 +64,7 @@ ActiveRecord::Schema.define(version: 20150904200937) do
     t.string   "financial_aid_link"
     t.string   "link_to_majors"
     t.string   "slug"
+    t.integer  "college_student_statuses_count", default: 0, null: false
   end
 
   add_index "colleges", ["slug"], name: "index_colleges_on_slug", unique: true, using: :btree

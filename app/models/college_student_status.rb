@@ -13,7 +13,7 @@ class CollegeStudentStatus < ActiveRecord::Base
   validates :status_name, inclusion: { in: VALID_STATUSES }
 
   belongs_to :student_profile
-  belongs_to :college
+  belongs_to :college, counter_cache: true
 
   scope :just_a_fan,  -> { where(status_name: 'Just a Fan').includes(:student_profile) }
   scope :considering, -> { where(status_name: 'Considering').includes(:student_profile) }
