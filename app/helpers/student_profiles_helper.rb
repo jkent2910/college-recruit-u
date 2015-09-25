@@ -21,6 +21,7 @@ module StudentProfilesHelper
       "North Polk High School" => {logo: "north-polk.png"},
       "Norwalk Senior High School" => {logo: "norwalk.png"},
       "Other" => {logo: "other.png"},
+      "Peoria Heights High School" => {logo: "peoria-heights.png"},
       "Roosevelt High School" => {logo: "roosevelt.png"},
       "Saydel High School High School" => {logo: "saydel.png"},
       "Sioux City West High School" => {logo: "sioux-city-west.png"},
