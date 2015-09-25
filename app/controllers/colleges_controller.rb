@@ -3,7 +3,8 @@ class CollegesController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @colleges = College.all.order('name ASC').includes(:college_student_statuses)
+    order = sort_order == "pop" ? "college_student_statuses_count DESC" : "name ASC"
+    @colleges = College.all.order(order).includes(:college_student_statuses)
   end
 
   def show
@@ -68,5 +69,9 @@ class CollegesController < ApplicationController
 
   def status_message(status)
     status + CollegeStudentStatus::STATUS_MESSAGE_SUFFIX[status]
+  end
+
+  def sort_order
+    %w[alpha pop].include?(params[:order]) ? params[:order] : "alpha"
   end
 end
