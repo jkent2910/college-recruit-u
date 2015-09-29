@@ -9,7 +9,11 @@ RSpec.describe FactorChoice, type: :model do
     expect(subject).to validate_presence_of(:factor)
   end
 
-  it "validates presence of choice" do
-    expect(subject).to validate_presence_of(:choice)
+  it "validates presence of name" do
+    expect(subject).to validate_presence_of(:name)
+  end
+
+  it "validates presence of value" do
+    expect(subject).to validate_presence_of(:value)
   end
 end
