@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150925143444) do
+ActiveRecord::Schema.define(version: 20150928181827) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -68,6 +68,11 @@ ActiveRecord::Schema.define(version: 20150925143444) do
   end
 
   add_index "colleges", ["slug"], name: "index_colleges_on_slug", unique: true, using: :btree
+
+  create_table "factor_choices", force: :cascade do |t|
+    t.integer "factor_id"
+    t.string  "choice"
+  end
 
   create_table "factor_ratings", force: :cascade do |t|
     t.integer  "student_profile_id"
