@@ -81,7 +81,7 @@ ActiveRecord::Schema.define(version: 20150929193211) do
     t.integer  "importance"
     t.datetime "created_at",         null: false
     t.datetime "updated_at",         null: false
-    t.integer  "factor_choice"
+    t.integer  "factor_choice_id"
   end
 
   add_index "factor_ratings", ["factor_id"], name: "index_factor_ratings_on_factor_id", using: :btree

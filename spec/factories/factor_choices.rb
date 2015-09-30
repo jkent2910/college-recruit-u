@@ -3,9 +3,9 @@ FactoryGirl.define do
     "Choice #{n}"
   end
 
-  factory :factor_choice do |f|
+  factory :factor_choice do
     association :factor
-    f.choice_name
+    name { generate(:choice_name) }
     value 1
   end
 end

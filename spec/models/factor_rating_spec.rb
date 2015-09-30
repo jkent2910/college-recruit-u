@@ -9,18 +9,13 @@ RSpec.describe FactorRating, type: :model do
     it "belongs to factor" do
       expect(subject).to belong_to(:factor)
     end
+
+    it "belongs to factor_choice" do
+      expect(subject).to belong_to(:factor_choice)
+    end
   end
 
-  describe "validations" do
-    it "validates presence of importance" do
-      expect(subject).to validate_presence_of(:importance)
-    end
-
-    it "requires importance to be an integer between 1 and 5" do
-      expect(subject).to validate_numericality_of(:importance).
-                          only_integer.
-                          is_greater_than_or_equal_to(1).
-                          is_less_than_or_equal_to(5)
-    end
+  it "validates presence of factor_choice_id" do
+    expect(subject).to validate_presence_of(:factor_choice_id)
   end
 end
