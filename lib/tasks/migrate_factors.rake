@@ -98,4 +98,16 @@ namespace :cru do
       end
     end
   end
+
+  desc "Migrate importance to factor choice"
+  task migrate_importance_to_factor_choice: :environment do
+    puts "Migrating importance to factor choice..."
+    sql = "update factor_ratings fr
+      set factor_choice_id = (select fc.id
+      from factor_choices fc
+      where fc.factor_id = fr.factor_id and fc.value = fr.importance)
+      where fr.factor_id in (3, 4)"
+    ActiveRecord::Base.connection.execute(sql)
+    puts "done."
+  end
 end
