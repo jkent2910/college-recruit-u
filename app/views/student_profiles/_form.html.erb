@@ -53,18 +53,23 @@
     </div><br />
 
   <div class="row">
-    <p class="p-text">How important are the following factors to you?  Please rate from 1 - 5 with 1 being "not important at all" and 5 being "extremely important"</p>
-    <div class="col-md-6">
-      <% Factor.all.each do |factor| %>
-      <% factor_rating = @student_profile.factor_ratings.where(factor_id: factor.id).take %>
-      <div class="field">
-        <%= label_tag "student_profile[factor_ratings_attributes][]", factor.name %>
-        <%= hidden_field_tag "student_profile[factor_ratings_attributes][]id", factor_rating.try(:id) %>
-        <%= hidden_field_tag "student_profile[factor_ratings_attributes][]factor_id", factor.id %>
-        <%= hidden_field_tag "student_profile[factor_ratings_attributes][]importance", factor_rating.try(:importance) %>
-        <%= content_tag :div, "", class: "factor_importance_slider" %>
-      </div>
-      <% end %>
+    <p class="p-text">Please rate the following factors:</p>
+    <div class="col-md-8">
+      <table class="factors-table">
+        <tr><th>Factor</th><th>Preference / Importance</th></tr>
+        <% Factor.all.each do |factor| %>
+        <% factor_rating = @student_profile.factor_ratings.where(factor_id: factor.id).take %>
+        <% choices = factor.factor_choices.map { |choice| [choice.name, choice.id] } %>
+        <tr>
+          <td><%= factor.name %></td>
+          <td>
+            <%= hidden_field_tag "student_profile[factor_ratings_attributes][]id", factor_rating.try(:id) %>
+            <%= hidden_field_tag "student_profile[factor_ratings_attributes][]factor_id", factor.id %>
+            <%= select_tag "student_profile[factor_ratings_attributes][]factor_choice_id", options_for_select(choices, factor_rating.try(:importance)) %>
+          </td>
+        </tr>
+        <% end %>
+      </table>
     </div>
   </div>
 

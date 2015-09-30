@@ -140,6 +140,15 @@ div.student-profile-fans, div.student-profile-colleges {
   margin-bottom: 10px;
 }
 
+.factors-table {
+  th, td {
+    padding: .5em;
+    select {
+      width: 200px;
+    }
+  }
+}
+
 .links-container {
   margin-bottom: 25px;
   margin-left: 10px;
