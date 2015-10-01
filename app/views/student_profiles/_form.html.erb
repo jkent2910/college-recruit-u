@@ -55,21 +55,20 @@
   <div class="row">
     <p class="p-text">Please rate the following factors:</p>
     <div class="col-md-8">
-      <table class="factors-table">
-        <tr><th>Factor</th><th>Preference / Importance</th></tr>
-        <% Factor.all.each do |factor| %>
+      <% Factor.all.each do |factor| %>
         <% factor_rating = @student_profile.factor_ratings.where(factor_id: factor.id).take %>
         <% choices = factor.factor_choices.map { |choice| [choice.name, choice.id] } %>
-        <tr>
-          <td><%= factor.name %></td>
-          <td>
+        <div class="row factor-<%= factor.name.gsub(/\s+/, "-").downcase %>">
+          <div class="col-md-5">
+            <%= label_tag "student_profile[factor_ratings_attributes][]factor_choice_id", factor.name %>
             <%= hidden_field_tag "student_profile[factor_ratings_attributes][]id", factor_rating.try(:id) %>
             <%= hidden_field_tag "student_profile[factor_ratings_attributes][]factor_id", factor.id %>
-            <%= select_tag "student_profile[factor_ratings_attributes][]factor_choice_id", options_for_select(choices, factor_rating.try(:importance)) %>
-          </td>
-        </tr>
-        <% end %>
-      </table>
+          </div>
+          <div class="col-md-6 factors-select">
+            <%= select_tag "student_profile[factor_ratings_attributes][]factor_choice_id", options_for_select(choices, factor_rating.try(:factor_choice_id)) %>
+          </div>
+        </div>
+      <% end %>
     </div>
   </div>
 
