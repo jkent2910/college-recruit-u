@@ -1,4 +1,4 @@
-Feature: Student specifies importance of various factors
+Feature: Student specifies choices for various factors
   As a student
   I want to specify how important various factors are to me
   So that my fans can see what matters to me
@@ -19,7 +19,7 @@ Feature: Student specifies importance of various factors
     And I am signed in
 
   @javascript
-  Scenario: Student edits profile to set factor importance
+  Scenario: Student edits profile to set factor choices
     Given I am on my edit student profile page
     And I set the "College size" factor to "Small"
     And I set the "Cost" factor to "Extremely important"
