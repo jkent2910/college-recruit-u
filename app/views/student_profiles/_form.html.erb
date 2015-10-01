@@ -1,79 +1,79 @@
 <div class="container">
   <%= form_for(@student_profile) do |f| %>
-  <% if @student_profile.errors.any? %>
-  <h5><%= pluralize(@student_profile.errors.count, "error") %> prohibited this student_profile from being saved:</h5>
-  <ul>
-    <% @student_profile.errors.full_messages.each do |message| %>
-    <li><%= message %></li>
+    <% if @student_profile.errors.any? %>
+      <h5><%= pluralize(@student_profile.errors.count, "error") %> prohibited this student_profile from being saved:</h5>
+      <ul>
+        <% @student_profile.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
     <% end %>
-  </ul>
-  <% end %>
 
-  <div class="field">
-    <%= f.label :first_name %><br>
-    <%= f.text_field :first_name, autocorrect: "off", autocapitalize:"words" %>
-  </div>
-  <div class="field">
-    <%= f.label :last_name %><br>
-    <%= f.text_field :last_name %>
-  </div>
-  <div class="field">
-    <%= f.label :cell_number %> <p class="xs-text">Cell will not be shared on your profile</p><br />
-    <%= f.text_field :cell_number %>
-  </div>
-  <div class="field">
-    <%= f.label :gender %><br>
-    <%= f.select :gender, options_for_select(StudentProfile::VALID_GENDERS, @student_profile.gender) %>
-  </div>
-  <div class="field">
-    <%= f.label :high_school %> <p class="xs-text"> If your HS isn't listed, choose 'other' and we will be in touch</p><br>
-    <%= f.select :high_school, options_for_select(high_schools.keys, @student_profile.high_school) %>
-  </div>
-  <div class="field">
-    <%= f.label :graduation_year %><br>
-    <%= f.select :graduation_year, options_for_select(StudentProfile::VALID_GRADUATION_YEARS, @student_profile.graduation_year) %>
-  </div>
-  <div class="field">
-    <%= f.label :photo %><br>
-    <%= f.file_field :photo %>
-  </div>
-  <div class="field">
-    <p>What activities are you currently involved in?</p>
-    <% student_interests.each_key do |key| %>
-      <%= check_box_tag 'student_profile[interests][]', "#{key}", @student_profile.interests.include?(key) %>
-      <%="#{key}" %> <br />
-    <% end %>
-  </div><br />
-  <div class="field">
-    <p>What major(s) are you considering?</p>
-    <% student_majors.each_key do |key| %>
-      <%= check_box_tag 'student_profile[majors[]', "#{key}", @student_profile.majors.include?(key) %>
-      <%="#{key}" %> <br />
+    <div class="field">
+      <%= f.label :first_name %><br>
+      <%= f.text_field :first_name, autocorrect: "off", autocapitalize:"words" %>
+    </div>
+    <div class="field">
+      <%= f.label :last_name %><br>
+      <%= f.text_field :last_name %>
+    </div>
+    <div class="field">
+      <%= f.label :cell_number %> <p class="xs-text">Cell will not be shared on your profile</p><br />
+      <%= f.text_field :cell_number %>
+    </div>
+    <div class="field">
+      <%= f.label :gender %><br>
+      <%= f.select :gender, options_for_select(StudentProfile::VALID_GENDERS, @student_profile.gender) %>
+    </div>
+    <div class="field">
+      <%= f.label :high_school %> <p class="xs-text"> If your HS isn't listed, choose 'other' and we will be in touch</p><br>
+      <%= f.select :high_school, options_for_select(high_schools.keys, @student_profile.high_school) %>
+    </div>
+    <div class="field">
+      <%= f.label :graduation_year %><br>
+      <%= f.select :graduation_year, options_for_select(StudentProfile::VALID_GRADUATION_YEARS, @student_profile.graduation_year) %>
+    </div>
+    <div class="field">
+      <%= f.label :photo %><br>
+      <%= f.file_field :photo %>
+    </div>
+    <div class="field">
+      <p>What activities are you currently involved in?</p>
+      <% student_interests.each_key do |key| %>
+        <%= check_box_tag 'student_profile[interests][]', "#{key}", @student_profile.interests.include?(key) %>
+        <%="#{key}" %> <br />
+      <% end %>
+    </div><br />
+    <div class="field">
+      <p>What major(s) are you considering?</p>
+      <% student_majors.each_key do |key| %>
+        <%= check_box_tag 'student_profile[majors[]', "#{key}", @student_profile.majors.include?(key) %>
+        <%="#{key}" %> <br />
       <% end %>
     </div><br />
 
-  <div class="row">
-    <p class="p-text">Please rate the following factors:</p>
-    <div class="col-md-8">
-      <% Factor.all.each do |factor| %>
-        <% factor_rating = @student_profile.factor_ratings.where(factor_id: factor.id).take %>
-        <% choices = factor.factor_choices.map { |choice| [choice.name, choice.id] } %>
-        <div class="row factor-<%= factor.name.gsub(/\s+/, "-").downcase %>">
-          <div class="col-md-5">
-            <%= label_tag "student_profile[factor_ratings_attributes][]factor_choice_id", factor.name %>
-            <%= hidden_field_tag "student_profile[factor_ratings_attributes][]id", factor_rating.try(:id) %>
-            <%= hidden_field_tag "student_profile[factor_ratings_attributes][]factor_id", factor.id %>
+    <div class="row">
+      <p class="p-text">Please rate the following factors:</p>
+      <div class="col-md-8">
+        <% Factor.all.each do |factor| %>
+          <% factor_rating = @student_profile.factor_ratings.where(factor_id: factor.id).take %>
+          <% choices = factor.factor_choices.map { |choice| [choice.name, choice.id] } %>
+          <div class="row factor-<%= factor.name.gsub(/\s+/, "-").downcase %>">
+            <div class="col-md-5">
+              <%= label_tag "student_profile[factor_ratings_attributes][]factor_choice_id", factor.name %>
+              <%= hidden_field_tag "student_profile[factor_ratings_attributes][]id", factor_rating.try(:id) %>
+              <%= hidden_field_tag "student_profile[factor_ratings_attributes][]factor_id", factor.id %>
+            </div>
+            <div class="col-md-6 factors-select">
+              <%= select_tag "student_profile[factor_ratings_attributes][]factor_choice_id", options_for_select(choices, factor_rating.try(:factor_choice_id)) %>
+            </div>
           </div>
-          <div class="col-md-6 factors-select">
-            <%= select_tag "student_profile[factor_ratings_attributes][]factor_choice_id", options_for_select(choices, factor_rating.try(:factor_choice_id)) %>
-          </div>
-        </div>
-      <% end %>
+        <% end %>
+      </div>
     </div>
-  </div>
 
-  <div class="actions">
-    <%= f.submit class: 'btn btn-md btn-primary' %>
-  </div>
+    <div class="actions">
+      <%= f.submit class: 'btn btn-md btn-primary' %>
+    </div>
   <% end %>
 </div>
