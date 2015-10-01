@@ -208,22 +208,30 @@
   </div>
 </div>
 
-
 <div class="container factors-container">
   <div class="row">
     <div class="col-xs-12 col-md-6 col-md-offset-3 text-center">
       <% if @student_profile.factor_ratings.blank? %>
-        <h5 class="college-text"><%= @student_profile.first_name %> has not indicated <%= pronoun(@student_profile.gender) %> factors yet </h5>
+        <h5><%= @student_profile.first_name %> has not indicated <%= pronoun(@student_profile.gender) %> factors yet </h5>
       <% else %>
         <h4 class="sub-text">What's important to <%= @student_profile.first_name %></h4>
-        <% @student_profile.factor_ratings.each do |fr| %>
-          <div><%= fr.factor.name %></div>
-          <div class="progress">
-            <div class="progress-bar" role="progressbar" aria-valuenow="<%= fr.importance %>" aria-valuemin="0" aria-valuemax="5" style="width: <%= fr.importance * 20 %>%;"></div>
-          </div>
-        <% end %>
-        <% end %>
+      <% end %>
     </div>
+  </div>
+  <% @student_profile.factor_ratings.each do |fr| %>
+    <div class="row">
+      <div class="col-sm-4 col-sm-offset-2 col-xs-8 col-xs-offset-2"><%= fr.factor.name %></div>
+      <div class="col-sm-4 col-sm-offset-0 col-xs-8 col-xs-offset-2">
+        <% if fr.factor.progress_factor? %>
+          <div class="progress">
+            <div class="progress-bar" role="progressbar" aria-valuenow="<%= fr.factor_choice.try(:value) %>" aria-valuemin="0" aria-valuemax="5" style="width: <%= fr.factor_choice.try(:value) * 20 %>%;"></div>
+          </div>
+        <% else %>
+          <div><%= fr.factor_choice.try(:name) %></div><br />
+        <% end %>
+      </div>
+    </div>
+    <% end %>
   </div>
 </div>
 
