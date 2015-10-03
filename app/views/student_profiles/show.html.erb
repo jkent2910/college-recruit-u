@@ -220,11 +220,11 @@
   </div>
   <% @student_profile.factor_ratings.each do |fr| %>
     <div class="row">
-      <div class="col-sm-4 col-sm-offset-2 col-xs-8 col-xs-offset-2"><%= fr.factor.name %></div>
+      <div class="col-sm-4 col-sm-offset-2 col-xs-8 col-xs-offset-2"><%= fr.factor.try(:name) %></div>
       <div class="col-sm-4 col-sm-offset-0 col-xs-8 col-xs-offset-2">
-        <% if fr.factor.progress_factor? %>
-          <div class="progress">
-            <div class="progress-bar" role="progressbar" aria-valuenow="<%= fr.factor_choice.try(:value) %>" aria-valuemin="0" aria-valuemax="5" style="width: <%= fr.factor_choice.try(:value) * 20 %>%;"></div>
+        <% if fr.factor.try(:progress_factor?) %>
+        <div class="progress">
+            <div class="progress-bar" role="progressbar" aria-valuenow="<%= fr.factor_choice.try(:value).to_i %>" aria-valuemin="0" aria-valuemax="5" style="width: <%= fr.factor_choice.try(:value).to_i * 20 %>%;"></div>
           </div>
         <% else %>
           <div><%= fr.factor_choice.try(:name) %></div><br />
