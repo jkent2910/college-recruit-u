@@ -89,11 +89,11 @@ div.student-profile-fans, div.student-profile-colleges {
 }
 
 .actions {
-  margin-top: 5px;
+  margin-top: 15px;
 }
 
 .bottom-btns {
-  margin-top: 5px;
+  margin-top: 15px;
 }
 
 .edit-profile {
@@ -138,6 +138,16 @@ div.student-profile-fans, div.student-profile-colleges {
   border-color: #114499;
   padding-bottom: 5px;
   margin-bottom: 10px;
+
+  .row {
+    padding-bottom: 10px;
+  }
+}
+
+.factors-select {
+  select {
+    min-width: 140px;
+  }
 }
 
 .links-container {

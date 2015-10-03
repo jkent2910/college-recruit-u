@@ -4,6 +4,12 @@ Given(/^the following factors?:$/) do |table|
   end
 end
 
+Given(/^the following factor choices:$/) do |table|
+  table.hashes.each do |hash|
+    FactoryGirl.create(:factor_choice, hash)
+  end
+end
+
 Given(/^the following colleges?:$/) do |table|
   table.hashes.each do |hash|
     FactoryGirl.create(:college, hash)

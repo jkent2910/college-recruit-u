@@ -25,6 +25,18 @@ Given(/^I should see that I am a fan of "(.*?)"$/) do |name|
   expect(page).to have_content name
 end
 
-Then(/^I should see a "(.*?)" factor of "(.*?)"$/) do |factor, value|
-  expect(page).to have_selector(:xpath, "//div[text()='#{factor}']/following-sibling::div/div[@aria-valuenow='#{value}']")
+Given(/^I set the "(.*?)" factor to "(.*?)"$/) do |factor, choice|
+  factor_class = factor.gsub(/\s+/, '-').downcase
+  within("div.factor-#{factor_class}") do
+    select(choice)
+  end
+end
+
+Then(/^I should see a "(.*?)" factor of "(.*?)"$/) do |factor_name, value|
+  factor = Factor.where(name: factor_name).take
+  if factor.progress_factor?
+    expect(page).to have_selector(:xpath, "//div[text()='#{factor_name}']/following-sibling::div/div/div[@aria-valuenow='#{value}']")
+  else
+    expect(page).to have_selector(:xpath, "//div[text()='#{factor_name}']/following-sibling::div/div[text()='#{value}']")
+  end
 end

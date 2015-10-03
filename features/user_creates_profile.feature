@@ -27,7 +27,7 @@ Feature: User creates profile for first time
   Scenario: student tries to create two profiles
     Given I am Sarah
     And I am signed in
-    And I have already created a profile
+    And I have a student profile
     When I visit the new student profile page
     Then I should be on my student profile page
     And I should see "You have already created a profile."
@@ -35,7 +35,7 @@ Feature: User creates profile for first time
   Scenario: student edits profile
     Given I am Sarah
     And I am signed in
-    And I have already created a profile
+    And I have a student profile
     When I visit my edit student profile page
     When I select "2018" from "Graduation year"
     When I press "Update"
@@ -45,7 +45,7 @@ Feature: User creates profile for first time
   Scenario: student deletes profile
     Given I am Sarah
     And I am signed in
-    And I have already created a profile
+    And I have a student profile
     When I visit my edit student profile page
     And I follow "Delete"
     Then I should be on the student profiles page

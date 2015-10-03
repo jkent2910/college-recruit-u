@@ -88,7 +88,8 @@ RSpec.describe StudentProfile, type: :model do
         factor = FactoryGirl.create(:factor)
         @student_profile.become_fan_of(other_profile)
         other_profile.become_fan_of(@student_profile)
-        @student_profile.factor_ratings << FactoryGirl.create(:factor_rating, factor: factor)
+        factor_choice = FactoryGirl.create(:factor_choice, factor: factor)
+        @student_profile.factor_ratings << FactoryGirl.create(:factor_rating, factor: factor, factor_choice: factor_choice)
         college = FactoryGirl.create(:college)
         @student_profile.add_or_update_college_status(college, "Just a Fan")
       end
