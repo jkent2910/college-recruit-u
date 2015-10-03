@@ -43,4 +43,15 @@ RSpec.describe "student_profiles/show", type: :view do
     @student_profile.high_school = "bogus"
     expect { render }.not_to raise_exception
   end
+
+  it "still renders if a factor choice value is nil" do
+    factor = FactoryGirl.create(:factor)
+    allow(factor).to receive(:progress_factor?) { true }
+    factor_choice = FactoryGirl.create(:factor_choice, factor: factor)
+    @student_profile.factor_ratings << FactoryGirl.create(:factor_rating, factor: factor, factor_choice: factor_choice)
+    factor_choice.value = nil
+    factor_choice.save(validate: false)
+    @student_profile.save!
+    expect { render }.not_to raise_exception
+  end
 end

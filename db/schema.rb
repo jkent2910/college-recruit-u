@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150925143444) do
+ActiveRecord::Schema.define(version: 20150929193211) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -55,8 +55,8 @@ ActiveRecord::Schema.define(version: 20150925143444) do
     t.string   "out_of_state_tuition"
     t.string   "percent_receive_financial_aid"
     t.text     "notable_alumni"
-    t.datetime "created_at",                    null: false
-    t.datetime "updated_at",                    null: false
+    t.datetime "created_at",                                 null: false
+    t.datetime "updated_at",                                 null: false
     t.string   "logo_file_name"
     t.string   "logo_content_type"
     t.integer  "logo_file_size"
@@ -69,12 +69,19 @@ ActiveRecord::Schema.define(version: 20150925143444) do
 
   add_index "colleges", ["slug"], name: "index_colleges_on_slug", unique: true, using: :btree
 
+  create_table "factor_choices", force: :cascade do |t|
+    t.integer "factor_id"
+    t.string  "name"
+    t.integer "value"
+  end
+
   create_table "factor_ratings", force: :cascade do |t|
     t.integer  "student_profile_id"
     t.integer  "factor_id"
     t.integer  "importance"
     t.datetime "created_at",         null: false
     t.datetime "updated_at",         null: false
+    t.integer  "factor_choice_id"
   end
 
   add_index "factor_ratings", ["factor_id"], name: "index_factor_ratings_on_factor_id", using: :btree
@@ -124,11 +131,11 @@ ActiveRecord::Schema.define(version: 20150925143444) do
     t.string   "graduation_year"
     t.datetime "created_at",                         null: false
     t.datetime "updated_at",                         null: false
+    t.text     "interests"
     t.string   "photo_file_name"
     t.string   "photo_content_type"
     t.integer  "photo_file_size"
     t.datetime "photo_updated_at"
-    t.text     "interests"
     t.text     "majors"
     t.string   "slug"
     t.string   "cell_number"
@@ -153,8 +160,6 @@ ActiveRecord::Schema.define(version: 20150925143444) do
     t.datetime "locked_at"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "provider"
-    t.string   "uid"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

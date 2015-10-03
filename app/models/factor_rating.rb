@@ -1,9 +1,7 @@
 class FactorRating < ActiveRecord::Base
   belongs_to :student_profile
   belongs_to :factor
+  belongs_to :factor_choice
 
-  validates :importance, presence: true,
-            numericality: { only_integer: true,
-                            greater_than_or_equal_to: 1,
-                            less_than_or_equal_to: 5 }
+  validates :factor_choice_id, presence: true
 end
