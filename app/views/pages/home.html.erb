@@ -44,8 +44,8 @@
 <div class="container">
   <div class="row">
     <div class="col-xs-12">
-      <h4 class="small-txt">Recently Added Colleges</h4>
-      <div><%= link_to_if params[:order] == "pop", "View Alphabetically", order: "alpha" %> | <%= link_to_unless params[:order] == "pop", "View by Popularity", order: "pop" %></div>
+      <h4 class="small-txt">Browse Colleges</h4>
+      <div><%= link_to_unless params[:order] == "pop", "View by Popularity", order: "pop" %> | <%= link_to_unless params[:order] == "recent", "View Recently Added", order: "recent" %> | <%= link_to_unless params[:order] == "alpha", "View Alphabetically", order: "alpha" %> </div>
     </div>
   </div>
   <div class="row colleges-index">

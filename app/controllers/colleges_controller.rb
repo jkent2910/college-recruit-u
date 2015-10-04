@@ -3,8 +3,13 @@ class CollegesController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    order = sort_order == "pop" ? "college_student_statuses_count DESC" : "name ASC"
-    @colleges = College.all.order(order).includes(:college_student_statuses)
+    if sort_order == "pop"
+      @colleges = College.limit(20).sort_by { |college| -college.college_student_statuses_count }
+    elsif sort_order == "recent"
+      @colleges = College.order(created_at: :desc).limit(20).sort_by { |college| college.name }
+    elsif sort_order == "alpha"
+      @colleges = College.all.sort_by { |college| college.name }
+    end
   end
 
   def show
@@ -72,6 +77,6 @@ class CollegesController < ApplicationController
   end
 
   def sort_order
-    %w[alpha pop].include?(params[:order]) ? params[:order] : "alpha"
+    %w[alpha pop recent].include?(params[:order]) ? params[:order] : "alpha"
   end
 end
