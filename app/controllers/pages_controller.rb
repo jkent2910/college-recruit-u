@@ -12,11 +12,11 @@ class PagesController < ApplicationController
       end
 
       if sort_order == "pop"
-        @new_colleges = College.limit(20).sort_by { |college| -college.college_student_statuses_count }
+        @colleges = College.order(college_student_statuses_count: :desc).limit(20)
       elsif sort_order == "recent"
-        @new_colleges = College.order(created_at: :desc).limit(20).sort_by { |college| college.name }
+        @colleges = College.order(created_at: :desc).limit(20)
       elsif sort_order == "alpha"
-        @new_colleges = College.all.sort_by { |college| college.name }
+        @colleges = College.order(:name)
       end
     else
       redirect_to root_path
