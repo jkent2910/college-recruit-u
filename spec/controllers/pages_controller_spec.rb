@@ -26,10 +26,10 @@ RSpec.describe PagesController, type: :controller do
       expect(assigns(:student_profiles)).not_to include(incognito_profile)
     end
 
-    it "assigns new colleges as @new_colleges" do
+    it "assigns new colleges as @colleges" do
       college = FactoryGirl.create(:college)
       get :home
-      expect(assigns(:new_colleges)).to eq [college]
+      expect(assigns(:colleges)).to eq [college]
     end
 
     describe "sorting" do
@@ -41,7 +41,7 @@ RSpec.describe PagesController, type: :controller do
 
       it "orders colleges alphabetically by default" do
         get :home
-        expect(assigns(:new_colleges).map(&:name)).to eql(%w[aaa bbb ccc])
+        expect(assigns(:colleges).map(&:name)).to eql(%w[aaa bbb ccc])
       end
 
       it "orders colleges by popularity when requested" do
@@ -53,7 +53,7 @@ RSpec.describe PagesController, type: :controller do
           end
         end
         get :home, order: "pop"
-        expect(assigns(:new_colleges).map(&:name)).to eql(%w[ccc bbb aaa])
+        expect(assigns(:colleges).map(&:name)).to eql(%w[ccc bbb aaa])
       end
     end
   end
