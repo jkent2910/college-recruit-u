@@ -102,3 +102,10 @@ EMAIL_ADDRESSES = {}
 EMAIL_ADDRESSES[:college_question] = ["jkent2910@gmail.com", "davidbody@bigcreek.com"]
 EMAIL_ADDRESSES[:application_help] = ["jkent2910@gmail.com", "davidbody@bigcreek.com"]
 EMAIL_ADDRESSES[:request_a_college] = ["jkent2910@gmail.com", "davidbody@bigcreek.com"]
+
+Rails.application.config.middleware.use ExceptionNotification::Rack,
+                                        :email => {
+                                          :email_prefix => "[CollegeRecruitU] ",
+                                          :sender_address => %{"exceptions" <exceptions@collegerecruitu.com>},
+                                          :exception_recipients => %w{jkent2910@gmail.com davidbody@bigcreek.com}
+                                        }

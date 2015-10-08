@@ -7,6 +7,7 @@ gem 'aws-sdk',         '~> 1.6'  # http://www.rubydoc.info/gems/paperclip/Paperc
 gem 'bootstrap-sass',  '~> 3.3.5'
 gem 'coffee-rails',    '~> 4.1.0'
 gem 'devise',          '~> 3.5.2'
+gem 'exception_notification'
 gem 'ey_config'
 gem 'font-awesome-sass'
 gem 'friendly_id', '~> 5.1.0'
