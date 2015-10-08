@@ -9,6 +9,13 @@
 </div>
 
 <div class="container">
+  <h4>Filter by High School</h4>
+  <%= form_tag '', method: :get, id: :filter_by_high_school_form do %>
+    <%= select_tag :high_school, options_for_select([['All High Schools', '*']] + high_schools.keys, selected: @high_school) %>
+  <% end %>
+</div>
+
+<div class="container">
   <% @student_profiles.each do |student_profile| %>
     <div class="col-xs-6 col-sm-4 col-md-2 student-profiles-index">
       <%= link_to student_profile do %>
@@ -34,3 +41,11 @@
   <%= link_to 'Explore Colleges', colleges_path, :class=>"btn btn-success" %>
 </div>
 <br />
+
+<script>
+ $(function() {
+     $("select[name='high_school']").change(function() {
+         $("form#filter_by_high_school_form").submit();
+     })
+ });
+</script>

@@ -4,7 +4,12 @@ class PagesController < ApplicationController
     if current_user
       @student_profile = current_user.student_profile
 
-      @student_profiles = StudentProfile.where(incognito: false).order(created_at: :desc).limit(15)
+      @high_school = params[:high_school]
+      if @high_school.blank? || @high_school == '*'
+        @student_profiles = StudentProfile.where(incognito: false).order(created_at: :desc).limit(15)
+      else
+        @student_profiles = StudentProfile.where(incognito: false, high_school: @high_school).order(created_at: :desc)
+      end
 
       if sort_order == "pop"
         @new_colleges = College.limit(20).sort_by { |college| -college.college_student_statuses_count }

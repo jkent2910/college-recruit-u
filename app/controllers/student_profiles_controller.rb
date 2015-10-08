@@ -7,7 +7,12 @@ class StudentProfilesController < ApplicationController
   # GET /student_profiles
   # GET /student_profiles.json
   def index
-    @student_profiles = StudentProfile.where(incognito: false).order("created_at DESC")
+    @high_school = params[:high_school]
+    if @high_school.blank? || @high_school == '*'
+      @student_profiles = StudentProfile.where(incognito: false).order("created_at DESC")
+    else
+      @student_profiles = StudentProfile.where(incognito: false, high_school: @high_school).order("created_at DESC")
+    end
   end
 
   # GET /student_profiles/1
