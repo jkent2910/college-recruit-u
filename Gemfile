@@ -13,7 +13,7 @@ gem 'friendly_id', '~> 5.1.0'
 gem 'google-api-client',  '~> 0.8.6'
 gem 'google_drive',       '~> 1.0.1'
 gem 'jbuilder',        '~> 2.0'
-gem 'jquery-rails',    '~> 4.0.4'
+gem 'jquery-rails',    '~> 4.0.5'
 gem 'jquery-ui-rails', '~> 5.0.5'
 gem "paperclip",       '~> 4.3'
 gem 'phony_rails'
@@ -41,6 +41,6 @@ group :development, :test do
 end
 
 group :test do
-  gem 'capybara-webkit',  '~> 1.6.0'
-  gem 'shoulda-matchers', '~> 2.8.0', require: false
+  gem 'capybara-webkit',  '~> 1.7.1'
+  gem 'shoulda-matchers', '~> 3.0.0', require: false
 end
