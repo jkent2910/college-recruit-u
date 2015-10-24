@@ -6,6 +6,7 @@ module StudentProfilesHelper
       "Ankeny Centennial High School" => {logo: "ankeny-centennial.png"},
       "Ankeny High School" => {logo: "ankeny-hawks.png"},
       "Carlisle High School" => {logo: "carlisle.png"},
+      "Dakota Valley High School" => {logo: "dakota-valley.jpg"},
       "Dallas Center-Grimes High School" => {logo: "dallas-center.png"},
       "Des Moines Christian High School" => {logo: "dsm-christian.png"},
       "Dowling Catholic High School" => {logo: "dowling.png"},
