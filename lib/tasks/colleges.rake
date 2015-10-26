@@ -25,8 +25,6 @@ namespace :cru do
     photos_dir = spreadsheet_dir.file_by_title("photos")
     logos_dir = spreadsheet_dir.file_by_title("logos")
 
-    raise "Spreadsheet #{spreadsheet_name} not found" unless spreadsheet
-
     worksheet = spreadsheet.worksheets.first
 
     attrs = worksheet.rows.first.map(&:to_sym)
