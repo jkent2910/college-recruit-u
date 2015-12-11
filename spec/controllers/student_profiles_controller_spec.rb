@@ -55,6 +55,20 @@ RSpec.describe StudentProfilesController, type: :controller do
   # StudentProfilesController. Be sure to keep this updated too.
   let(:valid_session) { {} }
 
+  context "when user has no student profile" do
+    describe "GET #index" do
+      it "redirects to new student profile page" do
+        get :index
+        expect(response).to redirect_to(new_student_profile_path)
+      end
+
+      it "displays an appropriate message" do
+        get :index
+        expect(flash[:notice]).to match("create a student profile first")
+      end
+    end
+  end
+
   context "student's own profile" do
     describe "GET #index" do
       it "assigns all student_profiles as @student_profiles" do
@@ -68,11 +82,6 @@ RSpec.describe StudentProfilesController, type: :controller do
         incognito_profile = FactoryGirl.create(:student_profile, incognito: true)
         get :index, {}, valid_session
         expect(assigns(:student_profiles)).to eq([student_profile])
-      end
-
-      it "does not allow users without a student profile to view the index" do 
-        get :index
-        expect(flash[:notice]).to match("create a student profile first")
       end
     end
 
