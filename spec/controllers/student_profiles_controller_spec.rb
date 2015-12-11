@@ -229,7 +229,7 @@ RSpec.describe StudentProfilesController, type: :controller do
       it "redirects to the student_profiles list" do
         student_profile = StudentProfile.create! valid_attributes
         delete :destroy, {:id => student_profile.to_param}, valid_session
-        expect(response).to redirect_to(student_profiles_url)
+        expect(response).to redirect_to(colleges_path)
       end
     end
   end
