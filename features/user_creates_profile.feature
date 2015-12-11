@@ -22,7 +22,7 @@ Feature: User creates profile for first time
     When I sign in for the first time
     Then I should be on the new student profile page
     And I follow "Skip"
-    Then I should be on the student profiles page
+    Then I should be on the colleges page
 
   Scenario: student tries to create two profiles
     Given I am Sarah
@@ -48,5 +48,5 @@ Feature: User creates profile for first time
     And I have a student profile
     When I visit my edit student profile page
     And I follow "Delete"
-    Then I should be on the student profiles page
+    Then I should be on the colleges page
     And I should see "Student profile was successfully destroyed"

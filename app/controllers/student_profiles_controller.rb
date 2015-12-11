@@ -73,7 +73,7 @@ class StudentProfilesController < ApplicationController
   def destroy
     @student_profile.destroy
     respond_to do |format|
-      format.html { redirect_to student_profiles_url, notice: 'Student profile was successfully destroyed.' }
+      format.html { redirect_to colleges_path, notice: 'Student profile was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
