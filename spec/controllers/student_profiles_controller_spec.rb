@@ -69,6 +69,11 @@ RSpec.describe StudentProfilesController, type: :controller do
         get :index, {}, valid_session
         expect(assigns(:student_profiles)).to eq([student_profile])
       end
+
+      it "does not allow users without a student profile to view the index" do 
+        get :index
+        expect(flash[:notice]).to match("create a student profile first")
+      end
     end
 
     describe "GET #show" do
