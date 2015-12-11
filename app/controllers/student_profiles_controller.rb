@@ -13,6 +13,11 @@ class StudentProfilesController < ApplicationController
     else
       @student_profiles = StudentProfile.where(incognito: false, high_school: @high_school).order("created_at DESC")
     end
+
+    if current_user.student_profile == nil 
+      redirect_to new_student_profile_path, notice: "You must create a student profile first"
+    end
+
   end
 
   # GET /student_profiles/1
@@ -68,7 +73,7 @@ class StudentProfilesController < ApplicationController
   def destroy
     @student_profile.destroy
     respond_to do |format|
-      format.html { redirect_to student_profiles_url, notice: 'Student profile was successfully destroyed.' }
+      format.html { redirect_to colleges_path, notice: 'Student profile was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

@@ -55,6 +55,20 @@ RSpec.describe StudentProfilesController, type: :controller do
   # StudentProfilesController. Be sure to keep this updated too.
   let(:valid_session) { {} }
 
+  context "when user has no student profile" do
+    describe "GET #index" do
+      it "redirects to new student profile page" do
+        get :index
+        expect(response).to redirect_to(new_student_profile_path)
+      end
+
+      it "displays an appropriate message" do
+        get :index
+        expect(flash[:notice]).to match("create a student profile first")
+      end
+    end
+  end
+
   context "student's own profile" do
     describe "GET #index" do
       it "assigns all student_profiles as @student_profiles" do
@@ -224,7 +238,7 @@ RSpec.describe StudentProfilesController, type: :controller do
       it "redirects to the student_profiles list" do
         student_profile = StudentProfile.create! valid_attributes
         delete :destroy, {:id => student_profile.to_param}, valid_session
-        expect(response).to redirect_to(student_profiles_url)
+        expect(response).to redirect_to(colleges_path)
       end
     end
   end
